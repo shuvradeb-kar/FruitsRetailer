@@ -1,0 +1,10 @@
+var customNotificationSelectedUsers;        
+        function OpenNotificationUserSelector(selector) {
+            var url = "/Global/CommonSite/UnifiedUserSelectorPage/CustomNotificationUserSelectorPage.aspx?activityId=0";
+            OpenKendoPopupWindow( url, "370px", "300px", "Add User", window, function (data) {
+                if (typeof (customNotificationSelectedUsers) != 'undefined' || customNotificationSelectedUsers != null) {
+                    selector.UserAdded(customNotificationSelectedUsers);
+                    customNotificationSelectedUsers = null;
+                }
+            } );
+        }
