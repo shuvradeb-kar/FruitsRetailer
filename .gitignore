@@ -1,0 +1,15 @@
+# git ignore file
+*.dll
+*.pdb
+*.user
+*.suo
+*.Fakes.*
+packages/
+obj/
+bin/
+.vs/
+/TestResults/
+DellShare.Global.sln.ide/
+FakesAssemblies/
+*.json
+.vs/config/applicationhost.config
