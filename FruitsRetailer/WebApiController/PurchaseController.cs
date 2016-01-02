@@ -9,5 +9,6 @@ namespace FruitsRetailer.WebApiController
 {
     public class PurchaseController : ApiController
     {
+
     }
 }
