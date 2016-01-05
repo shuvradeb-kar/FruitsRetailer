@@ -983,15 +983,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="BusinessLayer\PurchaseService.cs" />
+    <Compile Include="DataModel\Customer.cs" />
+    <Compile Include="DataModel\CustomerType.cs" />
+    <Compile Include="DataModel\MongoDbConnection.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WebApiController\PurchaseController.cs" />
+    <Compile Include="ApiController\PurchaseController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

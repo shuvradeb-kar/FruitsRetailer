@@ -3,13 +3,15 @@
         .module('FruitsRetailerApp')
         .controller('PurchaseListController', PurchaseListController);
 
-    PurchaseListController.$inject = ['$state', '$scope', '$timeout'];
+    PurchaseListController.$inject = ['$state', '$scope', '$timeout', 'FruitsRetailerService'];
 
-    function PurchaseListController($state, $scope, $timeout) {
+    function PurchaseListController($state, $scope, $timeout, FruitsRetailerService) {
         var vm = this;
 
         vm.PageSize = 25;
         vm.gridOptions = {};
+        
+
         vm.gridOptions = {
             onRegisterApi: function (gridApi) {
                 vm.gridApi = gridApi;
@@ -50,6 +52,9 @@
                 vm.gridApi.core.handleWindowResize();
             });
         }
+
+        
+
         $scope.myData = [{
             "firstName": "Cox",
             "lastName": "Carney",

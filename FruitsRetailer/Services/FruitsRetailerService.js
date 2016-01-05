@@ -11,7 +11,9 @@
             addNewWholesaler: addNewWholesaler
         };
 
-        function addNewWholesaler() {
+        function addNewWholesaler(customer) {
+            var request = $http.post('/ApiController/Purchase', JSON.stringify(customer));
+            return request.then(handleSuccess, handleError);
         }
 
         //function getSourceFilePath(volumeIdentifier, sourceFilePath) {
