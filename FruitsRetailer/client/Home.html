@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <link href="../Content/font-awesome.css" rel="stylesheet" />
+    <link href="../Content/ui-grid.css" rel="stylesheet" />
+    
+</head>
+<body data-ng-app="FruitsRetailerApp">
+    <div>Site Logo</div>       
+    <nav class="navbar navbar-inverse" role="navigation">
+        <div class="navbar-header">
+            <a class="navbar-brand" ui-sref="#">Fruits</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a ui-sref="home">Home</a></li>
+            <li><a ui-sref="purchase">Purchase</a></li>
+            <li><a ui-sref="sell">Sell</a></li>
+            <li><a ui-sref="stock">Stock</a></li>
+            <li><a ui-sref="cashbook">Cash Book</a></li>
+        </ul>       
+    </nav>
+    <div class="container">        
+        <div ui-view></div>
+    </div>
+
+    <!--Library-->
+    <script src="../Scripts/jquery-2.1.4.min.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
+    <script src="../Scripts/angular.min.js"></script>
+    <script src="../Scripts/angular-ui-router.min.js"></script>
+    <script src="../Scripts/ui-grid.min.js"></script>    
+
+    <!--Retailer-->
+    
+    <script src="/client/app/Fruits.Retailer.App.js"></script>
+    <script src="/client/app/dashboard/DashboardController.js"></script>
+    <script src="/client/app/cashbook/CashBookController.js"></script>
+    <script src="/client/app/purchase/PurchaseListController.js"></script>
+    <script src="/client/app/purchase/AddPurchaseController.js"></script>
+    <script src="/client/app/sales/SellsListController.js"></script>
+    <script src="/client/app/stock/StockController.js"></script>
+    <script src="/client/app/services/FruitsRetailerService.js"></script>        
+</body>
+</html>
