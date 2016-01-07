@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FruitsRetailerLib.Model
+namespace FruitsRetailer.Server.Model
 {
     public enum CustomerType
     {

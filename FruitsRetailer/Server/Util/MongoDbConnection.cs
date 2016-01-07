@@ -1,10 +1,6 @@
 ﻿using MongoDB.Driver;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
-namespace FruitsRetailer.DataModel
+namespace FruitsRetailer.Server.Util
 {
     public class MongoDbConnection
     {

@@ -199,16 +199,14 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="server\App_Start\WebApiConfig.cs" />
-    <Compile Include="server\BusinessLayer\PurchaseService.cs" />
-    <Compile Include="server\DataModel\Customer.cs" />
-    <Compile Include="server\DataModel\CustomerType.cs" />
-    <Compile Include="server\DataModel\MongoDbConnection.cs" />
+    <Compile Include="Server\Model\Customer.cs" />
+    <Compile Include="Server\Model\CustomerType.cs" />
+    <Compile Include="Server\Util\MongoDbConnection.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="server\ApiController\PurchaseController.cs" />
+    <Compile Include="Server\Controller\PurchaseController.cs" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>

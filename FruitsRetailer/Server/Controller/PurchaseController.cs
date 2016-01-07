@@ -1,10 +1,6 @@
-﻿using FruitsRetailerLib.Model;
-using MongoDB.Driver;
+﻿using FruitsRetailer.Server.Model;
+using FruitsRetailer.Server.Util;
 using System.Web.Http;
-using System;
-using System.Threading.Tasks;
-using MongoDB.Bson;
-using FruitsRetailer.DataModel;
 
 namespace FruitsRetailer.WebApiController
 {
