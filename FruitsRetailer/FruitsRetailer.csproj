@@ -136,13 +136,13 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="client\app\dashboard\DashboardController.js" />
-    <Content Include="client\app\purchase\AddPurchaseController.js" />
-    <Content Include="client\app\purchase\PurchaseListController.js" />
-    <Content Include="client\app\stock\StockController.js" />
-    <Content Include="client\app\cashbook\CashBookController.js" />
-    <Content Include="client\app\sales\SellsListController.js" />
-    <Content Include="client\app\Fruits.Retailer.App.js" />
+    <Content Include="Client\app\dashboard\DashboardController.js" />
+    <Content Include="Client\app\purchase\AddPurchaseController.js" />
+    <Content Include="Client\app\purchase\PurchaseListController.js" />
+    <Content Include="Client\app\stock\StockController.js" />
+    <Content Include="Client\app\cashbook\CashBookController.js" />
+    <Content Include="Client\app\sales\SellsListController.js" />
+    <Content Include="Client\app\Fruits.Retailer.App.js" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -182,16 +182,16 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="client\Home.html" />
-    <Content Include="client\app\purchase\AddNewPurchase.html" />
-    <Content Include="client\app\purchase\AddNewWholesaler.html" />
-    <Content Include="client\app\dashboard\Dashboard.html" />
-    <Content Include="client\app\purchase\PurchaseList.html" />
-    <Content Include="client\app\cashbook\CashBook.html" />
-    <Content Include="client\app\stock\Stock.html" />
-    <Content Include="client\app\sales\SellsList.html" />
-    <Content Include="client\app\layout\TopBar.html" />
-    <Content Include="client\app\services\FruitsRetailerService.js" />
+    <Content Include="Client\Home.html" />
+    <Content Include="Client\app\purchase\AddNewPurchase.html" />
+    <Content Include="Client\app\purchase\AddNewWholesaler.html" />
+    <Content Include="Client\app\dashboard\Dashboard.html" />
+    <Content Include="Client\app\purchase\PurchaseList.html" />
+    <Content Include="Client\app\cashbook\CashBook.html" />
+    <Content Include="Client\app\stock\Stock.html" />
+    <Content Include="Client\app\sales\SellsList.html" />
+    <Content Include="Client\app\layout\TopBar.html" />
+    <Content Include="Client\app\services\FruitsRetailerService.js" />
     <Content Include="Scripts\ui-grid.js" />
     <Content Include="Scripts\ui-grid.min.js" />
     <Content Include="Web.config">
