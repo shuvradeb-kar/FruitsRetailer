@@ -18,6 +18,7 @@ namespace FruitsRetailer.WebApiController
         [HttpPost]
         public void SaveNewWholesaler(Customer customer)
         {
+            customer.CustomerType = CustomerType.Wholesaler;
             _CustomerRepository.AddCustomer(customer);           
         }
 

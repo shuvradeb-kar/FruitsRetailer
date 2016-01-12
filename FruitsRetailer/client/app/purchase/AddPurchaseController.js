@@ -9,14 +9,13 @@
         var vm = this;
 
         vm.SaveNewWholesaler = function () {
-            vm.Wholesaler.Type = 2;
-
             FruitsRetailerService.addNewWholesaler(vm.Wholesaler).then(function (data) {
-                vm.GoBackToPurchaseList();
+                vm.GoBackToWholesalerList();
             });
         }
 
-        vm.GoBackToPurchaseList = function () {
+        vm.GoBackToWholesalerList = function ()
+        {
             $state.go( 'wholesale' );
         }
 
