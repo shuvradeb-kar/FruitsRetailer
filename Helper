@@ -1,0 +1,6 @@
+Create User Command
+
+CREATE USER [dellshare] FOR LOGIN [dellshare] WITH DEFAULT_SCHEMA=[dbo]
+GO
+
+
