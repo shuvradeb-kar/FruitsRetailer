@@ -4,3 +4,29 @@ CREATE USER [dellshare] FOR LOGIN [dellshare] WITH DEFAULT_SCHEMA=[dbo]
 GO
 
 
+/****** Object:  Table [dbo].[Customer]    Script Date: 1/12/2016 9:44:56 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Customer](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](1000) NULL,
+	[AccountNumber] [int] NOT NULL,
+	[Address] [nvarchar](max) NULL,
+	[CustomerType] [int] NOT NULL,
+	[Balance] [float] NOT NULL,
+ CONSTRAINT [PK_Customer] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[Customer] ADD  CONSTRAINT [DF_Customer_Balance]  DEFAULT ((0)) FOR [Balance]
+GO
+
+
