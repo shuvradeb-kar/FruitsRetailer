@@ -44,7 +44,8 @@
             </div>
         </div>
     </nav>
-    <div class="container">        
+    <div class="container"> 
+        <span us-spinner="{radius:30, width:8, length: 16}"></span>       
         <div ui-view></div>
     </div>
 
@@ -54,9 +55,9 @@
     <script src="../Scripts/angular.min.js"></script>
     <script src="../Scripts/angular-ui-router.min.js"></script>
     <script src="../Scripts/ui-grid.min.js"></script>    
-
-    <!--Retailer-->
-    
+    <script src="../Scripts/spin.min.js"></script>
+    <script src="../Scripts/angular-spinner.min.js"></script>
+    <!--Retailer-->    
     <script src="/client/app/Fruits.Retailer.App.js"></script>
     <script src="/client/app/dashboard/DashboardController.js"></script>
     <script src="/client/app/cashbook/CashBookController.js"></script>
@@ -66,5 +67,8 @@
     <script src="/client/app/stock/StockController.js"></script>
     <script src="/client/app/services/FruitsRetailerService.js"></script>        
     <script src="/Client/app/purchase/WholesalerController.js"></script>
+    
+    <!--directives-->
+    <script src="app/directives/angular-loading-spinner.js"></script>
 </body>
 </html>
