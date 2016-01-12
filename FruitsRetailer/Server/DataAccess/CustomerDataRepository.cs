@@ -15,7 +15,7 @@ namespace FruitsRetailer.Server.DataAccess
             _DataContext = (FruitsDataContext)base._BaseDataContext;           
         }
 
-        public List<Customer> GetAllCustomers()
+        public List<Customer> GetCustomersByType(CustomerType customerType, int pageNo, int pageSize)
         {
             return this._DataContext.Customers.OrderBy(a => a.Name).ToList();
         }

@@ -1,6 +1,7 @@
 ﻿using FruitsRetailer.Server.DataAccess;
 using FruitsRetailer.Server.Model;
 using FruitsRetailer.Server.Util;
+using System.Collections.Generic;
 using System.Web.Http;
 
 namespace FruitsRetailer.WebApiController
@@ -18,6 +19,12 @@ namespace FruitsRetailer.WebApiController
         public void SaveNewWholesaler(Customer customer)
         {
             _CustomerRepository.AddCustomer(customer);           
+        }
+
+        [HttpGet]
+        public List<Customer> GetWholesalerList(int pageNo, int pageSize) 
+        {
+            return _CustomerRepository.GetCustomersByType(CustomerType.Wholesaler, pageNo, pageSize);   
         }
     }
 }

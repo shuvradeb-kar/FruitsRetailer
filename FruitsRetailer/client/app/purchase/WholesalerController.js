@@ -4,15 +4,14 @@
         .module( 'FruitsRetailerApp' )
         .controller( 'WholesalerController', WholesalerController );
 
-    WholesalerController.$inject = ['$state', '$scope', '$timeout', 'FruitsRetailerService'];
+    WholesalerController.$inject = ['$state', '$scope', '$timeout', 'FruitsRetailerService', 'uiGridConstants'];
 
-    function WholesalerController( $state, $scope, $timeout, FruitsRetailerService )
+    function WholesalerController( $state, $scope, $timeout, FruitsRetailerService, uiGridConstants )
     {
         var vm = this;
 
         vm.PageSize = 25;
         vm.gridOptions = {};
-
 
         vm.gridOptions = {
             onRegisterApi: function ( gridApi )
@@ -34,51 +33,39 @@
             useExternalPagination: true,
             paginationPageSizes: [10, 25],
             paginationPageSize: vm.PageSize,
+            enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
+            enableVerticalScrollbar: uiGridConstants.scrollbars.ALWAYS,
             columnDefs: [
                 {
-                    name: 'firstName', displayName: 'first Name', cellTemplate: '<div class="ui-grid-cell-contents wordbreak">{{COL_FIELD}}</div>'
+                    name: 'AccountNumber', displayName: 'Account Number', cellTemplate: '<div class="ui-grid-cell-contents wordbreak">{{COL_FIELD}}</div>'
                 },
                 {
-                    name: 'lastName', displayName: 'last Name', cellTemplate: '<div class="ui-grid-cell-contents wordbreak">{{COL_FIELD}}</div>'
+                    name: 'Name', displayName: 'Name', cellTemplate: '<div class="ui-grid-cell-contents wordbreak">{{COL_FIELD}}</div>'
                 },
                 {
-                    name: 'company', displayName: 'company', cellTemplate: '<div class="ui-grid-cell-contents wordbreak">{{COL_FIELD}}</div>'
+                    name: 'Address', displayName: 'Address', cellTemplate: '<div class="ui-grid-cell-contents wordbreak">{{COL_FIELD}}</div>'
                 },
+                {
+                    name: 'Balance', displayName: 'Balance', cellTemplate: '<div class="ui-grid-cell-contents wordbreak">{{COL_FIELD}}</div>'
+                }
             ],
         };
 
 
         function init( pageNo, pageSize )
         {
-            vm.gridOptions.data = $scope.myData;
-            vm.gridOptions.totalItems = 10;
-            vm.IsFilterSearch = false;
-            $timeout( function ()
+            FruitsRetailerService.getWholesalerList( pageNo, pageSize ).then( function ( data )
             {
-                vm.gridApi.core.handleWindowResize();
+                vm.gridOptions.data = data;
+                vm.gridOptions.totalItems = data.length;
+                $timeout( function ()
+                {
+                    vm.gridApi.core.handleWindowResize();
+                } );
             } );
         }
 
-
-
-        $scope.myData = [{
-            "firstName": "Cox",
-            "lastName": "Carney",
-            "company": "Enormo",
-            "employed": true
-        },
-    {
-        "firstName": "Lorraine",
-        "lastName": "Wise",
-        "company": "Comveyer",
-        "employed": false
-    },
-    {
-        "firstName": "Nancy",
-        "lastName": "Waters",
-        "company": "Fuelton",
-        "employed": false
-    }];
+        init( 1, vm.PageSize );
     }
 
 } )();

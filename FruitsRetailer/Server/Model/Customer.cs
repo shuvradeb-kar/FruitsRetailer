@@ -14,7 +14,7 @@ namespace FruitsRetailer.Server.Model
         public string Name { get; set; }
         public int AccountNumber { get; set; }
         public string Address { get; set; }
-        public CustomerType AccountType { get; set; }
-        public float Balance { get; set; }
+        public CustomerType CustomerType { get; set; }
+        public double Balance { get; set; }
     }
 }

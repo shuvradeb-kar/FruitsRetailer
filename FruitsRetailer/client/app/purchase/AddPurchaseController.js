@@ -12,12 +12,12 @@
             vm.Wholesaler.Type = 2;
 
             FruitsRetailerService.addNewWholesaler(vm.Wholesaler).then(function (data) {
-
+                vm.GoBackToPurchaseList();
             });
         }
 
         vm.GoBackToPurchaseList = function () {
-            $state.go('purchase');
+            $state.go( 'wholesale' );
         }
 
       

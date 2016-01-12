@@ -8,9 +8,16 @@
 
     function FruitsRetailerService($http, $q) {
         var service = {
-            addNewWholesaler: addNewWholesaler
+            addNewWholesaler: addNewWholesaler,
+            getWholesalerList: getWholesalerList
         };
+        return service;
 
+        function getWholesalerList( pageNo, pageSize )
+        {
+            var request = $http.get( '/Server/Controller/Purchase?pageNo=' + pageNo + '&pageSize=' + pageSize );
+            return request.then( handleSuccess, handleError );
+        }
         function addNewWholesaler(customer) {
             var request = $http.post('/Server/Controller/Purchase', JSON.stringify(customer));
             return request.then(handleSuccess, handleError);
@@ -31,6 +38,6 @@
             return (response.data);
         }
 
-        return service;
+        
     }
 })();
