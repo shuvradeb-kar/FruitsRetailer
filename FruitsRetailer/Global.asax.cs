@@ -21,7 +21,7 @@ namespace FruitsRetailer
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "ApiController/{controller}/{id}",
+                routeTemplate: "Server/Controller/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
         }

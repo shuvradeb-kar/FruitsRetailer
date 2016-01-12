@@ -16,7 +16,13 @@ var FruitsRetailerApp = angular.module('FruitsRetailerApp', ['ui.router', 'ui.gr
         controller: 'PurchaseListController',
         controllerAs: 'vm',
         templateUrl: '/client/app/purchase/PurchaseList.html'
-    })
+    } )
+        .state( 'wholesale', {
+            url: "/wholesale",
+            controller: 'WholesalerController',
+            controllerAs: 'vm',
+            templateUrl: '/client/app/purchase/WholesalerList.html'
+        } )
     .state('addwhoseller', {
         url: "/addwhoseller",
         controller: 'AddPurchaseController',

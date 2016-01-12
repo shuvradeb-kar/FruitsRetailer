@@ -11,18 +11,40 @@
 </head>
 <body data-ng-app="FruitsRetailerApp">
     <div>Site Logo</div>       
-    <nav class="navbar navbar-inverse" role="navigation">
-        <div class="navbar-header">
-            <a class="navbar-brand" ui-sref="#">Fruits</a>
-        </div>
-        <ul class="nav navbar-nav">
-            <li><a ui-sref="home">Home</a></li>
-            <li><a ui-sref="purchase">Purchase</a></li>
-            <li><a ui-sref="sell">Sell</a></li>
-            <li><a ui-sref="stock">Stock</a></li>
-            <li><a ui-sref="cashbook">Cash Book</a></li>
-        </ul>       
-    </nav>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" ui-sref="#">Fruits</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a ui-sref="home">Home</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">
+                            Purchase
+                            <i class="fa fa-angle-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a ui-sref="purchase">Purchase List</a></li>
+                            <li><a ui-sref="wholesale">Wholesaler List</a></li>
+                        </ul>
+                    </li>
+                    <li><a ui-sref="sell">Sell</a></li>
+                    <li><a ui-sref="stock">Stock</a></li>
+                    <li><a ui-sref="cashbook">Cash Book</a></li>
+                </ul>
+                <!--<ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            </ul>-->
+            </div>
+            </div>
+</nav>
     <div class="container">        
         <div ui-view></div>
     </div>
@@ -44,5 +66,6 @@
     <script src="/client/app/sales/SellsListController.js"></script>
     <script src="/client/app/stock/StockController.js"></script>
     <script src="/client/app/services/FruitsRetailerService.js"></script>        
+    <script src="/Client/app/purchase/WholesalerController.js"></script>
 </body>
 </html>

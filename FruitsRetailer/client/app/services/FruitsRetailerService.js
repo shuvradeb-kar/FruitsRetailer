@@ -12,15 +12,9 @@
         };
 
         function addNewWholesaler(customer) {
-            var request = $http.post('/server/Controller/Purchase', JSON.stringify(customer));
+            var request = $http.post('/Server/Controller/Purchase', JSON.stringify(customer));
             return request.then(handleSuccess, handleError);
         }
-
-        //function getSourceFilePath(volumeIdentifier, sourceFilePath) {
-        //    var request = $http.get('/Global/TemplateRepository/Controllers/TemplateAdd', { params: { volumeIdentifier: volumeIdentifier, sourceFilePath: sourceFilePath } });
-        //    return request.then(handleSuccess, handleError);
-        //}
-        
 
         function handleError(response) {
             if (
