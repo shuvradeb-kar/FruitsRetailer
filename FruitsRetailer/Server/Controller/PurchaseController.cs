@@ -16,16 +16,29 @@ namespace FruitsRetailer.WebApiController
         }
                 
         [HttpPost]
-        public void SaveNewWholesaler(Customer customer)
+        public void SaveWholesaler(Customer customer)
         {
-            customer.CustomerType = CustomerType.Wholesaler;
-            _CustomerRepository.AddCustomer(customer);           
+            if (customer.Id > 0)
+            {
+                _CustomerRepository.EditCustomer(customer);
+            }
+            else
+            {
+                customer.CustomerType = CustomerType.Wholesaler;
+                _CustomerRepository.AddCustomer(customer);
+            }
         }
 
         [HttpGet]
-        public List<Customer> GetWholesalerList(int pageNo, int pageSize) 
+        public Result GetWholesalerList(int pageNo, int pageSize) 
         {
             return _CustomerRepository.GetCustomersByType(CustomerType.Wholesaler, pageNo, pageSize);   
+        }
+
+        [HttpGet]
+        public bool isAccountNumberExists(int accountNumber)
+        {
+            return _CustomerRepository.IsAccountNumberExists(accountNumber);
         }
     }
 }

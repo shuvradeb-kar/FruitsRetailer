@@ -8,8 +8,9 @@
 
     function FruitsRetailerService($http, $q) {
         var service = {
-            addNewWholesaler: addNewWholesaler,
-            getWholesalerList: getWholesalerList
+            saveWholesaler: saveWholesaler,
+            getWholesalerList: getWholesalerList,
+            isAccountNumberExists: isAccountNumberExists
         };
         return service;
 
@@ -18,9 +19,15 @@
             var request = $http.get( '/Server/Controller/Purchase?pageNo=' + pageNo + '&pageSize=' + pageSize );
             return request.then( handleSuccess, handleError );
         }
-        function addNewWholesaler(customer) {
+        function saveWholesaler( customer )
+        {
             var request = $http.post('/Server/Controller/Purchase', JSON.stringify(customer));
             return request.then(handleSuccess, handleError);
+        }
+        function isAccountNumberExists( accountNumber )
+        {
+            var request = $http.get( '/Server/Controller/Purchase?accountNumber=' + accountNumber );
+            return request.then( handleSuccess, handleError );
         }
 
         function handleError(response) {

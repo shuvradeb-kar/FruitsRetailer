@@ -1,4 +1,5 @@
 ﻿using MongoDB.Bson;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -16,5 +17,13 @@ namespace FruitsRetailer.Server.Model
         public string Address { get; set; }
         public CustomerType CustomerType { get; set; }
         public double Balance { get; set; }
+    }
+
+    public class Result  {
+        public Result() {
+            CustomerList = new List<Customer>();
+        }
+        public int Count { get; set; }
+        public List<Customer> CustomerList { get; set; }
     }
 }

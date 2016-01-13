@@ -127,6 +127,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Client\app\directives\angular-loading-spinner.js" />
+    <Content Include="Client\app\purchase\EditWholesalerController.js" />
     <Content Include="Client\app\purchase\WholesalerController.js" />
     <Content Include="Client\app\purchase\WholesalerList.html" />
     <Content Include="Content\bootstrap-theme.css" />

@@ -6,8 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <link href="../Content/bootstrap.css" rel="stylesheet" />
     <link href="../Content/font-awesome.css" rel="stylesheet" />
-    <link href="../Content/ui-grid.css" rel="stylesheet" />
-    
+    <link href="../Content/ui-grid.css" rel="stylesheet" />    
+    <style type="text/css">
+        body, label, textarea, table, option, select, input, button {            
+            font-family: Verdana;            
+        }
+
+        .wholesalerGrid {
+            width: 100%;
+            height: 450px;
+        }
+    </style>
 </head>
 <body data-ng-app="FruitsRetailerApp">    
     <nav class="navbar navbar-inverse" role="navigation">
@@ -67,7 +76,7 @@
     <script src="/client/app/stock/StockController.js"></script>
     <script src="/client/app/services/FruitsRetailerService.js"></script>        
     <script src="/Client/app/purchase/WholesalerController.js"></script>
-    
+    <script src="/Client/app/purchase/EditWholesalerController.js"></script>
     <!--directives-->
     <script src="app/directives/angular-loading-spinner.js"></script>
 </body>
