@@ -4,13 +4,13 @@
         .module( 'FruitsRetailerApp' )
         .controller( 'WholesalerController', WholesalerController );
 
-    WholesalerController.$inject = ['$state', '$scope', '$timeout', 'FruitsRetailerService', 'uiGridConstants'];
+    WholesalerController.$inject = ['$state', '$scope', '$uibModal', '$timeout', 'FruitsRetailerService', 'uiGridConstants'];
 
-    function WholesalerController( $state, $scope, $timeout, FruitsRetailerService, uiGridConstants )
+    function WholesalerController( $state, $scope, $uibModal, $timeout, FruitsRetailerService, uiGridConstants )
     {
         var vm = this;
 
-        vm.PageSize = 5;
+        vm.PageSize = 10;
         vm.gridOptions = {};
 
         vm.gridOptions = {
@@ -27,7 +27,7 @@
             enableFiltering: false,
             showTreeRowHeader: false,
             enableColumnMenus: false,
-            enableSorting: true,
+            enableSorting: false,
             enableScrollbars: false,
             enablePaginationControls: true,
             showTreeExpandNoChildren: false,
@@ -49,16 +49,41 @@
                 },
                 {
                     name: 'Balance', displayName: 'Balance', cellTemplate: '<div class="ui-grid-cell-contents wordbreak">{{COL_FIELD}}</div>'
+                },
+                {
+                    name: ' ', width: 100, cellTemplate: '<div style="text-align:center;padding-top:3px;"><a ng-click="grid.appScope.DeleteWholesaler(row.entity)" class="btn btn-danger btn-xs">Delete</a></div>'
                 }
             ],
         };
         $scope.EditWholesaler = function (entity)
         {
             $state.go( 'editwhoseller', { whoseller: { Id: entity.Id, Name: entity.Name, AccountNumber: entity.AccountNumber, Address: entity.Address } } );
-
-            //$state.go( 'myState', { myParam: { some: 'thing' } } )
         }
+        
 
+        $scope.DeleteWholesaler = function ( entity )
+        {
+            var setting = {
+                Id: entity.Id
+            };
+
+            var modalInstance = $uibModal.open({                
+                templateUrl: '/client/app/purchase/ConfirmationWindow.html',
+                controller: 'ConfirmationWindowController',                
+               size:'sm',
+                resolve: {
+                    items: function () {
+                        return setting;
+                    }
+                }
+            });
+
+            modalInstance.result.then(function (selectedItem) {
+                init( 1, vm.PageSize );
+            }, function () {
+                //$log.info('Modal dismissed at: ' + new Date());
+            });
+        }
 
         function init( pageNo, pageSize )
         {

@@ -17,6 +17,7 @@ namespace FruitsRetailer.Server.Model
         public string Address { get; set; }
         public CustomerType CustomerType { get; set; }
         public double Balance { get; set; }
+        public bool IsActive { get; set; }
     }
 
     public class Result  {

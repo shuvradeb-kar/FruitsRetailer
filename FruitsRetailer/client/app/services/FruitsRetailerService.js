@@ -10,7 +10,8 @@
         var service = {
             saveWholesaler: saveWholesaler,
             getWholesalerList: getWholesalerList,
-            isAccountNumberExists: isAccountNumberExists
+            isAccountNumberExists: isAccountNumberExists,
+            deleteWholesaler: deleteWholesaler
         };
         return service;
 
@@ -27,6 +28,11 @@
         function isAccountNumberExists( accountNumber )
         {
             var request = $http.get( '/Server/Controller/Purchase?accountNumber=' + accountNumber );
+            return request.then( handleSuccess, handleError );
+        }
+        function deleteWholesaler(customerId)
+        {
+            var request = $http.delete( '/Server/Controller/Purchase?customerId=' + customerId );
             return request.then( handleSuccess, handleError );
         }
 

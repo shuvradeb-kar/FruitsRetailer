@@ -36,9 +36,15 @@ namespace FruitsRetailer.WebApiController
         }
 
         [HttpGet]
-        public bool isAccountNumberExists(int accountNumber)
+        public bool IsAccountNumberExists(int accountNumber)
         {
             return _CustomerRepository.IsAccountNumberExists(accountNumber);
+        }
+
+        [HttpDelete]
+        public void DeleteCustomer(int customerId)
+        {
+            _CustomerRepository.DeleteCustomer(customerId);
         }
     }
 }

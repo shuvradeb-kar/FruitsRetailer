@@ -19,9 +19,9 @@ namespace FruitsRetailer.Server.DataAccess
         {
             Result r = new Result();
 
-            r.Count = this._DataContext.Customers.Count();
+            r.Count = this._DataContext.Customers.Where(c=>c.IsActive == true).Count();
             r.CustomerList = this._DataContext.Customers.GroupBy(i => i.AccountNumber)
-                      .Select(g => g.FirstOrDefault()).OrderByDescending(i => i.AccountNumber)
+                      .Select(g => g.FirstOrDefault()).OrderByDescending(i => i.AccountNumber).Where(i=>i.IsActive == true)
                     .Skip(pageNo).Take(pageSize)
                     .ToList();
             return r;
@@ -51,6 +51,14 @@ namespace FruitsRetailer.Server.DataAccess
             Customer cus = this._DataContext.Customers.Find(customer.Id);
             cus.Name = customer.Name;
             cus.Address = customer.Address;
+            this._DataContext.SaveChanges();
+        }
+
+        public void DeleteCustomer(int customerId)
+        {
+            var employer = new Customer { Id = customerId };
+            this._DataContext.Customers.Attach(employer);
+            this._DataContext.Customers.Remove(employer);
             this._DataContext.SaveChanges();
         }
     }

@@ -1,5 +1,5 @@
 ﻿
-var FruitsRetailerApp = angular.module( 'FruitsRetailerApp', ['ui.router', 'ui.grid', 'ui.grid.pagination', 'ngLoadingSpinner'] )
+var FruitsRetailerApp = angular.module( 'FruitsRetailerApp', ['ui.router', 'ui.grid', 'ui.bootstrap', 'ui.grid.pagination', 'ngLoadingSpinner'] )
 .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("/home");
 
