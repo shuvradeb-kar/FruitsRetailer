@@ -4,7 +4,10 @@ CREATE USER [dellshare] FOR LOGIN [dellshare] WITH DEFAULT_SCHEMA=[dbo]
 GO
 
 
-/****** Object:  Table [dbo].[Customer]    Script Date: 1/12/2016 9:44:56 PM ******/
+USE [TestDatabase]
+GO
+
+/****** Object:  Table [dbo].[Customer]    Script Date: 1/15/2016 7:17:29 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -13,11 +16,12 @@ GO
 
 CREATE TABLE [dbo].[Customer](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[Name] [nvarchar](1000) NULL,
+	[Name] [nvarchar](max) NULL,
 	[AccountNumber] [int] NOT NULL,
 	[Address] [nvarchar](max) NULL,
 	[CustomerType] [int] NOT NULL,
 	[Balance] [float] NOT NULL,
+	[IsActive] [bit] NOT NULL,
  CONSTRAINT [PK_Customer] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
@@ -28,5 +32,52 @@ GO
 
 ALTER TABLE [dbo].[Customer] ADD  CONSTRAINT [DF_Customer_Balance]  DEFAULT ((0)) FOR [Balance]
 GO
+
+ALTER TABLE [dbo].[Customer] ADD  CONSTRAINT [DF_Customer_IsActive]  DEFAULT ((1)) FOR [IsActive]
+GO
+
+
+USE [TestDatabase]
+GO
+/****** Object:  StoredProcedure [dbo].[GetCustomerByType]    Script Date: 1/15/2016 7:17:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+ALTER PROCEDURE [dbo].[GetCustomerByType] 
+	@customerType int,
+	@pageNo int,
+	@pageSize int,
+	@accountNumber nvarchar(200),
+	@Count int OUTPUT
+AS
+BEGIN
+
+	declare @result table(RowId int Identity, Id int, Name nvarchar(max), AccountNumber int, Address nvarchar(max), CustomerType int, Balance float, IsActive bit)
+	
+
+	insert into @result(Id, Name, AccountNumber, Address, CustomerType, Balance, IsActive)
+	select c.Id, c.Name, c.AccountNumber, c.Address, c.CustomerType, c.Balance, c.IsActive from Customer c
+	where c.IsActive = 1 and c.CustomerType = @customerType and (@accountNumber = 0 or c.AccountNumber like '%' + @accountNumber + '%')
+	order by c.AccountNumber desc
+	set @Count = (Select count(*) from @result )
+
+	select * from @result p
+	where 
+	(
+		@pageNo = 0 
+		OR 
+		(
+			p.RowId BETWEEN (@pageNo - 1) * @PageSize + 1 AND @pageNo * @PageSize
+		)
+	)
+	order by p.AccountNumber desc
+
+END
 
 
