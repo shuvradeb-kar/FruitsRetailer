@@ -25,6 +25,7 @@ namespace FruitsRetailer.WebApiController
             else
             {
                 customer.CustomerType = CustomerType.Wholesaler;
+                customer.IsActive = true;
                 _CustomerRepository.AddCustomer(customer);
             }
         }
