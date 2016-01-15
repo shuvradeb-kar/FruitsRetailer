@@ -15,9 +15,9 @@
         };
         return service;
 
-        function getWholesalerList( pageNo, pageSize )
+        function getWholesalerList( pageNo, pageSize, filter )
         {
-            var request = $http.get( '/Server/Controller/Purchase?pageNo=' + pageNo + '&pageSize=' + pageSize );
+            var request = $http.get( '/Server/Controller/Purchase?pageNo=' + pageNo + '&pageSize=' + pageSize + '&filter=' + filter );
             return request.then( handleSuccess, handleError );
         }
         function saveWholesaler( customer )

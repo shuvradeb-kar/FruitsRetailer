@@ -30,9 +30,9 @@ namespace FruitsRetailer.WebApiController
         }
 
         [HttpGet]
-        public Result GetWholesalerList(int pageNo, int pageSize) 
+        public Result GetWholesalerList(int pageNo, int pageSize, int filter) 
         {
-            return _CustomerRepository.GetCustomersByType(CustomerType.Wholesaler, pageNo, pageSize);   
+            return _CustomerRepository.GetCustomersByType(CustomerType.Wholesaler, pageNo, pageSize, filter);   
         }
 
         [HttpGet]

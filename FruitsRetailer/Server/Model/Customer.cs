@@ -24,7 +24,8 @@ namespace FruitsRetailer.Server.Model
         public Result() {
             CustomerList = new List<Customer>();
         }
-        public int Count { get; set; }
+       
         public List<Customer> CustomerList { get; set; }
+        public int Count { get; set; }
     }
 }
