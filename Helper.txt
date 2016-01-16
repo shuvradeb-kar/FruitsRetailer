@@ -81,3 +81,44 @@ BEGIN
 END
 
 
+USE [FruitsRetailer]
+GO
+
+/****** Object:  Table [dbo].[CustomerTransaction]    Script Date: 1/16/2016 2:58:08 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[CustomerTransaction](
+	[Id] [int] NOT NULL,
+	[ProductDescription] [nvarchar](max) NULL,
+	[TransactionDate] [date] NOT NULL,
+	[Quantity] [int] NOT NULL,
+	[Rate] [float] NOT NULL,
+	[AmountReceived] [float] NOT NULL,
+	[OthersCost] [float] NOT NULL,
+	[ProductCode] [nvarchar](500) NOT NULL,
+	[CustomerId] [int] NOT NULL,
+ CONSTRAINT [PK_CustomerTransaction] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[CustomerTransaction] ADD  CONSTRAINT [DF_CustomerTransaction_Quantity]  DEFAULT ((0)) FOR [Quantity]
+GO
+
+ALTER TABLE [dbo].[CustomerTransaction] ADD  CONSTRAINT [DF_CustomerTransaction_Rate]  DEFAULT ((0)) FOR [Rate]
+GO
+
+ALTER TABLE [dbo].[CustomerTransaction] ADD  CONSTRAINT [DF_CustomerTransaction_AmountReceived]  DEFAULT ((0)) FOR [AmountReceived]
+GO
+
+ALTER TABLE [dbo].[CustomerTransaction] ADD  CONSTRAINT [DF_CustomerTransaction_Discount]  DEFAULT ((0)) FOR [OthersCost]
+GO
+
+
