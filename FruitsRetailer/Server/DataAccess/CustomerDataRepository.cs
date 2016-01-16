@@ -40,9 +40,13 @@ namespace FruitsRetailer.Server.DataAccess
             r.CustomerList = res;
             return r;
         }
+        
+        public void SaveWholesalerTransaction(CustomerTransaction customerTransaction)
+        {
+            this._DataContext.CustomerTransactions.Add(customerTransaction);
+            this._DataContext.SaveChanges();
+        }
 
-
-       
         public void AddCustomer(Customer customer)
         {
             this._DataContext.Customers.Add(customer);

@@ -9,17 +9,36 @@
     function FruitsRetailerService($http, $q) {
         var service = {
             saveWholesaler: saveWholesaler,
-            getWholesalerList: getWholesalerList,
+            getWholesalerList: getWholesalerList,            
             isAccountNumberExists: isAccountNumberExists,
-            deleteWholesaler: deleteWholesaler
+            deleteWholesaler: deleteWholesaler,
+            saveTransaction: saveTransaction,
+            getWholesalerDetailByAcNo: getWholesalerDetailByAcNo,
         };
         return service;
 
+        function saveTransaction(transaction)
+        {
+            var request = $http.post('/Server/Controller/Purchase', JSON.stringify(transaction));
+            return request.then(handleSuccess, handleError);
+        }
+
+        function getWholesalerDetailByAcNo(pageNo, pageSize, accountNumber) {
+            var obj = {
+                PageNo: pageNo,
+                PageSize: pageSize,
+                AccountNumber: accountNumber
+            }
+            var filterObj = angular.copy(obj);
+            var request = $http.get('/Server/Controller/Purchase', { params: { metaDataObject: filterObj } });
+            return request.then(handleSuccess, handleError);
+        }
         function getWholesalerList( pageNo, pageSize, filter )
         {
             var request = $http.get( '/Server/Controller/Purchase?pageNo=' + pageNo + '&pageSize=' + pageSize + '&filter=' + filter );
             return request.then( handleSuccess, handleError );
-        }
+        } 
+
         function saveWholesaler( customer )
         {
             var request = $http.post('/Server/Controller/Purchase', JSON.stringify(customer));

@@ -2,11 +2,11 @@
 {
     angular
         .module( 'FruitsRetailerApp' )
-        .controller( 'WholesalerController', WholesalerController );
+        .controller( 'WholesalerListController', WholesalerListController );
 
-    WholesalerController.$inject = ['$state', '$scope', '$uibModal', '$timeout', 'FruitsRetailerService', 'uiGridConstants'];
+    WholesalerListController.$inject = ['$state', '$scope', '$uibModal', '$timeout', 'FruitsRetailerService', 'uiGridConstants'];
 
-    function WholesalerController( $state, $scope, $uibModal, $timeout, FruitsRetailerService, uiGridConstants )
+    function WholesalerListController( $state, $scope, $uibModal, $timeout, FruitsRetailerService, uiGridConstants )
     {
         var vm = this;
 
@@ -84,7 +84,7 @@
 
         $scope.GetWholesalerDetail = function ( entity )
         {
-
+            $state.go('purchase', { whoseller: { Id: entity.Id, Name: entity.Name, AccountNumber: entity.AccountNumber, Address: entity.Address } });
         }
 
         $scope.EditWholesaler = function (entity)

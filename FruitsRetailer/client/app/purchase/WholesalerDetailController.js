@@ -1,16 +1,18 @@
 ﻿(function () {
     angular
         .module('FruitsRetailerApp')
-        .controller('PurchaseListController', PurchaseListController);
+        .controller('WholesalerDetailController', WholesalerDetailController);
 
-    PurchaseListController.$inject = ['$state', '$scope', '$timeout', 'FruitsRetailerService', 'uiGridConstants'];
+    WholesalerDetailController.$inject = ['$state', '$scope', '$timeout', 'FruitsRetailerService', 'uiGridConstants', '$stateParams'];
 
-    function PurchaseListController( $state, $scope, $timeout, FruitsRetailerService, uiGridConstants)
+    function WholesalerDetailController($state, $scope, $timeout, FruitsRetailerService, uiGridConstants, $stateParams)
     {
         var vm = this;
-
+        vm.Wholesaler = $stateParams.whoseller;
+        //vm.wholesalerId = $stateParams.wholesalerId;
         vm.PageSize = 10;
         vm.gridOptions = {};
+
 
         vm.gridOptions = {
             onRegisterApi: function ( gridApi )
@@ -20,7 +22,7 @@
                 gridApi.pagination.on.paginationChanged( $scope, function ( newPage, pageSize )
                 {
                     vm.PageSize = pageSize;
-                    init( newPage, pageSize );
+                    init(newPage, pageSize, vm.Wholesaler.Id);
                 } );
             },
             enableFiltering: false,
@@ -55,10 +57,14 @@
             ],
         };
 
+        vm.AddNewTransactation = function () {            
+            $state.go('addpurchase', { whoseller: { Id: vm.Wholesaler.Id, Name: vm.Wholesaler.Name, AccountNumber: vm.Wholesaler.AccountNumber, Address: vm.Wholesaler.Address } });
+            
+        }
 
-        function init( pageNo, pageSize )
+        function init(pageNo, pageSize, wholesalerId)
         {
-            FruitsRetailerService.getPurchaseList( pageNo, pageSize ).then( function ( data )
+            FruitsRetailerService.getWholesalerDetailByAcNo(pageNo, pageSize, wholesalerId).then(function (data)
             {
                 vm.gridOptions.data = data.CustomerList;
                 vm.gridOptions.totalItems = data.Count;
@@ -69,7 +75,7 @@
             } );
         }
 
-        init( 1, vm.PageSize );
+        //init(1, vm.PageSize, vm.Wholesaler.Id);
     }
        
 })();

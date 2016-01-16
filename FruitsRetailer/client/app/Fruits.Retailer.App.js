@@ -13,19 +13,27 @@ var FruitsRetailerApp = angular.module( 'FruitsRetailerApp', ['ui.router', 'ui.g
 
     .state('purchase', {
         url: "/purchase",
-        controller: 'PurchaseListController',
+        params: { whoseller: null },
+        controller: 'WholesalerDetailController',
         controllerAs: 'vm',
-        templateUrl: '/client/app/purchase/PurchaseList.html'
-    } )
+        templateUrl: '/client/app/purchase/WholesalerDetail.html'
+    })
+        .state('addpurchase', {
+            url: "/addpurchase",
+            params: { whoseller: null },
+            controller: 'AddPurchaseController',
+            controllerAs: 'vm',
+            templateUrl: '/client/app/purchase/AddNewPurchase.html'
+        })
         .state( 'wholesale', {
             url: "/wholesale",
-            controller: 'WholesalerController',
+            controller: 'WholesalerListController',
             controllerAs: 'vm',
             templateUrl: '/client/app/purchase/WholesalerList.html'
         } )
     .state('addwhoseller', {
         url: "/addwhoseller",
-        controller: 'AddPurchaseController',
+        controller: 'AddWholesalerController',
         controllerAs: 'vm',
         templateUrl: '/client/app/purchase/AddNewWholesaler.html'
     } )
@@ -36,12 +44,7 @@ var FruitsRetailerApp = angular.module( 'FruitsRetailerApp', ['ui.router', 'ui.g
             controllerAs: 'vm',
             templateUrl: '/client/app/purchase/AddNewWholesaler.html'
         } )
-        .state('addpurchase', {
-            url: "/addpurchase",
-            controller: 'AddPurchaseController',
-            controllerAs: 'vm',
-            templateUrl: '/client/app/purchase/AddNewPurchase.html'
-        })
+        
 
     .state('sell', {
         url: "/sell",

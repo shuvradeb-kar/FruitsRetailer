@@ -14,7 +14,26 @@ namespace FruitsRetailer.WebApiController
         {
             _CustomerRepository = new CustomerDataRepository();
         }
-                
+
+        //[HttpPost]
+        //public void SaveTransaction(CustomerTransaction transaction)
+        //{   
+        //    _CustomerRepository.SaveTransaction(transaction);
+        //}
+
+        [HttpGet]
+        public Result GetWholesalerDetailByAcNo(WholesalerFilter filter)
+        {
+            return _CustomerRepository.GetCustomersByType(CustomerType.Wholesaler, filter.PageNo, filter.PageSize, filter.AccountNumber);
+        }
+
+        [HttpPost]
+        public void SaveWholesalerTransaction(CustomerTransaction customerTransaction)
+        {
+            _CustomerRepository.SaveWholesalerTransaction(customerTransaction);
+        }
+
+
         [HttpPost]
         public void SaveWholesaler(Customer customer)
         {
@@ -34,7 +53,7 @@ namespace FruitsRetailer.WebApiController
         public Result GetWholesalerList(int pageNo, int pageSize, int filter) 
         {
             return _CustomerRepository.GetCustomersByType(CustomerType.Wholesaler, pageNo, pageSize, filter);   
-        }
+        }        
 
         [HttpGet]
         public bool IsAccountNumberExists(int accountNumber)
@@ -47,5 +66,12 @@ namespace FruitsRetailer.WebApiController
         {
             _CustomerRepository.DeleteCustomer(customerId);
         }
+    }
+
+    public class WholesalerFilter
+    {
+        public int PageNo { get; set; }
+        public int PageSize { get; set; }
+        public int AccountNumber { get; set; }
     }
 }

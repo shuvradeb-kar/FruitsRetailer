@@ -1,4 +1,5 @@
 ﻿using MongoDB.Bson;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -18,6 +19,23 @@ namespace FruitsRetailer.Server.Model
         public CustomerType CustomerType { get; set; }
         public double Balance { get; set; }
         public bool IsActive { get; set; }
+    }
+
+    [Table("CustomerTransaction")]
+    public class CustomerTransaction : IEntity
+    {
+        [Key]
+        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+        public string ProductDescription { get; set; }
+        public int AccountNumber { get; set; }
+        public DateTime TransactionDate { get; set; }
+        public int Quantity { get; set; }
+        public double Rate { get; set; }
+        public double AmountReceived { get; set; }
+        public double Discount { get; set; }
+        public string ProductCode { get; set; }
+        public int CustomerId { get; set; }
     }
 
     public class Result  {

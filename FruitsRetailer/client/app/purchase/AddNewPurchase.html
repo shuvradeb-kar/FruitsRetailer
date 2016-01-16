@@ -1,15 +1,15 @@
-﻿<div class="page-header"><h1>Add New Purchase</h1></div>
+﻿<div class="page-header" style="text-align:center;"><h1>{{vm.PageTitle}}</h1></div>
 <form class="form-horizontal" role="form">       
     <div class="form-group">
         <label class="control-label col-sm-2" for="acn">Account Number:</label>
         <div class="col-sm-10">
-            <input type="number" class="form-control" required id="acn" placeholder="Enter account number">
+            <input type="number" class="form-control" required id="acn" placeholder="Enter account number" data-ng-model="vm.AccountNumber" disabled>
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-sm-2" for="ptype">Product Type:</label>
-        <div class="col-sm-10">
-            <select>
+        <div id ="ptype" class="col-sm-10">
+            <select class="form-control" style="max-width:200px">
                 <option>Item 1</option>
                 <option>Item 2</option>
             </select>
@@ -18,31 +18,48 @@
     <div class="form-group">
         <label class="control-label col-sm-2" for="quan">Quantity:</label>
         <div class="col-sm-10">
-            <input type="number" class="form-control" required id="quan" placeholder="Enter quantity">
+            <input type="number" class="form-control" required id="quan" placeholder="Enter quantity" data-ng-model="vm.Transaction.Quantity">
+            <div class="alert alert-warning fade in" ng-hide="!vm.IsQuantityEmpty">{{vm.QuantityInfo}}</div>
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-sm-2" for="rate">Rate:</label>
         <div class="col-sm-10">
-            <input type="number" class="form-control" required id="rate" placeholder="Enter rate">
+            <input type="number" class="form-control" required id="rate" placeholder="Enter rate" data-ng-model="vm.Transaction.Rate">
+            <div class="alert alert-warning fade in" ng-hide="!vm.IsRateEmpty">{{vm.RateInfo}}</div>
         </div>
     </div>
     <div class="form-group">
-        <label class="control-label col-sm-2" for="carryingCost">Carrying Cost:</label>
+        <label class="control-label col-sm-2" for="payment">Payment:</label>
         <div class="col-sm-10">
-            <input type="number" class="form-control" id="carryingCost" placeholder="Enter carrying cost">
+            <label id="payment" ><input type="checkbox" name="checkbox" data-ng-model="vm.IsPaymentEnable"> Pay Now?</label>
+            <input type="number" class="form-control" data-ng-hide="!vm.IsPaymentEnable" data-ng-model="vm.Transaction.AmountReceived" />
+            <div class="alert alert-warning fade in" ng-hide="!vm.IsAmountReceivedEmpty">{{vm.AmountReceivedInfo}}</div>
         </div>
     </div>
     <div class="form-group">
-        <label class="control-label col-sm-2" for="rate">Date:</label>
+        <label class="control-label col-sm-2" for="carryingCost">Others Cost:</label>
         <div class="col-sm-10">
-            <input type="date" class="form-control" required id="rate">
+            <input type="number" class="form-control" id="carryingCost" placeholder="Enter others cost, if any" data-ng-model="vm.Transaction.OthersCost">
+            <div class="alert alert-warning fade in" ng-hide="!vm.IsOthersCostmpty">{{vm.OthersCostInfo}}</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="date">Date:</label>
+        <div class="col-sm-10">
+            <input type="date" class="form-control" required id="date" style="max-width:200px" data-ng-model="vm.Transaction.Date" >
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="description">Description:</label>
+        <div class="col-sm-10">            
+            <textarea class="form-control" id="description" data-ng-model="vm.Transaction.ProductDescription"></textarea>
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-default">Submit</button>
-            <button type="button" class="btn btn-default" data-ng-click="vm.GoBackToPurchaseList()">Cancel</button>
+            <button type="submit" class="btn btn-sm btn-primary" data-ng-click="vm.SaveTransaction()">Submit</button>
+            <button type="button" class="btn btn-sm btn-warning" data-ng-click="vm.GoBackToPurchaseList()">Cancel</button>
         </div>
     </div>
 </form>
