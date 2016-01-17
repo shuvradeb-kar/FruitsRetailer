@@ -14,10 +14,27 @@
             deleteWholesaler: deleteWholesaler,
             saveTransaction: saveTransaction,
             getWholesalerTransactionDetail: getWholesalerTransactionDetail,
-            deleteTransaction: deleteTransaction
+            deleteTransaction: deleteTransaction,
+            isProductCodeExist: isProductCodeExist,
+            saveStock: saveStock,
+            getProductList: getProductList
         };
         return service;
 
+        function getProductList(pageNo, pageSize) {
+            var request = $http.get('/Server/Controller/Stock?pageNo=' + pageNo + '&pageSize=' + pageSize);
+            return request.then(handleSuccess, handleError);
+        }
+        function saveStock(stock) {
+            var request = $http.post('/Server/Controller/Stock', JSON.stringify(stock));
+            return request.then(handleSuccess, handleError);
+        }
+
+        function isProductCodeExist(code)
+        {
+            var request = $http.get('/Server/Controller/Stock?code=' + code);
+            return request.then(handleSuccess, handleError);
+        }
         function deleteTransaction(transactionId)
         {
             var request = $http.delete('/Server/Controller/Purchase?transactionId=' + transactionId);

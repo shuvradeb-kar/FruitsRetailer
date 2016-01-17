@@ -134,6 +134,8 @@
     <Content Include="Client\app\purchase\EditPurchaseController.js" />
     <Content Include="Client\app\purchase\WholesalerListController.js" />
     <Content Include="Client\app\purchase\WholesalerList.html" />
+    <Content Include="Client\app\stock\AddStock.html" />
+    <Content Include="Client\app\stock\AddStockController.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -227,10 +229,12 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Server\Controller\StockController.cs" />
     <Compile Include="Server\Controller\WholesalerController.cs" />
     <Compile Include="Server\DataAccess\BaseRepository.cs" />
     <Compile Include="Server\DataAccess\CustomerDataRepository.cs" />
     <Compile Include="Server\DataAccess\FruitsDataContext.cs" />
+    <Compile Include="Server\DataAccess\StockDataRepository.cs" />
     <Compile Include="Server\Model\Customer.cs" />
     <Compile Include="Server\Model\CustomerType.cs" />
     <Compile Include="Server\Model\FruitsModel.cs" />

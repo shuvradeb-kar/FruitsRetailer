@@ -41,6 +41,17 @@ namespace FruitsRetailer.Server.Model
         public double Balance { get; set; }
     }
 
+    [Table("Stock")]
+    public class Stock : IEntity
+    {
+        [Key]
+        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+        public string Name { get; set; }        
+        public string Code { get; set; }
+        public int Quantity { get; set; }        
+    }
+
     public class CustomerResult  {
         public CustomerResult() {
             CustomerList = new List<Customer>();
@@ -49,6 +60,18 @@ namespace FruitsRetailer.Server.Model
         public List<Customer> CustomerList { get; set; }
         public int Count { get; set; }
     }
+
+    public class StockResult
+    {
+        public StockResult()
+        {
+            StockList = new List<Stock>();
+        }
+
+        public List<Stock> StockList { get; set; }
+        public int Count { get; set; }
+    }
+
 
     public class TransactionResult
     {
