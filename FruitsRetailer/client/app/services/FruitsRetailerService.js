@@ -14,8 +14,15 @@
             deleteWholesaler: deleteWholesaler,
             saveTransaction: saveTransaction,
             getWholesalerTransactionDetail: getWholesalerTransactionDetail,
+            deleteTransaction: deleteTransaction
         };
         return service;
+
+        function deleteTransaction(transactionId)
+        {
+            var request = $http.delete('/Server/Controller/Purchase?transactionId=' + transactionId);
+            return request.then(handleSuccess, handleError);
+        }
 
         function saveTransaction(transaction)
         {

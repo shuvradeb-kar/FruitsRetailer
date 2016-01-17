@@ -42,6 +42,13 @@ namespace FruitsRetailer.Server.DataAccess
             return r;
         }
 
+        public void DeleteTransaction(int transactionId)
+        {
+            CustomerTransaction cus = this._DataContext.CustomerTransactions.Find(transactionId);
+            this._DataContext.CustomerTransactions.Remove(cus);
+            this._DataContext.SaveChanges();
+        }
+
         public TransactionResult GetCustomersTransactionDetail(WholesalerFilter filter)
         {            
             var param2 = new SqlParameter("@pageNo", filter.PageNo);

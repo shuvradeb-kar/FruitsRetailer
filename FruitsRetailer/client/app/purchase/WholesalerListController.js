@@ -111,7 +111,10 @@
             });
 
             modalInstance.result.then(function (selectedItem) {
-                init( 1, vm.PageSize, 0 );
+                FruitsRetailerService.deleteWholesaler(selectedItem).then(function (data) {
+                    init(1, vm.PageSize, 0);
+                });
+                
             }, function () {
                 //$log.info('Modal dismissed at: ' + new Date());
             });

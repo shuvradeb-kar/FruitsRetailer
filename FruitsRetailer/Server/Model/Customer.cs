@@ -35,6 +35,10 @@ namespace FruitsRetailer.Server.Model
         public double OthersCost { get; set; }
         public string ProductCode { get; set; }
         public int CustomerId { get; set; }
+        [NotMapped]
+        public double Total { get; set; }
+        [NotMapped]
+        public double Balance { get; set; }
     }
 
     public class CustomerResult  {

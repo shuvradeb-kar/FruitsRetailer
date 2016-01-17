@@ -69,6 +69,7 @@
 
         vm.GoBackToPurchaseList = function () {
             $state.go('purchase');
+            $state.go('purchase', { whoseller: { Id: vm.Wholesaler.Id, Name: vm.Wholesaler.Name, AccountNumber: vm.Wholesaler.AccountNumber, Address: vm.Wholesaler.Address } });
         }       
     }
 })();

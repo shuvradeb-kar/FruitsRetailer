@@ -4,6 +4,7 @@ using FruitsRetailer.Server.Util;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Web.Http;
+using System;
 
 namespace FruitsRetailer.WebApiController
 {
@@ -16,11 +17,31 @@ namespace FruitsRetailer.WebApiController
             _CustomerRepository = new CustomerDataRepository();
         }
 
+        [HttpDelete]
+        public void DeleteTransaction(int transactionId)
+        {
+            _CustomerRepository.DeleteTransaction(transactionId);
+        }
+
         [HttpGet]
         public TransactionResult GetWholesalerTransactionDetail(string wholesalerFilter)
         {
             WholesalerFilter filterObject = JsonConvert.DeserializeObject<WholesalerFilter>(wholesalerFilter);
-            return _CustomerRepository.GetCustomersTransactionDetail(filterObject);
+            TransactionResult res = _CustomerRepository.GetCustomersTransactionDetail(filterObject);
+            return CalculateBalance(res);
+        }
+
+        private TransactionResult CalculateBalance(TransactionResult res)
+        {
+            double balance = 0;
+            foreach (var item in res.TransactionList)
+            {
+                item.Total = item.Quantity * item.Rate;
+                item.Balance = (balance + item.Total) - (item.AmountReceived + item.OthersCost);
+                balance = item.Balance;
+            }
+
+            return res;
         }
 
         [HttpPost]

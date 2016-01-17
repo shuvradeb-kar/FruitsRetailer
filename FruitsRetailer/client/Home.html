@@ -19,6 +19,11 @@
         .page-header {
             margin:20px 0 20px;
         }
+        .container-full
+        {
+            margin: 0 auto;
+            width: 100%;
+        }
     </style>
 </head>
 <body data-ng-app="FruitsRetailerApp">    
@@ -56,7 +61,7 @@
             </div>
         </div>
     </nav>
-    <div class="container"> 
+    <div class="container container-full"> 
         <span us-spinner="{radius:30, width:8, length: 16}"></span>       
         <div ui-view></div>
     </div>
