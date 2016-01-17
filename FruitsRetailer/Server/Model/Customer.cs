@@ -59,5 +59,6 @@ namespace FruitsRetailer.Server.Model
 
         public List<CustomerTransaction> TransactionList { get; set; }
         public int Count { get; set; }
+        public int PreviousBalance { get; set; }
     }
 }

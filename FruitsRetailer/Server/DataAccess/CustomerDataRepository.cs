@@ -74,10 +74,15 @@ namespace FruitsRetailer.Server.DataAccess
             param5.Direction = ParameterDirection.Output;
             param5.SqlDbType = SqlDbType.Int;
 
-            var res = _DataContext.Database.SqlQuery<CustomerTransaction>("GetCustomerTransactionDetail @pageNo, @pageSize, @customerId, @Count OUT", param2, param3, param4, param5).ToList<CustomerTransaction>();
+            var param6 = new SqlParameter();
+            param6.ParameterName = "@PreviousBalance";
+            param6.Direction = ParameterDirection.Output;
+            param6.SqlDbType = SqlDbType.Decimal;
+
+            var res = _DataContext.Database.SqlQuery<CustomerTransaction>("GetCustomerTransactionDetail @pageNo, @pageSize, @customerId, @Count OUT, @PreviousBalance OUT", param2, param3, param4, param5, param6).ToList<CustomerTransaction>();
 
             TransactionResult r = new TransactionResult();
-
+            r.PreviousBalance = (DBNull.Value == param6.Value)? 0 : Convert.ToInt32(param6.Value);
             r.Count = Convert.ToInt32(param5.Value);
             r.TransactionList = res;
             return r;

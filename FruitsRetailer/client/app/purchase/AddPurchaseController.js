@@ -54,7 +54,7 @@
                 }
             }
 
-            if (vm.Transaction.OthersCost !== undefined && vm.Transaction.OthersCost.length > 0) {
+            if (vm.Transaction.OthersCost !== null && vm.Transaction.OthersCost !== undefined && vm.Transaction.OthersCost.length > 0) {
                 if (isNaN(vm.Transaction.OthersCost)) {
                     vm.OthersCostInfo = "Please enter valid rate.";
                     vm.IsOthersCostEmpty = true;

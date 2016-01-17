@@ -33,7 +33,7 @@ namespace FruitsRetailer.WebApiController
 
         private TransactionResult CalculateBalance(TransactionResult res)
         {
-            double balance = 0;
+            double balance = res.PreviousBalance;
             foreach (var item in res.TransactionList)
             {
                 item.Total = item.Quantity * item.Rate;
