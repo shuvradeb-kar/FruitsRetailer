@@ -49,6 +49,19 @@ namespace FruitsRetailer.Server.DataAccess
             this._DataContext.SaveChanges();
         }
 
+        public void EditWholesalerTransaction(CustomerTransaction customerTransaction)
+        {
+            CustomerTransaction cus = this._DataContext.CustomerTransactions.Find(customerTransaction.Id);
+            cus.AmountReceived = customerTransaction.AmountReceived;
+            cus.ProductCode = customerTransaction.ProductCode;
+            cus.Quantity = customerTransaction.Quantity;
+            cus.Rate = customerTransaction.Rate;
+            cus.OthersCost = customerTransaction.OthersCost;
+            cus.TransactionDate = customerTransaction.TransactionDate;
+            cus.ProductDescription = customerTransaction.ProductDescription;            
+            this._DataContext.SaveChanges();
+        }
+
         public TransactionResult GetCustomersTransactionDetail(WholesalerFilter filter)
         {            
             var param2 = new SqlParameter("@pageNo", filter.PageNo);

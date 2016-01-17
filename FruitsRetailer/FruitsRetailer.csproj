@@ -131,6 +131,7 @@
     <Content Include="Client\app\purchase\ConfirmationWindowController.js" />
     <Content Include="Client\app\purchase\EditWholesalerController.js" />
     <Content Include="Client\app\purchase\AddPurchaseController.js" />
+    <Content Include="Client\app\purchase\EditPurchaseController.js" />
     <Content Include="Client\app\purchase\WholesalerListController.js" />
     <Content Include="Client\app\purchase\WholesalerList.html" />
     <Content Include="Content\bootstrap-theme.css" />

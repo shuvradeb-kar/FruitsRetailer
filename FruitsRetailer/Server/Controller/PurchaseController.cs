@@ -47,7 +47,14 @@ namespace FruitsRetailer.WebApiController
         [HttpPost]
         public void SaveWholesalerTransaction(CustomerTransaction customerTransaction)
         {
-            _CustomerRepository.SaveWholesalerTransaction(customerTransaction);
+            if (customerTransaction.Id > 0)
+            {
+                _CustomerRepository.EditWholesalerTransaction(customerTransaction);
+            }
+            else
+            {
+                _CustomerRepository.SaveWholesalerTransaction(customerTransaction);
+            }
         }
 
     }

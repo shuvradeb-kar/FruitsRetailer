@@ -8,11 +8,9 @@
     function WholesalerTransactionDetailController($state, $scope, $timeout, FruitsRetailerService, uiGridConstants, $stateParams, $uibModal)
     {
         var vm = this;
-        vm.Wholesaler = $stateParams.whoseller;
-        //vm.wholesalerId = $stateParams.wholesalerId;
-        vm.PageSize = 10;
+        vm.Wholesaler = $stateParams.whoseller;        
+        vm.PageSize = 25;
         vm.gridOptions = {};
-
 
         vm.gridOptions = {
             onRegisterApi: function ( gridApi )
@@ -55,16 +53,16 @@
                     name: 'Rate', displayName: 'Rate', width: 100, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD | currency}}</div>'
                 },
                 {
-                    name: 'Total', displayName: 'Total', cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD | currency}}</div>'
+                    name: 'Total', displayName: 'Total', width: 120, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD | currency}}</div>'
                 },
                 {
-                    name: 'AmountReceived', displayName: 'Payment', cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD |currency}}</div>'
+                    name: 'AmountReceived', displayName: 'Payment', width: 120, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD |currency}}</div>'
                 },
                 {
                     name: 'OthersCost', displayName: 'Discount', width: 100, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD |currency}}</div>'
                 },
                 {
-                    name: 'Balance', displayName: 'Balance', cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD |currency}}</div>'
+                    name: 'Balance', displayName: 'Balance', width:120, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD |currency}}</div>'
                 },
                 {
                     name: ' ', width: 120, cellTemplate: '<div style="text-align:center;padding-top:3px;"><a ng-click="grid.appScope.EditTransaction(row.entity)" style="margin-right:3px;" class="btn btn-warning btn-xs">Edit</a><a ng-click="grid.appScope.DeleteTransaction(row.entity)" class="btn btn-danger btn-xs">Delete</a></div>'
@@ -100,7 +98,7 @@
 
         $scope.EditTransaction = function (entity)
         {
-            //$state.go('editwhoseller', { whoseller: { Id: entity.Id, Name: entity.Name, AccountNumber: entity.AccountNumber, Address: entity.Address } });
+            $state.go('editpurchase', { whoseller: { Id: vm.Wholesaler.Id, Name: vm.Wholesaler.Name, AccountNumber: vm.Wholesaler.AccountNumber, Address: vm.Wholesaler.Address }, transaction: { Id: entity.Id, ProductDescription: entity.ProductDescription, TransactionDate: new Date(entity.TransactionDate), Quantity: entity.Quantity, Rate: entity.Rate, AmountReceived: entity.AmountReceived, OthersCost: entity.OthersCost, ProductCode: entity.ProductCode, CustomerId: entity.CustomerId } });
         }
 
         vm.AddNewTransactation = function () {            
