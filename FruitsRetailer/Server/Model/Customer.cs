@@ -27,23 +27,33 @@ namespace FruitsRetailer.Server.Model
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public string ProductDescription { get; set; }
-        public int AccountNumber { get; set; }
+        public string ProductDescription { get; set; }        
         public DateTime TransactionDate { get; set; }
         public int Quantity { get; set; }
         public double Rate { get; set; }
         public double AmountReceived { get; set; }
-        public double Discount { get; set; }
+        public double OthersCost { get; set; }
         public string ProductCode { get; set; }
         public int CustomerId { get; set; }
     }
 
-    public class Result  {
-        public Result() {
+    public class CustomerResult  {
+        public CustomerResult() {
             CustomerList = new List<Customer>();
         }
        
         public List<Customer> CustomerList { get; set; }
+        public int Count { get; set; }
+    }
+
+    public class TransactionResult
+    {
+        public TransactionResult()
+        {
+            TransactionList = new List<CustomerTransaction>();
+        }
+
+        public List<CustomerTransaction> TransactionList { get; set; }
         public int Count { get; set; }
     }
 }

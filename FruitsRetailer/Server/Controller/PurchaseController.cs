@@ -1,6 +1,7 @@
 ﻿using FruitsRetailer.Server.DataAccess;
 using FruitsRetailer.Server.Model;
 using FruitsRetailer.Server.Util;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Web.Http;
 
@@ -15,16 +16,11 @@ namespace FruitsRetailer.WebApiController
             _CustomerRepository = new CustomerDataRepository();
         }
 
-        //[HttpPost]
-        //public void SaveTransaction(CustomerTransaction transaction)
-        //{   
-        //    _CustomerRepository.SaveTransaction(transaction);
-        //}
-
         [HttpGet]
-        public Result GetWholesalerDetailByAcNo(WholesalerFilter filter)
+        public TransactionResult GetWholesalerTransactionDetail(string wholesalerFilter)
         {
-            return _CustomerRepository.GetCustomersByType(CustomerType.Wholesaler, filter.PageNo, filter.PageSize, filter.AccountNumber);
+            WholesalerFilter filterObject = JsonConvert.DeserializeObject<WholesalerFilter>(wholesalerFilter);
+            return _CustomerRepository.GetCustomersTransactionDetail(filterObject);
         }
 
         [HttpPost]
@@ -33,45 +29,12 @@ namespace FruitsRetailer.WebApiController
             _CustomerRepository.SaveWholesalerTransaction(customerTransaction);
         }
 
-
-        [HttpPost]
-        public void SaveWholesaler(Customer customer)
-        {
-            if (customer.Id > 0)
-            {
-                _CustomerRepository.EditCustomer(customer);
-            }
-            else
-            {
-                customer.CustomerType = CustomerType.Wholesaler;
-                customer.IsActive = true;
-                _CustomerRepository.AddCustomer(customer);
-            }
-        }
-
-        [HttpGet]
-        public Result GetWholesalerList(int pageNo, int pageSize, int filter) 
-        {
-            return _CustomerRepository.GetCustomersByType(CustomerType.Wholesaler, pageNo, pageSize, filter);   
-        }        
-
-        [HttpGet]
-        public bool IsAccountNumberExists(int accountNumber)
-        {
-            return _CustomerRepository.IsAccountNumberExists(accountNumber);
-        }
-
-        [HttpDelete]
-        public void DeleteCustomer(int customerId)
-        {
-            _CustomerRepository.DeleteCustomer(customerId);
-        }
     }
 
     public class WholesalerFilter
     {
         public int PageNo { get; set; }
         public int PageSize { get; set; }
-        public int AccountNumber { get; set; }
+        public int CustomerId { get; set; }
     }
 }

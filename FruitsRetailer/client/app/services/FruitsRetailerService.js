@@ -13,7 +13,7 @@
             isAccountNumberExists: isAccountNumberExists,
             deleteWholesaler: deleteWholesaler,
             saveTransaction: saveTransaction,
-            getWholesalerDetailByAcNo: getWholesalerDetailByAcNo,
+            getWholesalerTransactionDetail: getWholesalerTransactionDetail,
         };
         return service;
 
@@ -23,35 +23,35 @@
             return request.then(handleSuccess, handleError);
         }
 
-        function getWholesalerDetailByAcNo(pageNo, pageSize, accountNumber) {
+        function getWholesalerTransactionDetail(pageNo, pageSize, wholesalerId) {
             var obj = {
                 PageNo: pageNo,
                 PageSize: pageSize,
-                AccountNumber: accountNumber
+                CustomerId: wholesalerId
             }
             var filterObj = angular.copy(obj);
-            var request = $http.get('/Server/Controller/Purchase', { params: { metaDataObject: filterObj } });
+            var request = $http.get('/Server/Controller/Purchase', { params: { wholesalerFilter: filterObj } });
             return request.then(handleSuccess, handleError);
         }
         function getWholesalerList( pageNo, pageSize, filter )
         {
-            var request = $http.get( '/Server/Controller/Purchase?pageNo=' + pageNo + '&pageSize=' + pageSize + '&filter=' + filter );
+            var request = $http.get('/Server/Controller/Wholesaler?pageNo=' + pageNo + '&pageSize=' + pageSize + '&filter=' + filter);
             return request.then( handleSuccess, handleError );
         } 
 
         function saveWholesaler( customer )
         {
-            var request = $http.post('/Server/Controller/Purchase', JSON.stringify(customer));
+            var request = $http.post('/Server/Controller/Wholesaler', JSON.stringify(customer));
             return request.then(handleSuccess, handleError);
         }
         function isAccountNumberExists( accountNumber )
         {
-            var request = $http.get( '/Server/Controller/Purchase?accountNumber=' + accountNumber );
+            var request = $http.get('/Server/Controller/Wholesaler?accountNumber=' + accountNumber);
             return request.then( handleSuccess, handleError );
         }
         function deleteWholesaler(customerId)
         {
-            var request = $http.delete( '/Server/Controller/Purchase?customerId=' + customerId );
+            var request = $http.delete( '/Server/Controller/Wholesaler?customerId=' + customerId );
             return request.then( handleSuccess, handleError );
         }
 

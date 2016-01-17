@@ -14,9 +14,9 @@ var FruitsRetailerApp = angular.module( 'FruitsRetailerApp', ['ui.router', 'ui.g
     .state('purchase', {
         url: "/purchase",
         params: { whoseller: null },
-        controller: 'WholesalerDetailController',
+        controller: 'WholesalerTransactionDetailController',
         controllerAs: 'vm',
-        templateUrl: '/client/app/purchase/WholesalerDetail.html'
+        templateUrl: '/client/app/purchase/WholesalerTransactionDetail.html'
     })
         .state('addpurchase', {
             url: "/addpurchase",

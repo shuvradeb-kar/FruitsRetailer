@@ -149,7 +149,7 @@
     <Content Include="Global.asax" />
     <Content Include="Client\app\dashboard\DashboardController.js" />
     <Content Include="Client\app\purchase\AddWholesalerController.js" />
-    <Content Include="Client\app\purchase\WholesalerDetailController.js" />
+    <Content Include="Client\app\purchase\WholesalerTransactionDetailController.js" />
     <Content Include="Client\app\stock\StockController.js" />
     <Content Include="Client\app\cashbook\CashBookController.js" />
     <Content Include="Client\app\sales\SellsListController.js" />
@@ -211,7 +211,7 @@
     <Content Include="Client\app\purchase\AddNewPurchase.html" />
     <Content Include="Client\app\purchase\AddNewWholesaler.html" />
     <Content Include="Client\app\dashboard\Dashboard.html" />
-    <Content Include="Client\app\purchase\WholesalerDetail.html" />
+    <Content Include="Client\app\purchase\WholesalerTransactionDetail.html" />
     <Content Include="Client\app\cashbook\CashBook.html" />
     <Content Include="Client\app\stock\Stock.html" />
     <Content Include="Client\app\sales\SellsList.html" />
@@ -226,6 +226,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Server\Controller\WholesalerController.cs" />
     <Compile Include="Server\DataAccess\BaseRepository.cs" />
     <Compile Include="Server\DataAccess\CustomerDataRepository.cs" />
     <Compile Include="Server\DataAccess\FruitsDataContext.cs" />

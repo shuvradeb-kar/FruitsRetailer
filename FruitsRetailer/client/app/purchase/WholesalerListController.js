@@ -74,7 +74,7 @@
                     name: 'Address', displayName: 'Address', enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents wordbreak">{{COL_FIELD}}</div>'
                 },
                 {
-                    name: 'Balance', displayName: 'Balance', enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents wordbreak">{{COL_FIELD}}</div>'
+                    name: 'Balance', displayName: 'Balance', enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents wordbreak">{{COL_FIELD | currency}}</div>'
                 },
                 {
                     name: ' ', width: 120, enableFiltering: false, cellTemplate: '<div style="text-align:center;padding-top:3px;"><a ng-click="grid.appScope.EditWholesaler(row.entity)" style="margin-right:3px;" class="btn btn-warning btn-xs">Edit</a><a ng-click="grid.appScope.DeleteWholesaler(row.entity)" class="btn btn-danger btn-xs">Delete</a></div>'

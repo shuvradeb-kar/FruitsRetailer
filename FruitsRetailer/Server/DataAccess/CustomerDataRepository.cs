@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Web;
+using FruitsRetailer.WebApiController;
 
 namespace FruitsRetailer.Server.DataAccess
 {
@@ -18,7 +19,7 @@ namespace FruitsRetailer.Server.DataAccess
             _DataContext = (FruitsDataContext)base._BaseDataContext;           
         }
 
-        public Result GetCustomersByType(CustomerType customerType, int pageNo, int pageSize, int accountNumber)
+        public CustomerResult GetCustomersByType(CustomerType customerType, int pageNo, int pageSize, int accountNumber)
         {
 
             var param1 = new SqlParameter("@customerType", customerType);
@@ -34,13 +35,34 @@ namespace FruitsRetailer.Server.DataAccess
 
             var res = _DataContext.Database.SqlQuery<Customer>("GetCustomerByType @customerType, @pageNo, @pageSize, @accountNumber, @Count OUT", param1, param2, param3, param4, param5).ToList<Customer>();
 
-            Result r = new Result();
+            CustomerResult r = new CustomerResult();
 
             r.Count = Convert.ToInt32(param5.Value);
             r.CustomerList = res;
             return r;
         }
-        
+
+        public TransactionResult GetCustomersTransactionDetail(WholesalerFilter filter)
+        {            
+            var param2 = new SqlParameter("@pageNo", filter.PageNo);
+            var param3 = new SqlParameter("@pageSize", filter.PageSize);
+            var param4 = new SqlParameter("@customerId", filter.CustomerId.ToString());
+
+
+            var param5 = new SqlParameter();
+            param5.ParameterName = "@Count";
+            param5.Direction = ParameterDirection.Output;
+            param5.SqlDbType = SqlDbType.Int;
+
+            var res = _DataContext.Database.SqlQuery<CustomerTransaction>("GetCustomerTransactionDetail @pageNo, @pageSize, @customerId, @Count OUT", param2, param3, param4, param5).ToList<CustomerTransaction>();
+
+            TransactionResult r = new TransactionResult();
+
+            r.Count = Convert.ToInt32(param5.Value);
+            r.TransactionList = res;
+            return r;
+        }
+
         public void SaveWholesalerTransaction(CustomerTransaction customerTransaction)
         {
             this._DataContext.CustomerTransactions.Add(customerTransaction);
