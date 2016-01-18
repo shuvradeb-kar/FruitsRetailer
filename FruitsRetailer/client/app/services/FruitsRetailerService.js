@@ -18,10 +18,16 @@
             isProductCodeExist: isProductCodeExist,
             saveStock: saveStock,
             getProductList: getProductList,
-            deleteProduct: deleteProduct
+            deleteProduct: deleteProduct,
+            getAllActiveProduct: getAllActiveProduct
         };
         return service;
 
+        function getAllActiveProduct()
+        {
+            var request = $http.get('/Server/Controller/Purchase');
+            return request.then(handleSuccess, handleError);
+        }
         function deleteProduct(productId)
         {
             var request = $http.delete('/Server/Controller/Stock?productId=' + productId);

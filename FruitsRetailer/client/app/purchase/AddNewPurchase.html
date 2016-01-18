@@ -9,9 +9,9 @@
     <div class="form-group">
         <label class="control-label col-sm-2" for="ptype">Product Type:</label>
         <div id ="ptype" class="col-sm-10">
-            <select class="form-control" style="max-width:200px" >
-                <option>Item 1</option>
-                <option>Item 2</option>
+            <select class="form-control" style="max-width:200px" ng-model="vm.Transaction.ProductCode">                
+                <option selected="selected">Select a product ...</option>
+                <option ng-repeat="p in vm.Transaction.ProductList" value="{{p.Id}}">{{p.Name}}</option>
             </select>
         </div>
     </div>

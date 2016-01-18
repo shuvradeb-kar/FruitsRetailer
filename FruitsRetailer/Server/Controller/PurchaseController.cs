@@ -17,6 +17,12 @@ namespace FruitsRetailer.WebApiController
             _CustomerRepository = new CustomerDataRepository();
         }
 
+        [HttpGet]
+        public List<Stock> GetAllActiveProduct()
+        {
+            return _CustomerRepository.GetAllActiveProduct();
+        }
+
         [HttpDelete]
         public void DeleteTransaction(int transactionId)
         {

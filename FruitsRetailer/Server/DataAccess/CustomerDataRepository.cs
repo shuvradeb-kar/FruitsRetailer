@@ -42,6 +42,11 @@ namespace FruitsRetailer.Server.DataAccess
             return r;
         }
 
+        public List<Stock> GetAllActiveProduct()
+        {
+            return this._DataContext.Stocks.Where(c => c.IsActive == true).ToList();
+        }
+
         public void DeleteTransaction(int transactionId)
         {
             CustomerTransaction cus = this._DataContext.CustomerTransactions.Find(transactionId);

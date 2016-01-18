@@ -14,7 +14,14 @@
         vm.Wholesaler = $stateParams.whoseller;
         vm.AccountNumber = vm.Wholesaler.AccountNumber;
         vm.Transaction.CustomerId = vm.Wholesaler.Id;
-        vm.Transaction.ProductCode = 'hheee';
+        
+        init();
+
+        function init() {
+            FruitsRetailerService.getAllActiveProduct().then(function (data) {
+                vm.Transaction.ProductList = data;
+            });
+        }
 
         vm.SaveTransaction = function () {
             if (vm.ValidateTransactione()) {
