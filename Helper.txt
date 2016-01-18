@@ -122,3 +122,196 @@ ALTER TABLE [dbo].[CustomerTransaction] ADD  CONSTRAINT [DF_CustomerTransaction_
 GO
 
 
+USE [FruitsRetailer]
+GO
+/****** Object:  StoredProcedure [dbo].[GetCustomerTransactionDetail]    Script Date: 1/18/2016 9:19:06 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+ALTER PROCEDURE [dbo].[GetCustomerTransactionDetail]
+	@pageNo int,
+	@pageSize int,
+	@customerId int,
+	@Count int OUTPUT,
+	@PreviousBalance decimal OUTPUT
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+	declare @Result table (RowId int Identity, Id int, TransactionDate date, ProductDescription nvarchar(max), ProductCode nvarchar(500), AmountReceived float, OthersCost float, Quantity int, Rate float, CustomerId int)
+	declare @ReturnedResult table (RowId int Identity, PRowId int, Id int, TransactionDate date, ProductDescription nvarchar(max), ProductCode nvarchar(500), AmountReceived float, OthersCost float, Quantity int, Rate float, CustomerId int)
+
+	insert into @Result(Id, TransactionDate, ProductDescription, ProductCode, AmountReceived, OthersCost, Quantity, Rate, CustomerId)
+	select c.Id, c.TransactionDate, c.ProductDescription, c.ProductCode, c.AmountReceived, c.OthersCost, c.Quantity, c.Rate, c.CustomerId
+	 from CustomerTransaction c 
+	 where c.CustomerId = @customerId
+	 order by TransactionDate asc
+
+	 set @Count = (Select count(*) from @result )
+
+
+
+	insert into @ReturnedResult(Id, PRowId, TransactionDate, ProductDescription, ProductCode, AmountReceived, OthersCost, Quantity, Rate, CustomerId)
+	select c.Id, c.RowId, c.TransactionDate, c.ProductDescription, c.ProductCode, c.AmountReceived, c.OthersCost, c.Quantity, c.Rate, c.CustomerId
+	from @result c
+	where 
+	(
+		@pageNo = 0 
+		OR 
+		(
+			c.RowId BETWEEN (@pageNo - 1) * @PageSize + 1 AND @pageNo * @PageSize
+		)
+	)
+	order by c.TransactionDate asc
+
+	declare @RowId int
+	set @RowId = (select min(PRowId) from @ReturnedResult)
+
+	set @PreviousBalance = (select sum(r.Quantity*r.Rate - (r.AmountReceived + r.OthersCost)) from @Result r 
+	where (RowId < @RowId))
+
+	
+	select r.Id, r.AmountReceived, r.CustomerId, r.OthersCost, r.ProductCode, r.ProductDescription, r.Quantity, r.Rate, r.TransactionDate from @ReturnedResult r
+
+	--delete from @Result
+
+	--delete from @ReturnedResult
+
+END
+
+
+
+USE [FruitsRetailer]
+GO
+/****** Object:  StoredProcedure [dbo].[GetProductList]    Script Date: 1/18/2016 9:19:52 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+ALTER PROCEDURE [dbo].[GetProductList]
+	@pageNo int,
+	@pageSize int,
+	@Count int OUTPUT
+AS
+BEGIN
+
+	declare @result table(RowId int Identity, Id int, Name nvarchar(max), Code nvarchar(500), Quantity int, IsActive bit)
+	
+
+	insert into @result(Id, Name, Code, Quantity, IsActive)
+	select c.Id, c.Name, c.Code, c.Quantity, c.IsActive from Stock c
+	where c.IsActive = 1
+	order by c.Name asc
+	
+	set @Count = (Select count(*) from @result )
+
+	select * from @result p
+	where 
+	(
+		@pageNo = 0 
+		OR 
+		(
+			p.RowId BETWEEN (@pageNo - 1) * @PageSize + 1 AND @pageNo * @PageSize
+		)
+	)
+	order by p.Name
+END
+
+
+
+USE [FruitsRetailer]
+GO
+
+/****** Object:  Table [dbo].[Stock]    Script Date: 1/18/2016 9:20:16 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Stock](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](max) NOT NULL,
+	[Code] [nvarchar](500) NOT NULL,
+	[Quantity] [int] NOT NULL CONSTRAINT [DF_Stock_Quantity]  DEFAULT ((0)),
+	[IsActive] [bit] NOT NULL CONSTRAINT [DF_Stock_IsActive]  DEFAULT ((1)),
+ CONSTRAINT [PK_Stock] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+
+
+
+USE [FruitsRetailer]
+GO
+
+/****** Object:  Table [dbo].[CustomerTransaction]    Script Date: 1/18/2016 9:20:30 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[CustomerTransaction](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[ProductDescription] [nvarchar](max) NULL,
+	[TransactionDate] [date] NOT NULL,
+	[Quantity] [int] NOT NULL CONSTRAINT [DF_CustomerTransaction_Quantity]  DEFAULT ((0)),
+	[Rate] [float] NOT NULL CONSTRAINT [DF_CustomerTransaction_Rate]  DEFAULT ((0)),
+	[AmountReceived] [float] NOT NULL CONSTRAINT [DF_CustomerTransaction_AmountReceived]  DEFAULT ((0)),
+	[OthersCost] [float] NOT NULL CONSTRAINT [DF_CustomerTransaction_Discount]  DEFAULT ((0)),
+	[ProductCode] [nvarchar](500) NOT NULL,
+	[CustomerId] [int] NOT NULL,
+ CONSTRAINT [PK_CustomerTransaction] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+
+
+
+
+USE [FruitsRetailer]
+GO
+
+/****** Object:  Table [dbo].[Customer]    Script Date: 1/18/2016 9:20:42 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Customer](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](max) NOT NULL,
+	[AccountNumber] [int] NOT NULL,
+	[Address] [nvarchar](max) NULL,
+	[CustomerType] [int] NOT NULL,
+	[Balance] [float] NOT NULL CONSTRAINT [DF_Customer_Balance]  DEFAULT ((0)),
+	[IsActive] [bit] NOT NULL CONSTRAINT [DF_Customer_IsActive]  DEFAULT ((1)),
+ CONSTRAINT [PK_Customer] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+
+
