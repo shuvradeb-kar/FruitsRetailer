@@ -72,6 +72,13 @@ var FruitsRetailerApp = angular.module( 'FruitsRetailerApp', ['ui.router', 'ui.g
             controllerAs: 'vm',
             templateUrl: '/client/app/stock/AddStock.html'
         })
+        .state('editProduct', {
+            url: "/editproduct",
+            params: {product: null},
+            controller: 'EditStockController',
+            controllerAs: 'vm',
+            templateUrl: '/client/app/stock/AddStock.html'
+        })
     .state('cashbook', {
         url: "/cashbook",
         controller: 'CashBookController',

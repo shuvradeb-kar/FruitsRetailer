@@ -136,6 +136,7 @@
     <Content Include="Client\app\purchase\WholesalerList.html" />
     <Content Include="Client\app\stock\AddStock.html" />
     <Content Include="Client\app\stock\AddStockController.js" />
+    <Content Include="Client\app\stock\EditStockController.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />

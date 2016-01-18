@@ -53,7 +53,7 @@
 
         $scope.EditProduct = function (entity)
         {
-            $state.go( 'editwhoseller', { whoseller: { Id: entity.Id, Name: entity.Name, AccountNumber: entity.AccountNumber, Address: entity.Address } } );
+            $state.go('editProduct', { product: { Id: entity.Id, Name: entity.Name, Code: entity.Code, Quantity: entity.Quantity } });
         }        
 
         $scope.DeleteProduct = function (entity)
@@ -74,7 +74,7 @@
             });
 
             modalInstance.result.then(function (selectedItem) {
-                FruitsRetailerService.deleteWholesaler(selectedItem).then(function (data) {
+                FruitsRetailerService.deleteProduct(selectedItem).then(function (data) {
                     init(1, vm.PageSize);
                 });
                 

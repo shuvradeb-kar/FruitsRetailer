@@ -23,6 +23,14 @@ namespace FruitsRetailer.Server.DataAccess
             this._DataContext.SaveChanges();
         }
 
+        public void EditStock(Stock stock)
+        {
+            Stock s = this._DataContext.Stocks.Find(stock.Id);
+            s.Name = stock.Name;
+            s.Quantity = stock.Quantity;            
+            this._DataContext.SaveChanges();
+        }
+
         public bool IsProductCodeExist(string code)
         {
             return (this._DataContext.Stocks.Count(c => c.Code == code)) > 0 ? true : false;
@@ -45,6 +53,14 @@ namespace FruitsRetailer.Server.DataAccess
             r.Count = Convert.ToInt32(param5.Value);
             r.StockList = res;
             return r;
+        }
+
+        public void DeleteProduct(int productId)
+        {
+            Stock s = this._DataContext.Stocks.Find(productId);
+            s.IsActive = false;
+            this._DataContext.SaveChanges();
+
         }
     }
 }

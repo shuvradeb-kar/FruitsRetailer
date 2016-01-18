@@ -19,7 +19,14 @@ namespace FruitsRetailer.Server.Controller
         [HttpPost]
         public void SaveStock(Stock stock)
         {
-            _StockDataRepository.SaveStock(stock);
+            if (stock.Id > 0)
+            {
+                _StockDataRepository.EditStock(stock);
+            }
+            else {
+                stock.IsActive = true;
+                _StockDataRepository.SaveStock(stock);
+            }
         }
         [HttpGet]
         public bool IsProductCodeExist(string code)
@@ -29,6 +36,11 @@ namespace FruitsRetailer.Server.Controller
 
         public StockResult GetProductList(int pageNo, int pageSize) {
             return _StockDataRepository.GetProductList(pageNo, pageSize);
+        }
+        [HttpDelete]
+        public void DeleteProduct(int productId)
+        {
+            _StockDataRepository.DeleteProduct(productId);
         }
     }
 }
