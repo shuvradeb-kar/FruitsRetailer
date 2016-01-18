@@ -44,7 +44,7 @@ namespace FruitsRetailer.Server.DataAccess
 
         public List<Stock> GetAllActiveProduct()
         {
-            return this._DataContext.Stocks.Where(c => c.IsActive == true).ToList();
+            return this._DataContext.Stocks.Where(c => c.IsActive == true).OrderBy(c=>c.Name).ToList();
         }
 
         public void DeleteTransaction(int transactionId)

@@ -25,6 +25,7 @@
 
         vm.SaveTransaction = function () {
             if (vm.ValidateTransactione()) {
+                vm.Transaction.ProductCode = vm.SelectedItem.Id;
                 FruitsRetailerService.saveTransaction(vm.Transaction).then(function (data) {
                     vm.GoBackToPurchaseList();
                 });
@@ -32,6 +33,17 @@
         }
 
         vm.ValidateTransactione = function () {
+
+            if (vm.SelectedItem === undefined || vm.SelectedItem === null)
+            {
+                vm.CodeInfo = "Please select a product for purchase.";
+                vm.IsCodeEmpty = true;
+                return false;
+            }
+            else {
+                vm.IsCodeEmpty = false;
+            }
+
             if (vm.Transaction.Quantity === undefined || vm.Transaction.Quantity === 0 || isNaN(vm.Transaction.Quantity)) {
                 vm.QuantityInfo = "Please enter valid quantity.";
                 vm.IsQuantityEmpty = true;
@@ -71,6 +83,7 @@
             else {
                 vm.IsOthersCostmpty = false;
             }
+            
             return true;            
         }
 
