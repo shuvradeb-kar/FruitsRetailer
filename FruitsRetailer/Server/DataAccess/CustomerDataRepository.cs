@@ -63,7 +63,10 @@ namespace FruitsRetailer.Server.DataAccess
             cus.Rate = customerTransaction.Rate;
             cus.OthersCost = customerTransaction.OthersCost;
             cus.TransactionDate = customerTransaction.TransactionDate;
-            cus.ProductDescription = customerTransaction.ProductDescription;            
+            cus.ProductDescription = customerTransaction.ProductDescription;
+
+            Stock s = this._DataContext.Stocks.Find(cus.ProductId);
+            s.Quantity = cus.Quantity;
             this._DataContext.SaveChanges();
         }
 
@@ -96,6 +99,10 @@ namespace FruitsRetailer.Server.DataAccess
         public void SaveWholesalerTransaction(CustomerTransaction customerTransaction)
         {
             this._DataContext.CustomerTransactions.Add(customerTransaction);
+
+            Stock s = this._DataContext.Stocks.Find(customerTransaction.ProductId);
+            s.Quantity = customerTransaction.Quantity;
+
             this._DataContext.SaveChanges();
         }
 
