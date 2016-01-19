@@ -25,7 +25,7 @@
 
         vm.SaveTransaction = function () {
             if (vm.ValidateTransactione()) {
-                vm.Transaction.ProductCode = vm.SelectedItem.Id;
+                vm.Transaction.ProductCode = vm.SelectedItem.Code;
                 FruitsRetailerService.saveTransaction(vm.Transaction).then(function (data) {
                     vm.GoBackToPurchaseList();
                 });

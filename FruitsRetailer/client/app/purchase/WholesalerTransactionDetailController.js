@@ -9,7 +9,7 @@
     {
         var vm = this;
         vm.Wholesaler = $stateParams.whoseller;        
-        vm.PageSize = 5;
+        vm.PageSize = 25;
         vm.gridOptions = {};
 
         vm.gridOptions = {

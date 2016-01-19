@@ -21,13 +21,13 @@
             else {
                 vm.IsNameEmpty = false;
             }
-            if (vm.Product.Quantity === undefined || isNaN(vm.Product.Quantity)) {
-                vm.QuantityInfo = "Please enter product quantity";
-                vm.IsQuantityEmpty = true;
-            }
-            else {
-                vm.IsQuantityEmpty = false;
-            }
+            //if (vm.Product.Quantity === undefined || isNaN(vm.Product.Quantity)) {
+            //    vm.QuantityInfo = "Please enter product quantity";
+            //    vm.IsQuantityEmpty = true;
+            //}
+            //else {
+            //    vm.IsQuantityEmpty = false;
+            //}
 
             if (vm.Product.Code === undefined || vm.Product.Code.length === 0) {
                 vm.CodeInfo = "Please enter product code.";

@@ -28,14 +28,14 @@
             else {
                 vm.IsNameEmpty = false;
             }
-            if (vm.Product.Quantity === null || vm.Product.Quantity === undefined || isNaN(vm.Product.Quantity)) {
-                vm.QuantityInfo = "Please enter product quantity";
-                vm.IsQuantityEmpty = true;
-                return false;
-            }
-            else {
-                vm.IsQuantityEmpty = false;
-            }
+            //if (vm.Product.Quantity === null || vm.Product.Quantity === undefined || isNaN(vm.Product.Quantity)) {
+            //    vm.QuantityInfo = "Please enter product quantity";
+            //    vm.IsQuantityEmpty = true;
+            //    return false;
+            //}
+            //else {
+            //    vm.IsQuantityEmpty = false;
+            //}
             return true;
         }
 

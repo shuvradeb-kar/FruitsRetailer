@@ -9,7 +9,7 @@
     <div class="form-group">
         <label class="control-label col-sm-2" for="ptype">Product Type:</label>
         <div id ="ptype" class="col-sm-10">
-            <select class="form-control" style="max-width:200px" ng-model="vm.SelectedItem" ng-options="item as item.Name for item in vm.Transaction.ProductList track by item.Id">                
+            <select class="form-control" style="max-width:200px" ng-model="vm.SelectedItem" ng-options="item as item.Name for item in vm.Transaction.ProductList track by item.Id" ng-disabled="vm.EditMode">                
             </select>
             <div class="alert alert-warning fade in" ng-hide="!vm.IsCodeEmpty">{{vm.CodeInfo}}</div>
         </div>

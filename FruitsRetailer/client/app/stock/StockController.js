@@ -46,7 +46,7 @@
                     name: 'Quantity', displayName: 'Quantity', enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents wordbreak">{{COL_FIELD}}</div>'
                 },
                 {
-                    name: ' ', width: 120, enableFiltering: false, cellTemplate: '<div style="text-align:center;padding-top:3px;"><a ng-click="grid.appScope.EditProduct(row.entity)" style="margin-right:3px;" class="btn btn-warning btn-xs">Edit</a><a ng-click="grid.appScope.DeleteProduct(row.entity)" class="btn btn-danger btn-xs">Delete</a></div>'
+                    name: ' ', width: 80, enableFiltering: false, cellTemplate: '<div style="text-align:center;padding-top:3px;"><a ng-click="grid.appScope.EditProduct(row.entity)" style="margin-right:3px;" class="btn btn-warning btn-xs">Edit</a></div>'
                 }
             ],
         };        
