@@ -84,5 +84,18 @@ var FruitsRetailerApp = angular.module( 'FruitsRetailerApp', ['ui.router', 'ui.g
         controller: 'CashBookController',
         controllerAs: 'vm',
         templateUrl: '/client/app/cashbook/CashBook.html'
+    })
+    .state('addCashBook', {
+        url: "/addcashbook",
+        controller: 'AddCashBookController',
+        controllerAs: 'vm',
+        templateUrl: '/client/app/cashbook/AddCashBook.html'
+    })
+    .state('editCashBook', {
+        url: "/editcashbook",
+        params: { cashbook: null },
+        controller: 'EditCashBookController',
+        controllerAs: 'vm',
+        templateUrl: '/client/app/cashbook/AddCashBook.html'
     });
 }]);

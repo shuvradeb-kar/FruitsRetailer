@@ -126,6 +126,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Client\app\cashbook\AddCashBook.html" />
+    <Content Include="Client\app\cashbook\AddCashBookController.js" />
+    <Content Include="Client\app\cashbook\EditCashBookController.js" />
     <Content Include="Client\app\directives\angular-loading-spinner.js" />
     <Content Include="Client\app\purchase\ConfirmationWindow.html" />
     <Content Include="Client\app\purchase\ConfirmationWindowController.js" />
@@ -172,6 +175,7 @@
     <Content Include="Content\ui-grid.eot" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
+    <Content Include="Scripts\angular-locale_bn-bd.js" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular-sanitize.js" />
     <Content Include="Scripts\angular-sanitize.min.js" />

@@ -52,11 +52,19 @@ namespace FruitsRetailer.Server.DataAccess
             CustomerTransaction cus = this._DataContext.CustomerTransactions.Find(transactionId);
             this._DataContext.CustomerTransactions.Remove(cus);
             this._DataContext.SaveChanges();
+            UpdateBalanceAndQuantity(cus.CustomerId, -cus.Quantity, cus.ProductCode);            
+        }
+
+        private void UpdateBalanceAndQuantity(int CustomerId, int Quantity, string ProductCode)
+        {
+            _DataContext.Database.ExecuteSqlCommand("UpdateBalanceAndQuantity @CustomerId = {0}, @Quantity= {1}, @ProductCode = {2}", CustomerId, Quantity, ProductCode);
         }
 
         public void EditWholesalerTransaction(CustomerTransaction customerTransaction)
         {
+            int previousQuantity = 0;
             CustomerTransaction cus = this._DataContext.CustomerTransactions.Find(customerTransaction.Id);
+            previousQuantity = cus.Quantity;
             cus.AmountReceived = customerTransaction.AmountReceived;
             cus.ProductCode = customerTransaction.ProductCode;
             cus.Quantity = customerTransaction.Quantity;
@@ -64,10 +72,11 @@ namespace FruitsRetailer.Server.DataAccess
             cus.OthersCost = customerTransaction.OthersCost;
             cus.TransactionDate = customerTransaction.TransactionDate;
             cus.ProductDescription = customerTransaction.ProductDescription;
-
-            Stock s = this._DataContext.Stocks.Find(cus.ProductId);
-            s.Quantity = cus.Quantity;
             this._DataContext.SaveChanges();
+
+            int res = customerTransaction.Quantity - previousQuantity;
+
+            UpdateBalanceAndQuantity(customerTransaction.CustomerId, res, customerTransaction.ProductCode);
         }
 
         public TransactionResult GetCustomersTransactionDetail(WholesalerFilter filter)
@@ -99,11 +108,8 @@ namespace FruitsRetailer.Server.DataAccess
         public void SaveWholesalerTransaction(CustomerTransaction customerTransaction)
         {
             this._DataContext.CustomerTransactions.Add(customerTransaction);
-
-            Stock s = this._DataContext.Stocks.Find(customerTransaction.ProductId);
-            s.Quantity = customerTransaction.Quantity;
-
             this._DataContext.SaveChanges();
+            UpdateBalanceAndQuantity(customerTransaction.CustomerId, customerTransaction.Quantity, customerTransaction.ProductCode);
         }
 
         public void AddCustomer(Customer customer)
