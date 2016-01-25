@@ -1,26 +1,53 @@
 ﻿<div class="page-header" style="text-align:center;"><h2>{{vm.PageTitle}}</h2></div>
-<form class="form-horizontal" role="form">
+<form class="form-horizontal" role="form">    
     <div class="form-group">
-        <label class="control-label col-sm-2" for="name">Product Name:</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" id="name" placeholder="Enter product name" ng-model="vm.Product.Name">
-            <div class="alert alert-warning fade in" ng-hide="!vm.IsNameEmpty">{{vm.NameInfo}}</div>
+        <label class="control-label col-sm-2" for="tType"></label>
+        <div class="col-sm-10">            
+            <label class="radio-inline">
+                <input id="tType" type="radio" name="optradio" value="Received" ng-model="vm.RadioOptions">Received
+            </label>           
+            <label class="radio-inline">
+                <input type="radio" name="optradio" value="Payment" ng-model="vm.CashBook.IsPayment">Payment
+            </label>             
         </div>
     </div>
     <div class="form-group">
-        <label class="control-label col-sm-2" for="code">Product Code:</label>
+        <label class="control-label col-sm-2" for="tMethod">Transaction Method:</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="code" placeholder="Enter product code" ng-model="vm.Product.Code" ng-disabled="vm.EditMode">
-            <div class="alert alert-warning fade in" ng-hide="!vm.IsCodeEmpty">{{vm.CodeInfo}}</div>
+            <select class="form-control" style="max-width:200px" ng-model="vm.SelectedItem" ng-options="item as item.Name for item in vm.TransactionTypes track by item.Id"></select>            
         </div>
     </div>
-    <!--<div class="form-group">
-        <label class="control-label col-sm-2" for="quantity">Quantity:</label>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="date">Date:</label>
         <div class="col-sm-10">
-            <input type="number" class="form-control" id="quantity" placeholder="Enter quantity" ng-model="vm.Product.Quantity">
-            <div class="alert alert-warning fade in" ng-hide="!vm.IsQuantityEmpty">{{vm.QuantityInfo}}</div>
+            <input type="date" class="form-control" required id="date" style="max-width:200px" data-ng-model="vm.CashBook.TransactionDate">
         </div>
-    </div>-->
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="rate">Amount:</label>
+        <div class="col-sm-10">
+            <input type="number" class="form-control" required id="rate" placeholder="Enter amount" data-ng-model="vm.CashBook.Amount">
+            <div class="alert alert-warning fade in" ng-hide="!vm.IsAmountEmpty">{{vm.AmountInfo}}</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="name"></label>
+        <div class="col-sm-10">
+            <div class="checkbox" id="name">
+                <label><input type="checkbox" value="" ng-model="vm.HasAccountNumber">Has Account Number?</label>
+            </div>
+            <input type="number" style="margin:15px 0px 15px 0px" class="form-control col-sm-10" placeholder="Enter account number" ng-hide="!vm.HasAccountNumber" ng-model="vm.CashBook.AccountNumber">
+            <div class="alert alert-warning fade in" ng-hide="!vm.IsAccountNumberInvalid">{{vm.AccountNumberInfo}}</div>
+            <input type="text" style="margin-bottom:15px" class="form-control col-sm-10" ng-hide="!vm.HasAccountNumber" ng-model="vm.AccountHolderName" disabled>
+            <input type="text" class="form-control col-sm-10" ng-hide="!vm.HasAccountNumber" ng-model="vm.AccountHolderAddress" disabled>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="description">Comment:</label>
+        <div class="col-sm-10">
+            <textarea class="form-control" id="description" data-ng-model="vm.CashBook.Comment"></textarea>
+        </div>
+    </div>
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
             <button type="submit" class="btn btn-sm btn-primary" data-ng-click="vm.SaveCashBook()">Submit</button>

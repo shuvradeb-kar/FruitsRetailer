@@ -11,4 +11,13 @@ namespace FruitsRetailer.Server.Model
         Retailer = 1,
         Wholesaler = 2
     }
+
+    public enum TransactionType
+    {
+        Cash = 1,
+        TT = 2,
+        Check = 3,
+        Bkash = 4,
+        Others = 5
+    }
 }

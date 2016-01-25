@@ -234,15 +234,17 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Server\Controller\CashBookController.cs" />
     <Compile Include="Server\Controller\StockController.cs" />
     <Compile Include="Server\Controller\WholesalerController.cs" />
     <Compile Include="Server\DataAccess\BaseRepository.cs" />
+    <Compile Include="Server\DataAccess\CashBookDataRepository.cs" />
     <Compile Include="Server\DataAccess\CustomerDataRepository.cs" />
     <Compile Include="Server\DataAccess\FruitsDataContext.cs" />
     <Compile Include="Server\DataAccess\StockDataRepository.cs" />
     <Compile Include="Server\Model\Customer.cs" />
-    <Compile Include="Server\Model\CustomerType.cs" />
-    <Compile Include="Server\Model\FruitsModel.cs" />
+    <Compile Include="Server\Model\FruitsEnumModel.cs" />
+    <Compile Include="Server\Model\FruitsDbModel.cs" />
     <Compile Include="Server\Model\IEntity.cs" />
     <Compile Include="Server\Util\FruitsHelper.cs" />
     <Compile Include="Global.asax.cs">

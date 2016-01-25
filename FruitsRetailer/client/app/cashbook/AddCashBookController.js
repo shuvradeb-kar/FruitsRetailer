@@ -9,6 +9,10 @@
         var vm = this;
         vm.PageTitle = "Add New";
         vm.CashBook = {};
+        vm.CashBook.TransactionDate = new Date();
+        vm.TransactionTypes = [{ Id: 1, Name: 'Cash' }, { Id: 2, Name: 'TT' }, { Id: 3, Name: 'Check' }, { Id: 4, Name: 'Bkash' }, { Id: 5, Name: 'Others' }]
+        vm.SelectedItem = vm.TransactionTypes[0];
+        vm.RadioOptions = 'Received';
         vm.SaveCashBook = function () {
             //vm.ValidateStockAndSave();
         }

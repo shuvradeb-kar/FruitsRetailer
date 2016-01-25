@@ -16,5 +16,6 @@ namespace FruitsRetailer.Server.DataAccess
         public DbSet<Customer> Customers { get; set; }
         public DbSet<CustomerTransaction> CustomerTransactions { get; set; }
         public DbSet<Stock> Stocks { get; set; }
+        public DbSet<CashBook> CashBooks { get; set; }
     }
 }
