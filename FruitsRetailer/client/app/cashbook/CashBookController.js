@@ -37,7 +37,7 @@
             enableVerticalScrollbar: uiGridConstants.scrollbars.ALWAYS,
             columnDefs: [                
                 {
-                    name: 'Name', displayName: 'Product Name', enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD}}</div>'
+                    name: 'TransactionDate', displayName: 'Date', enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD}}</div>'
                 },
                 {
                     name: 'Code', displayName: 'Product Code', enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD}}</div>'
@@ -85,9 +85,9 @@
 
         function init( pageNo, pageSize)
         {
-            FruitsRetailerService.getProductList( pageNo, pageSize ).then( function ( data )
+            FruitsRetailerService.getCashBookDetail( pageNo, pageSize ).then( function ( data )
             {
-                vm.gridOptions.data = data.StockList;
+                vm.gridOptions.data = data.CashBookDetail;
                 vm.gridOptions.totalItems = data.Count;
                 $timeout( function ()
                 {
@@ -96,7 +96,7 @@
             } );
         }
 
-        //init( 1, vm.PageSize );
+        init( 1, vm.PageSize );
     }
 
     

@@ -68,5 +68,7 @@ namespace FruitsRetailer.Server.Model
         public DateTime TransactionDate { get; set; }
         public double Amount { get; set; }
         public string Comment { get; set; }
+        public string AccountHolderName { get; set; }
+        public string AccountHolderAddress { get; set; }
     }
 }

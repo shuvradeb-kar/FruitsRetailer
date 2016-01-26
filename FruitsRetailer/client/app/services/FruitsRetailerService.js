@@ -21,9 +21,15 @@
             deleteProduct: deleteProduct,
             getAllActiveProduct: getAllActiveProduct,
             getAccountList: getAccountList,
-            saveCashBook: saveCashBook
+            saveCashBook: saveCashBook,
+            getCashBookDetail: getCashBookDetail
         };
         return service;
+
+        function getCashBookDetail(pageNo, pageSize) {
+            var request = $http.get('/Server/Controller/CashBook?pageNo=' + pageNo + '&pageSize=' + pageSize);
+            return request.then(handleSuccess, handleError);
+        }
 
         function saveCashBook(cashBook)
         {

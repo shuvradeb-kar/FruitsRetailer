@@ -16,6 +16,11 @@ namespace FruitsRetailer.Server.Controller
             _CashBookDataRepository = new CashBookDataRepository();
         }
 
+        public CashBookResult GetCashBookDetail(int pageNo, int pageSize)
+        {
+            return _CashBookDataRepository.GetCashBookDetail(pageNo, pageSize);
+        }
+
         [HttpPost]
         public void SaveCashBook(CashBook cashBook) {
             if (cashBook.Id > 0)

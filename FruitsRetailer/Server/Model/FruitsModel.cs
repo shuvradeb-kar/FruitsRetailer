@@ -39,4 +39,16 @@ namespace FruitsRetailer.Server.Model
         public int Count { get; set; }
         public int PreviousBalance { get; set; }
     }
+
+    public class CashBookResult
+    {
+        public CashBookResult()
+        {
+            CashBookDetail = new List<CashBook>();
+        }
+
+        public List<CashBook> CashBookDetail { get; set; }
+        public int Count { get; set; }
+        public int PreviousBalance { get; set; }
+    }
 }
