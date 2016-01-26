@@ -19,9 +19,22 @@
             saveStock: saveStock,
             getProductList: getProductList,
             deleteProduct: deleteProduct,
-            getAllActiveProduct: getAllActiveProduct
+            getAllActiveProduct: getAllActiveProduct,
+            getAccountList: getAccountList,
+            saveCashBook: saveCashBook
         };
         return service;
+
+        function saveCashBook(cashBook)
+        {
+            var request = $http.post('/Server/Controller/CashBook', JSON.stringify(cashBook));
+            return request.then(handleSuccess, handleError);
+        }
+        function getAccountList()
+        {
+            var request = $http.get('/Server/Controller/CashBook');
+            return request.then(handleSuccess, handleError);
+        }
 
         function getAllActiveProduct()
         {

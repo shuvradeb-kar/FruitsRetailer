@@ -31,5 +31,10 @@ namespace FruitsRetailer.Server.DataAccess
             cash.TransactionType = cashBook.TransactionType;
             _DataContext.SaveChanges();            
         }
+
+        public List<Customer> GetAccountList()
+        {
+            return this._DataContext.Customers.Where(c => c.IsActive == true).ToList();
+        }
     }
 }

@@ -26,5 +26,10 @@ namespace FruitsRetailer.Server.Controller
                 _CashBookDataRepository.SaveCashBook(cashBook);
             }
         }
+        [HttpGet]
+        public List<Customer> GetAccountList()
+        {
+            return _CashBookDataRepository.GetAccountList();
+        }    
     }
 }
