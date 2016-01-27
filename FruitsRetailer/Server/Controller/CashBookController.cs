@@ -18,7 +18,21 @@ namespace FruitsRetailer.Server.Controller
 
         public CashBookResult GetCashBookDetail(int pageNo, int pageSize)
         {
-            return _CashBookDataRepository.GetCashBookDetail(pageNo, pageSize);
+            CashBookResult res = _CashBookDataRepository.GetCashBookDetail(pageNo, pageSize);
+            CalculateBalance(res);
+            return res;
+        }
+
+        private void CalculateBalance(CashBookResult res)
+        {
+            double previousBalance = res.PreviousBalance;     
+            foreach (var item in res.CashBookDetail)
+            {
+                item.TType = item.TransactionType.ToString();
+
+                item.Balance = previousBalance + (item.Debit - item.Credit);
+                previousBalance = item.Balance;
+            }
         }
 
         [HttpPost]

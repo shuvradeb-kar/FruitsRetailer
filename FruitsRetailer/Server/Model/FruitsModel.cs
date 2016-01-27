@@ -44,11 +44,27 @@ namespace FruitsRetailer.Server.Model
     {
         public CashBookResult()
         {
-            CashBookDetail = new List<CashBook>();
+            CashBookDetail = new List<CashBookView>();
         }
 
-        public List<CashBook> CashBookDetail { get; set; }
+        public List<CashBookView> CashBookDetail { get; set; }
         public int Count { get; set; }
         public int PreviousBalance { get; set; }
+    }
+
+    public class CashBookView
+    {
+        public int Id { get; set; }
+        public int AccountNumber { get; set; }
+        public bool IsPayment { get; set; }
+        public TransactionType TransactionType { get; set; }
+        public DateTime TransactionDate { get; set; }
+        public double Debit { get; set; }
+        public double Credit { get; set; }
+        public string Comment { get; set; }
+        public string AccountHolderName { get; set; }
+        public string AccountHolderAddress { get; set; }
+        public double Balance { get; set; }
+        public string TType { get; set; }
     }
 }

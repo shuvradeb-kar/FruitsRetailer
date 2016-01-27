@@ -18,7 +18,7 @@ namespace FruitsRetailer.Server.DataAccess
         }
 
         public void SaveCashBook(CashBook cashBook)
-        {
+        {            
             this._DataContext.CashBooks.Add(cashBook);
             this._DataContext.SaveChanges();
         }
@@ -34,10 +34,17 @@ namespace FruitsRetailer.Server.DataAccess
             param5.Direction = ParameterDirection.Output;
             param5.SqlDbType = SqlDbType.Int;
 
-            var res = _DataContext.Database.SqlQuery<CashBook>("GetCashBookDetail @pageNo, @pageSize, @Count OUT", param2, param3, param5).ToList<CashBook>();
+            var param6 = new SqlParameter();
+            param6.ParameterName = "@PreviousBalance";
+            param6.Direction = ParameterDirection.Output;
+            param6.SqlDbType = SqlDbType.Decimal;
+
+
+            var res = _DataContext.Database.SqlQuery<CashBookView>("GetCashBookDetail @pageNo, @pageSize, @Count OUT, @PreviousBalance OUT", param2, param3, param5, param6).ToList<CashBookView>();
 
             CashBookResult r = new CashBookResult();
             r.Count = Convert.ToInt32(param5.Value);
+            r.PreviousBalance = (DBNull.Value == param6.Value) ? 0 : Convert.ToInt32(param6.Value);
             r.CashBookDetail = res;
             return r;
         }
@@ -46,7 +53,8 @@ namespace FruitsRetailer.Server.DataAccess
         {
             CashBook cash = this._DataContext.CashBooks.Find(cashBook.Id);
             cash.Comment = cashBook.Comment;
-            cash.Amount = cashBook.Amount;
+            cash.Credit = cashBook.Credit;
+            cash.Debit = cashBook.Debit;
             cash.AccountNumber = cashBook.AccountNumber;
             cash.TransactionDate = cash.TransactionDate;
             cash.TransactionType = cashBook.TransactionType;

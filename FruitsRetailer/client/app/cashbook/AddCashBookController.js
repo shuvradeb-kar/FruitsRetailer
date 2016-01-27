@@ -61,7 +61,7 @@
         }
 
         vm.ValidateStockAndSave = function () {            
-            if (vm.CashBook.Amount === null || vm.CashBook.Amount === undefined || isNaN(vm.CashBook.Amount)) {
+            if (vm.Amount === null || vm.Amount === undefined || isNaN(vm.Amount)) {
                 vm.AmountInfo = "Please enter amount";
                 vm.IsAmountEmpty = true;
                 return false;
@@ -80,6 +80,15 @@
                 vm.CashBook.IsPayment = true;
             }
             vm.CashBook.TransactionType = vm.SelectedItem.Id;
+
+            if (vm.CashBook.IsPayment) {
+                vm.CashBook.Credit = vm.Amount;
+                vm.CashBook.Debit = 0;
+            }
+            else {
+                vm.CashBook.Debit = vm.Amount;
+                vm.CashBook.Credit = 0;
+            }
             return true;
         }
 
