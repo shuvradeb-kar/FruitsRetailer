@@ -22,10 +22,16 @@
             getAllActiveProduct: getAllActiveProduct,
             getAccountList: getAccountList,
             saveCashBook: saveCashBook,
-            getCashBookDetail: getCashBookDetail
+            getCashBookDetail: getCashBookDetail,
+            deleteCashBook: deleteCashBook
         };
         return service;
 
+        function deleteCashBook(cashBookId)
+        {
+            var request = $http.delete('/Server/Controller/CashBook?cashBookId=' + cashBookId);
+            return request.then(handleSuccess, handleError);
+        }
         function getCashBookDetail(pageNo, pageSize) {
             var request = $http.get('/Server/Controller/CashBook?pageNo=' + pageNo + '&pageSize=' + pageSize);
             return request.then(handleSuccess, handleError);

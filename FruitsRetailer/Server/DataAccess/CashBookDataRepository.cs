@@ -23,6 +23,13 @@ namespace FruitsRetailer.Server.DataAccess
             this._DataContext.SaveChanges();
         }
 
+        public void DeleteCashBook(int cashBookId)
+        {
+            CashBook cashBook = this._DataContext.CashBooks.Find(cashBookId);
+            this._DataContext.CashBooks.Remove(cashBook);
+            this._DataContext.SaveChanges();            
+        }
+
         public CashBookResult GetCashBookDetail(int pageNo, int pageSize)
         {
             var param2 = new SqlParameter("@pageNo", pageNo);
@@ -56,8 +63,9 @@ namespace FruitsRetailer.Server.DataAccess
             cash.Credit = cashBook.Credit;
             cash.Debit = cashBook.Debit;
             cash.AccountNumber = cashBook.AccountNumber;
-            cash.TransactionDate = cash.TransactionDate;
+            cash.TransactionDate = cashBook.TransactionDate;
             cash.TransactionType = cashBook.TransactionType;
+            cash.IsPayment = cashBook.IsPayment;
             _DataContext.SaveChanges();            
         }
 

@@ -15,7 +15,12 @@ namespace FruitsRetailer.Server.Controller
         public CashBookController() {
             _CashBookDataRepository = new CashBookDataRepository();
         }
-
+        [HttpDelete]
+        public void DeleteCashBook(int cashBookId)
+        {
+            _CashBookDataRepository.DeleteCashBook(cashBookId);
+        }
+        [HttpGet]
         public CashBookResult GetCashBookDetail(int pageNo, int pageSize)
         {
             CashBookResult res = _CashBookDataRepository.GetCashBookDetail(pageNo, pageSize);

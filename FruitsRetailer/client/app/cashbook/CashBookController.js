@@ -37,7 +37,7 @@
             enableVerticalScrollbar: uiGridConstants.scrollbars.ALWAYS,
             columnDefs: [                
                 {
-                    name: 'TransactionDate', displayName: 'Date', width:100, enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD}}</div>'
+                    name: 'TransactionDate', displayName: 'Date', width: 100, enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD | date:"yyyy-MM-dd"}}</div>'
                 },
                 {
                     name: 'AccountHolderName', displayName: 'Name', enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD}}</div>'
@@ -61,17 +61,17 @@
                     name: 'Balance', width: 140, displayName: 'Balance', enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD | currency}}</div>'
                 },
                 {
-                    name: ' ', width: 80, enableFiltering: false, cellTemplate: '<div style="text-align:center;padding-top:3px;"><a ng-click="grid.appScope.EditCashBook(row.entity)" style="margin-right:3px;" class="btn btn-warning btn-xs">Edit</a></div>'
+                    name: ' ', width: 120, enableFiltering: false, cellTemplate: '<div style="text-align:center;padding-top:3px;"><a ng-click="grid.appScope.EditCashBook(row.entity)" style="margin-right:3px;" class="btn btn-warning btn-xs">Edit</a><a ng-click="grid.appScope.DeleteCashBook(row.entity)" class="btn btn-danger btn-xs">Delete</a></div>'
                 }
             ],
         };        
 
         $scope.EditCashBook = function (entity)
         {
-            $state.go('editCashBook', { cashbook: { Id: entity.Id, AccountNumber: entity.AccountNumber, IsPayment: entity.IsPayment, TransactionType: entity.TransactionType, TransactionDate: entity.TransactionDate, Debit: entity.Debit, Credit: entity.Credit, Comment: entity.Comment } });
+            $state.go('editCashBook', { cashbook: { Id: entity.Id, AccountNumber: entity.AccountNumber, IsPayment: entity.IsPayment, TransactionType: entity.TransactionType, TransactionDate:new Date(entity.TransactionDate), Debit: entity.Debit, Credit: entity.Credit, Comment: entity.Comment } });
         }
 
-        $scope.DeleteProduct = function (entity)
+        $scope.DeleteCashBook = function (entity)
         {
             var setting = {
                 Id: entity.Id
@@ -89,7 +89,7 @@
             });
 
             modalInstance.result.then(function (selectedItem) {
-                FruitsRetailerService.deleteProduct(selectedItem).then(function (data) {
+                FruitsRetailerService.deleteCashBook(selectedItem).then(function (data) {
                     init(1, vm.PageSize);
                 });
                 
