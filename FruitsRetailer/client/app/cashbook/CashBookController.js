@@ -37,7 +37,7 @@
             enableVerticalScrollbar: uiGridConstants.scrollbars.ALWAYS,
             columnDefs: [                
                 {
-                    name: 'TransactionDate', displayName: 'Date', width:100, enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD | date:"yyyy-MM-dd"}}</div>'
+                    name: 'TransactionDate', displayName: 'Date', width:100, enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD}}</div>'
                 },
                 {
                     name: 'AccountHolderName', displayName: 'Name', enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD}}</div>'
@@ -46,30 +46,30 @@
                     name: 'AccountHolderAddress', displayName: 'Address', enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD}}</div>'
                 },
                 {
-                    name: 'TType', displayName: 'Transaction Type', enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD}}</div>'
+                    name: 'TType', width:80, displayName: 'T. Type', enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD}}</div>'
                 },
                 {
                     name: 'Comment', displayName: 'Comment', enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD}}</div>'
                 },
                 {
-                    name: 'Debit', displayName: 'Debit', enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD | currency}}</div>'
+                    name: 'Debit', width: 135, displayName: 'Debit', enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD | currency}}</div>'
                 },
                 {
-                    name: 'Credit', displayName: 'Credit', enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD | currency}}</div>'
+                    name: 'Credit', width: 135, displayName: 'Credit', enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD | currency}}</div>'
                 },
                 {
-                    name: 'Balance', displayName: 'Balance', enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD | currency}}</div>'
+                    name: 'Balance', width: 140, displayName: 'Balance', enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD | currency}}</div>'
                 },
                 {
-                    name: ' ', width: 80, enableFiltering: false, cellTemplate: '<div style="text-align:center;padding-top:3px;"><a ng-click="grid.appScope.EditProduct(row.entity)" style="margin-right:3px;" class="btn btn-warning btn-xs">Edit</a></div>'
+                    name: ' ', width: 80, enableFiltering: false, cellTemplate: '<div style="text-align:center;padding-top:3px;"><a ng-click="grid.appScope.EditCashBook(row.entity)" style="margin-right:3px;" class="btn btn-warning btn-xs">Edit</a></div>'
                 }
             ],
         };        
 
-        $scope.EditProduct = function (entity)
+        $scope.EditCashBook = function (entity)
         {
-            $state.go('editProduct', { product: { Id: entity.Id, Name: entity.Name, Code: entity.Code, Quantity: entity.Quantity } });
-        }        
+            $state.go('editCashBook', { cashbook: { Id: entity.Id, AccountNumber: entity.AccountNumber, IsPayment: entity.IsPayment, TransactionType: entity.TransactionType, TransactionDate: entity.TransactionDate, Debit: entity.Debit, Credit: entity.Credit, Comment: entity.Comment } });
+        }
 
         $scope.DeleteProduct = function (entity)
         {

@@ -34,7 +34,7 @@
         vm.SelectedAcNumber = function (value) {
             if (arguments.length) {
                 _selected = value;                
-                var found = $filter('getById')(vm.AccountList, _selected);
+                var found = $filter('getByAccountNumber')(vm.AccountList, _selected);
                 if (found !== null) {
                     vm.CashBook.AccountNumber = found.AccountNumber;
                     vm.AccountHolderName = found.Name;
@@ -55,7 +55,7 @@
             if(vm.ValidateStockAndSave())
             {
                 FruitsRetailerService.saveCashBook(vm.CashBook).then(function (data) {
-                
+                    vm.GoBackToCashBook();
                 });
             }
         }

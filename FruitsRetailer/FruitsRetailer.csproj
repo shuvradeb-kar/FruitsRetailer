@@ -130,6 +130,7 @@
     <Content Include="Client\app\cashbook\AddCashBookController.js" />
     <Content Include="Client\app\cashbook\EditCashBookController.js" />
     <Content Include="Client\app\directives\angular-loading-spinner.js" />
+    <Content Include="Client\app\filters\FruitsCustomFilters.js" />
     <Content Include="Client\app\purchase\ConfirmationWindow.html" />
     <Content Include="Client\app\purchase\ConfirmationWindowController.js" />
     <Content Include="Client\app\purchase\EditWholesalerController.js" />
