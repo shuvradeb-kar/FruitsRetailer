@@ -248,6 +248,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Server\Controller\CashBookController.cs" />
+    <Compile Include="Server\Controller\CommonController.cs" />
     <Compile Include="Server\Controller\LoginController.cs" />
     <Compile Include="Server\Controller\StockController.cs" />
     <Compile Include="Server\Controller\WholesalerController.cs" />
