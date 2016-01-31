@@ -67,11 +67,14 @@
                 <button type="submit" class="btn btn-success" data-ng-click="login()">LOGIN</button>
             </div>
         </div>
-        <div class="create-account">
+    <div class="danger alert-danger">
+        {{vm.LoginErrorInfo}}
+    </div>
+        <!--<div class="create-account">
             <p>
-                <a> CREATE AN ACCOUNT</a>
+                <a ui-sref="createaccount"> CREATE AN ACCOUNT</a>
             </p>
-        </div>
+        </div>-->
 </form>
 </div>
 </div>

@@ -134,6 +134,8 @@
     <Content Include="Client\app\directives\FormAutoFillFixDirective.js" />
     <Content Include="Client\app\directives\LoginDialogDirective.js" />
     <Content Include="Client\app\filters\FruitsCustomFilters.js" />
+    <Content Include="Client\app\login\CreateAccount.html" />
+    <Content Include="Client\app\login\CreateAccountController.js" />
     <Content Include="Client\app\login\login.html" />
     <Content Include="Client\app\login\LoginController.js" />
     <Content Include="Client\app\purchase\ConfirmationWindow.html" />

@@ -12,13 +12,21 @@ namespace FruitsRetailer.Server.Controller
         [HttpPost]
         public UserView Login(LogingCredential logingCredential)
         {
-            return new UserView { Role = UserAccessType.Guest, UserId = 20, Name = "Shuvro Kar", SessionId = '1' };
+            UserView view = new UserView { Role = UserAccessType.Guest, UserId = 20, Name = "Shuvro Kar", SessionId = '1', Password="qwerty", UserName="shuvro83@gmail.com" };
+            if (view.UserName == logingCredential.UserName && view.Password == logingCredential.Password)
+            {
+                view.IsAuthenticated = true; view.Password = string.Empty;
+                return view;
+            }
+            view.IsAuthenticated = false;
+            view.Password = string.Empty;
+            return view;
         }
     }
 
     public class LogingCredential
     {
         public string UserName { get; set; }
-        public string Passsword { get; set; }
+        public string Password { get; set; }
     }
 }

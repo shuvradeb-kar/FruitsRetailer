@@ -12,6 +12,12 @@ var FruitsRetailerApp = angular.module('FruitsRetailerApp', ['ui.router', 'ui.gr
             controllerAs: 'vm',
             templateUrl: '/client/app/login/login.html'
         })
+        .state('createaccount', {
+            url: "/createaccount",
+            controller: 'CreateAccountController',
+            controllerAs: 'vm',
+            templateUrl: '/client/app/login/CreateAccount.html'
+        })
      .state('home', {
          url: "/home",
          controller: 'DashboardController',
@@ -60,8 +66,6 @@ var FruitsRetailerApp = angular.module('FruitsRetailerApp', ['ui.router', 'ui.gr
             controllerAs: 'vm',
             templateUrl: '/client/app/purchase/AddNewWholesaler.html'
         })
-
-
     .state('sell', {
         url: "/sell",
         controller: 'SellsListController',
@@ -124,18 +128,23 @@ var FruitsRetailerApp = angular.module('FruitsRetailerApp', ['ui.router', 'ui.gr
 })
 .run(function ($rootScope, AuthenticationService, $state) {
     $rootScope.$on('$stateChangeStart', function (event, next) {
-        var authorizedRoles = next.authorizedRoles;        
-        if (!AuthenticationService.isAuthorized(authorizedRoles)) {
-            if (AuthenticationService.isAuthenticated()) {
+            var authorizedRoles = next.authorizedRoles;
+            if (!AuthenticationService.isAuthorized(authorizedRoles)) {
+                if (AuthenticationService.isAuthenticated()) {
                 }
-            else
-            {
-                if ($state.current.name === 'login') {
-                    $state.transitionTo("login", null, { notify: true });
-                    event.preventDefault();
+                else {
+                    
+                    if ($state.current.name === 'login') {
+                        //if (next.name === "createaccount") {
+                        //    $state.transitionTo("createaccount", null, { notify: true });
+                        //    event.preventDefault();
+                        //}
+
+                        $state.transitionTo("login", null, { notify: true });
+                        event.preventDefault();
+                    }
+
                 }
             }
-            
-        }
     });
 });
