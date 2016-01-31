@@ -145,6 +145,8 @@
     <Content Include="Client\app\purchase\EditPurchaseController.js" />
     <Content Include="Client\app\purchase\WholesalerListController.js" />
     <Content Include="Client\app\purchase\WholesalerList.html" />
+    <Content Include="Client\app\report\Report.html" />
+    <Content Include="Client\app\report\ReportController.js" />
     <Content Include="Client\app\services\AuthenticationService.js" />
     <Content Include="Client\app\services\AuthInterceptorFactory.js" />
     <Content Include="Client\app\services\SessionService.js" />

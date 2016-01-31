@@ -110,6 +110,12 @@ var FruitsRetailerApp = angular.module('FruitsRetailerApp', ['ui.router', 'ui.gr
         controller: 'EditCashBookController',
         controllerAs: 'vm',
         templateUrl: '/client/app/cashbook/AddCashBook.html'
+    })
+    .state('report', {
+        url: "/report",
+        controller: 'ReportController',
+        controllerAs: 'vm',
+        templateUrl: '/client/app/report/Report.html'
     });
 }])
 .constant('USER_ROLES', {
