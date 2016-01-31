@@ -126,11 +126,16 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Client\app\ApplicationController.js" />
     <Content Include="Client\app\cashbook\AddCashBook.html" />
     <Content Include="Client\app\cashbook\AddCashBookController.js" />
     <Content Include="Client\app\cashbook\EditCashBookController.js" />
     <Content Include="Client\app\directives\angular-loading-spinner.js" />
+    <Content Include="Client\app\directives\FormAutoFillFixDirective.js" />
+    <Content Include="Client\app\directives\LoginDialogDirective.js" />
     <Content Include="Client\app\filters\FruitsCustomFilters.js" />
+    <Content Include="Client\app\login\login.html" />
+    <Content Include="Client\app\login\LoginController.js" />
     <Content Include="Client\app\purchase\ConfirmationWindow.html" />
     <Content Include="Client\app\purchase\ConfirmationWindowController.js" />
     <Content Include="Client\app\purchase\EditWholesalerController.js" />
@@ -138,6 +143,9 @@
     <Content Include="Client\app\purchase\EditPurchaseController.js" />
     <Content Include="Client\app\purchase\WholesalerListController.js" />
     <Content Include="Client\app\purchase\WholesalerList.html" />
+    <Content Include="Client\app\services\AuthenticationService.js" />
+    <Content Include="Client\app\services\AuthInterceptorFactory.js" />
+    <Content Include="Client\app\services\SessionService.js" />
     <Content Include="Client\app\stock\AddStock.html" />
     <Content Include="Client\app\stock\AddStockController.js" />
     <Content Include="Client\app\stock\EditStockController.js" />
@@ -236,6 +244,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Server\Controller\CashBookController.cs" />
+    <Compile Include="Server\Controller\LoginController.cs" />
     <Compile Include="Server\Controller\StockController.cs" />
     <Compile Include="Server\Controller\WholesalerController.cs" />
     <Compile Include="Server\DataAccess\BaseRepository.cs" />

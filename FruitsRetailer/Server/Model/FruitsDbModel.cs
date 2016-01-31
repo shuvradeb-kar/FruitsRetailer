@@ -70,4 +70,17 @@ namespace FruitsRetailer.Server.Model
         public double Credit { get; set; }
         public string Comment { get; set; }        
     }
+
+    [Table("User")]
+    public class User : IEntity
+    {
+        [Key]
+        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string LoginUserName { get; set; }
+        public string Password { get; set; }
+        public UserAccessType Access { get; set; }        
+    }
 }

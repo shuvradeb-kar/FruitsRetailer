@@ -20,4 +20,10 @@ namespace FruitsRetailer.Server.Model
         Bkash = 4,
         Others = 5
     }
+
+    public enum UserAccessType
+    {
+        Admin = 1,
+        Guest = 2
+    }
 }

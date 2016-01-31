@@ -67,4 +67,12 @@ namespace FruitsRetailer.Server.Model
         public double Balance { get; set; }
         public string TType { get; set; }
     }
+
+    public class UserView
+    {
+        public int SessionId { get; set; }
+        public int UserId { get; set; }
+        public string Name { get; set; }
+        public UserAccessType Role { get; set; }
+    }
 }

@@ -32,9 +32,9 @@
         }
     </style>
 </head>
-<body data-ng-app="FruitsRetailerApp">    
+<body data-ng-app="FruitsRetailerApp" data-ng-controller="ApplicationController">    
     <nav class="navbar navbar-inverse" role="navigation">
-        <div class="container-fluid">
+        <div ng-if="currentUser != null && currentUser != undefined" class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                     <span class="icon-bar"></span>
@@ -45,31 +45,29 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li><a ui-sref="wholesale">Purchase</a></li>
-                    <!--<li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown">
-                            Purchase
-                            <i class="fa fa-angle-down"></i>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a ui-sref="purchase">Purchase List</a></li>
-                            <li><a ui-sref="wholesale">Wholesaler List</a></li>
-                        </ul>
-                    </li>-->
+                    <li><a ui-sref="wholesale">Purchase</a></li>                    
                     <li><a ui-sref="sell">Sell</a></li>
                     <li><a ui-sref="stock">Stock</a></li>
                     <li><a ui-sref="cashbook">Cash Book</a></li>
                 </ul>
-                <!--<ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                </ul>-->
+                <ul class="nav navbar-nav navbar-right">                    
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" style="background-color:inherit;">
+                            Welcome, {{ currentUser.Name }}
+                        <i class="fa fa-angle-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="" ng-click="doLogout()">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
-        </div>
+        </div>        
+        
     </nav>
     <div class="container container-full"> 
         <span us-spinner="{radius:30, width:8, length: 16}"></span>       
-        <div ui-view></div>
+        <div ui-view></div>        
     </div>
 
     <!--Library-->
@@ -87,6 +85,7 @@
     <script src="../Scripts/angular-locale_bn-bd.js"></script>
     <!--Retailer-->    
     <script src="/client/app/Fruits.Retailer.App.js"></script>
+    <script src="/Client/app/ApplicationController.js"></script>
     <script src="/client/app/dashboard/DashboardController.js"></script>
     
     <script src="/client/app/purchase/WholesalerTransactionDetailController.js"></script>
@@ -104,9 +103,18 @@
     <script src="/client/app/cashbook/CashBookController.js"></script>
     <script src="/Client/app/cashbook/AddCashBookController.js"></script>
     <script src="/Client/app/cashbook/EditCashBookController.js"></script>
+
+    <!--Login-->
+    <script src="/Client/app/services/AuthInterceptorFactory.js"></script>
+    
+    <script src="/Client/app/services/SessionService.js"></script>
+    <script src="/Client/app/services/AuthenticationService.js"></script>
+    <script src="/Client/app/login/LoginController.js"></script>
     
     <!--directives-->
     <script src="/Client/app/directives/angular-loading-spinner.js"></script>
+    <script src="/Client/app/directives/FormAutoFillFixDirective.js"></script>
+    <script src="/Client/app/directives/LoginDialogDirective.js"></script>
 
     <!--Filters-->
     <script src="/Client/app/filters/FruitsCustomFilters.js"></script>

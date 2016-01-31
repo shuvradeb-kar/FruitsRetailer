@@ -1,9 +1,17 @@
 ﻿
-var FruitsRetailerApp = angular.module( 'FruitsRetailerApp', ['ui.router', 'ui.grid', 'ui.bootstrap', 'ui.grid.pagination', 'ngLoadingSpinner'] )
-.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise("/home");
-
+var FruitsRetailerApp = angular.module('FruitsRetailerApp', ['ui.router', 'ui.grid', 'ui.bootstrap', 'ui.grid.pagination', 'ngLoadingSpinner'])
+.config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES', '$httpProvider', function ($stateProvider, $urlRouterProvider, USER_ROLES, $httpProvider) {
+    $urlRouterProvider.otherwise("/login");
+    $httpProvider.interceptors.push(['$injector', function ($injector) {
+        return $injector.get('AuthInterceptor');
+    }]);
     $stateProvider
+        .state('login', {
+            url: "/login",
+            controller: 'LoginController',
+            controllerAs: 'vm',
+            templateUrl: '/client/app/login/login.html'
+        })
      .state('home', {
          url: "/home",
          controller: 'DashboardController',
@@ -23,7 +31,8 @@ var FruitsRetailerApp = angular.module( 'FruitsRetailerApp', ['ui.router', 'ui.g
             params: { whoseller: null, transaction: null },
             controller: 'EditPurchaseController',
             controllerAs: 'vm',
-            templateUrl: '/client/app/purchase/AddNewPurchase.html'
+            templateUrl: '/client/app/purchase/AddNewPurchase.html',
+            authorizedRoles: [USER_ROLES.admin, USER_ROLES.editor]
         })
         .state('addpurchase', {
             url: "/addpurchase",
@@ -32,26 +41,26 @@ var FruitsRetailerApp = angular.module( 'FruitsRetailerApp', ['ui.router', 'ui.g
             controllerAs: 'vm',
             templateUrl: '/client/app/purchase/AddNewPurchase.html'
         })
-        .state( 'wholesale', {
+        .state('wholesale', {
             url: "/wholesale",
             controller: 'WholesalerListController',
             controllerAs: 'vm',
             templateUrl: '/client/app/purchase/WholesalerList.html'
-        } )
+        })
     .state('addwhoseller', {
         url: "/addwhoseller",
         controller: 'AddWholesalerController',
         controllerAs: 'vm',
         templateUrl: '/client/app/purchase/AddNewWholesaler.html'
-    } )
-        .state( 'editwhoseller', {
+    })
+        .state('editwhoseller', {
             url: "/editwhoseller",
             params: { whoseller: null },
             controller: 'EditWholesalerController',
             controllerAs: 'vm',
             templateUrl: '/client/app/purchase/AddNewWholesaler.html'
-        } )
-        
+        })
+
 
     .state('sell', {
         url: "/sell",
@@ -74,7 +83,7 @@ var FruitsRetailerApp = angular.module( 'FruitsRetailerApp', ['ui.router', 'ui.g
         })
         .state('editProduct', {
             url: "/editproduct",
-            params: {product: null},
+            params: { product: null },
             controller: 'EditStockController',
             controllerAs: 'vm',
             templateUrl: '/client/app/stock/AddStock.html'
@@ -98,5 +107,35 @@ var FruitsRetailerApp = angular.module( 'FruitsRetailerApp', ['ui.router', 'ui.g
         controllerAs: 'vm',
         templateUrl: '/client/app/cashbook/AddCashBook.html'
     });
-}]);
-
+}])
+.constant('USER_ROLES', {
+    all: '*',
+    admin: 'admin',
+    editor: 'editor',
+    guest: 'guest'
+})
+.constant('AUTH_EVENTS', {
+    loginSuccess: 'auth-login-success',
+    loginFailed: 'auth-login-failed',
+    logoutSuccess: 'auth-logout-success',
+    sessionTimeout: 'auth-session-timeout',
+    notAuthenticated: 'auth-not-authenticated',
+    notAuthorized: 'auth-not-authorized'
+})
+.run(function ($rootScope, AuthenticationService, $state) {
+    $rootScope.$on('$stateChangeStart', function (event, next) {
+        var authorizedRoles = next.authorizedRoles;        
+        if (!AuthenticationService.isAuthorized(authorizedRoles)) {
+            if (AuthenticationService.isAuthenticated()) {
+                }
+            else
+            {
+                if ($state.current.name === 'login') {
+                    $state.transitionTo("login", null, { notify: true });
+                    event.preventDefault();
+                }
+            }
+            
+        }
+    });
+});
