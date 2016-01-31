@@ -54,15 +54,13 @@
             enableVerticalScrollbar: uiGridConstants.scrollbars.ALWAYS,
             columnDefs: [
                 {
-                    name: 'AccountNumber', displayName: 'Account Number',
+                    name: 'AccountNumber', enableFiltering: false, displayName: 'Account Number',
                     cellTemplate: '<div class="ui-grid-cell-contents"><a  style="cursor:pointer" ng-click="grid.appScope.GetWholesalerDetail(row.entity)">{{COL_FIELD}}</a></div>'
                 },
                 {
                     name: 'Name', displayName: 'Name', enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents wordbreak">{{COL_FIELD}}</div>'
                 },
-                {
-                    name: 'Address', displayName: 'Address', enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents wordbreak">{{COL_FIELD}}</div>'
-                },
+                
                 {
                     name: 'Balance', displayName: 'Balance', enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents wordbreak">{{COL_FIELD | currency}}</div>'
                 }
