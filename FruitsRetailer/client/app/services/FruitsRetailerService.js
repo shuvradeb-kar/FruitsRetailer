@@ -23,9 +23,15 @@
             getAccountList: getAccountList,
             saveCashBook: saveCashBook,
             getCashBookDetail: getCashBookDetail,
-            deleteCashBook: deleteCashBook
+            deleteCashBook: deleteCashBook,
+            getCustomeLabelValues: getCustomeLabelValues
         };
         return service;
+
+        function getCustomeLabelValues() {
+            var request = $http.get('/Server/Controller/Common');
+            return request.then(handleSuccess, handleError);
+        }
 
         function deleteCashBook(cashBookId)
         {

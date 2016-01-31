@@ -8,43 +8,15 @@
     <link href="../Content/font-awesome.css" rel="stylesheet" />
     <link href="../Content/ui-grid.css" rel="stylesheet" />    
     <link href="../Content/ui-bootstrap-csp.css" rel="stylesheet" />
+    <link href="app/css/FruitsCustomCss.css" rel="stylesheet" />
+    <script type="text/javascript">
+        $(window).resize(function () {
+            $('.container').height($(window).height() - 50);
+        });
+
+        $(window).trigger('resize');
+    </script>
     
-    <style type="text/css">
-        body, label, textarea, table, option, select, input, button {            
-            font-family: Verdana;            
-        }
-        .wholesalerGrid {           
-            height: 500px;
-        }        
-        .productGrid {
-            height:500px;                       
-        }        
-        .page-header {
-            margin:20px 0 20px;
-        }
-        .container-full
-        {
-            margin: 0 auto;
-            width: 100%;
-        }
-        .CashBookGrid{
-            height: 500px;
-        }
-        .navbar-inverse {
-            background-color: #0067B8;
-            border-color: #0067B8;
-            color:white !important;
-        }
-        .navbar-brand{
-            color:white !important;
-        }
-        .navbar-inverse .navbar-nav > li > a{
-            color:white !important;
-        }
-        .navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus{
-            color:lightgray !important;
-        }
-    </style>
 </head>
 <body data-ng-app="FruitsRetailerApp" data-ng-controller="ApplicationController">    
     <nav class="navbar navbar-inverse" role="navigation">
@@ -55,7 +27,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" ui-sref="home"><i style="font-size:30px;" class="fa fa-apple"></i> </a>
+                <a class="navbar-brand" ui-sref="home">Home</a>
+                <!--<img src="../image/logo.png" />-->
             </div>
             <div ng-if="currentUser != null && currentUser != undefined"  class="collapse navbar-collapse navbar-right" id="myNavbar">
                 <ul class="nav navbar-nav">

@@ -10,7 +10,7 @@ namespace FruitsRetailer.Server.Controller
     public class CommonController : ApiController
     {
         [HttpGet]
-        public Dictionary<string, string> GetCustomeValues() {
+        public Dictionary<string, string> GetCustomeLabelValues() {
             Dictionary<string, string> list = new Dictionary<string, string>();
 
             list.Add("CompanyName", FruitsHelper.CompanyName);

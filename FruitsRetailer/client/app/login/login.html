@@ -1,6 +1,6 @@
 ﻿
 <style type="text/css">
-    .loginForm {
+    /*.loginForm {
         background-color: lightgray;     
         min-height: 200px;
         padding: 20px;
@@ -32,54 +32,47 @@
         .create-account a {
             display: inline-block;
             margin-top: 5px;
-        }
+        }*/
 
 </style>
 
 
-<div class="row" style="background-color:lightgray;">
-    <div class="col-md-6">
-        <h1><strong> নাহার ট্রেডার্স</strong></h1>
-        <h6>যাবতীয় দেশী-বিদেশী কাচাঁ পাকা ফলের আড়ৎ ও কমিশন এজেন্ট</h6>
+<div class="row" style="background-color: lightgray; background-image: url('../../../image/fruit-basket_png_one.png'); background-size:cover; background-repeat:no-repeat; height:100%;">    
+    <div class="col-md-6 text-center"> 
+        <h1><strong> {{vm.CompanyName}}</strong></h1>       
+        <h5><strong>{{vm.CompanyProprietor}}</strong></h5>
+        <h6> <strong>{{vm.CompanySlogan}}</strong></h6>
+        <h6><strong>{{vm.CompanyAddress}}</strong></h6>
+        <h6><strong>{{vm.ProprietorContactNumber}}</strong></h6>
     </div>
     <div class="col-md-6">
-    <form class="form-vertical loginForm" role="form">
-    <div>
-        <h2 class="form-title">Sign In</h2>
-    </div>
-        <div class="form-group">
-            <label class="control-label" for="email">Username:</label>
-            <div>
-                <input type="email" class="form-control" id="email" placeholder="Enter Username" ng-model="credentials.UserName">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="pwd">Password:</label>
-            <div>
-                <input type="password" class="form-control" id="pwd" placeholder="Enter password" ng-model="credentials.Password">
-            </div>
-        </div>
-        <!--<div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <div class="checkbox">
-                    <label><input type="checkbox"> Remember me</label>
+        <form class="form-vertical loginForm" role="form">          
+            <div class="form-group">
+                <label class="control-label" for="email">Username:</label>
+                <div>
+                    <input type="email" class="form-control" id="email" placeholder="Enter Username" ng-model="credentials.UserName">
                 </div>
             </div>
-        </div>-->
-        <div class="form-group">
-            <div>
-                <button type="submit" class="btn btn-success" data-ng-click="login()">LOGIN</button>
+            <div class="form-group">
+                <label class="control-label" for="pwd">Password:</label>
+                <div>
+                    <input type="password" class="form-control" id="pwd" placeholder="Enter password" ng-model="credentials.Password">
+                </div>
+            </div>            
+            <div class="form-group">
+                <div>
+                    <button type="submit" class="btn btn-success" data-ng-click="login()">LOGIN</button>
+                </div>
             </div>
+        <div class="danger alert-danger">
+            {{vm.LoginErrorInfo}}
         </div>
-    <div class="danger alert-danger">
-        {{vm.LoginErrorInfo}}
+            <!--<div class="create-account">
+                <p>
+                    <a ui-sref="createaccount"> CREATE AN ACCOUNT</a>
+                </p>
+            </div>-->
+    </form>
     </div>
-        <!--<div class="create-account">
-            <p>
-                <a ui-sref="createaccount"> CREATE AN ACCOUNT</a>
-            </p>
-        </div>-->
-</form>
-</div>
     
 </div>
