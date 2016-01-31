@@ -1,44 +1,14 @@
 ﻿
-<style type="text/css">
-    /*.loginForm {
-        background-color: lightgray;     
-        min-height: 200px;
+<style type="text/css">   
+    .loginForm {
         padding: 20px;
-        max-width:400px;
+        margin-left:20%;
     }
-    .form-title {       
-        text-align: center;
-        font-size: 28px;
-        font-weight: 400 !important;
-        margin-bottom: 25px;
-    }
-    .create-account {        
-        padding: 15px 0 17px 0;
-        text-align: center;
-        background-color: #6c7a8d;
-        -webkit-border-radius: 0 0 7px 7px;
-        -moz-border-radius: 0 0 7px 7px;
-        -ms-border-radius: 0 0 7px 7px;
-        -o-border-radius: 0 0 7px 7px;
-        border-radius: 0 0 7px 7px;
-    }
-
-        .create-account p a {
-            font-weight: 600;
-            font-size: 14px;
-            color: #c3cedd;
-        }
-
-        .create-account a {
-            display: inline-block;
-            margin-top: 5px;
-        }*/
-
 </style>
 
 
-<div class="row" style="background-color: lightgray; background-image: url('../../../image/fruit-basket_png_one.png'); background-size:cover; background-repeat:no-repeat; height:100%;">    
-    <div class="col-md-6 text-center"> 
+<div id="loginContainer" class="row" style="background-color: lightgray; background-image: url('../../../image/fruit-basket_png_one.png'); background-repeat:no-repeat; background-position:center; background-size:contain">    
+    <div class="col-md-6 text-center" style="color:#006762;"> 
         <h1><strong> {{vm.CompanyName}}</strong></h1>       
         <h5><strong>{{vm.CompanyProprietor}}</strong></h5>
         <h6> <strong>{{vm.CompanySlogan}}</strong></h6>
@@ -46,32 +16,30 @@
         <h6><strong>{{vm.ProprietorContactNumber}}</strong></h6>
     </div>
     <div class="col-md-6">
-        <form class="form-vertical loginForm" role="form">          
-            <div class="form-group">
-                <label class="control-label" for="email">Username:</label>
-                <div>
-                    <input type="email" class="form-control" id="email" placeholder="Enter Username" ng-model="credentials.UserName">
+        <form class="form-vertical loginForm" role="form"> 
+            <div class="row">
+                <div class="form-group col-md-6">                  
+                        <label class="control-label" for="email">Username:</label>
+                        <div>
+                            <input type="email" class="form-control" id="email" placeholder="Enter Username" ng-model="credentials.UserName">
+                        </div>
+                               
                 </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label" for="pwd">Password:</label>
-                <div>
-                    <input type="password" class="form-control" id="pwd" placeholder="Enter password" ng-model="credentials.Password">
+                <div class="form-group col-md-6">
+                    <label class="control-label" for="pwd">Password:</label>
+                    <div>
+                        <input type="password" class="form-control" id="pwd" placeholder="Enter password" ng-model="credentials.Password">
+                    </div>
                 </div>
-            </div>            
-            <div class="form-group">
-                <div>
+                <div class="danger col-md-12 text-right">
+                    {{vm.LoginErrorInfo}}
+                </div>
+                <div class="form-group col-md-12 text-right">
                     <button type="submit" class="btn btn-success" data-ng-click="login()">LOGIN</button>
                 </div>
-            </div>
-        <div class="danger alert-danger">
-            {{vm.LoginErrorInfo}}
-        </div>
-            <!--<div class="create-account">
-                <p>
-                    <a ui-sref="createaccount"> CREATE AN ACCOUNT</a>
-                </p>
-            </div>-->
+               
+                </div>
+           
     </form>
     </div>
     

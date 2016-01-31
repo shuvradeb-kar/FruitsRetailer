@@ -3,9 +3,9 @@
         .module('FruitsRetailerApp')
         .controller('LoginController', LoginController);
 
-    LoginController.$inject = ['$rootScope', '$scope', 'AUTH_EVENTS', 'AuthenticationService', 'SessionService', '$state', 'FruitsRetailerService'];
+    LoginController.$inject = ['$rootScope', '$scope', 'AUTH_EVENTS', 'AuthenticationService', 'SessionService', '$state', 'FruitsRetailerService', '$window'];
 
-    function LoginController($rootScope, $scope, AUTH_EVENTS, AuthenticationService, SessionService, $state, FruitsRetailerService) {
+    function LoginController($rootScope, $scope, AUTH_EVENTS, AuthenticationService, SessionService, $state, FruitsRetailerService, $window) {
         var vm = this;
         vm.LoginErrorInfo = "";
         $scope.credentials = {
@@ -38,7 +38,10 @@
                 vm.ProprietorContactNumber = label.ProprietorContactNumber;
             });
 
+            var winHeight = $(window).height();
            
+            $('#loginContainer').height(winHeight - 75);
+            console.log(winHeight);
         }
     }
 })();

@@ -3,9 +3,9 @@
         .module('FruitsRetailerApp')
         .controller('ApplicationController', ApplicationController);
 
-    ApplicationController.$inject = ['$scope', 'USER_ROLES', 'AuthenticationService', '$state', 'SessionService'];
+    ApplicationController.$inject = ['$scope', 'USER_ROLES', 'AuthenticationService', '$state', 'SessionService', '$window'];
 
-    function ApplicationController($scope, USER_ROLES, AuthenticationService, $state, SessionService) {
+    function ApplicationController($scope, USER_ROLES, AuthenticationService, $state, SessionService, $window) {
         var vm = this;
         $scope.currentUser = null;
         $scope.userRoles = USER_ROLES;
@@ -19,5 +19,9 @@
             $scope.setCurrentUser(null);
             $state.go('login');
         }
+
+        var winHeight = $(window).height();
+        var headerHeight = $("header").height();
+        $('#loginContainer').height(winHeight - 50);
     }
 })();

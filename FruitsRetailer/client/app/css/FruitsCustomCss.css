@@ -1,46 +1,45 @@
 ﻿body, label, textarea, table, option, select, input, button {            
-            font-family: Verdana;   
+    font-family: Verdana;   
                      
-        }
+}
 body{
-    height:100%;
+height:100%;
 }
-.container {
-    background-color:red;
-    height:500px;
+.wholesalerGrid {           
+    height: 500px;
+}        
+.productGrid {
+    height:500px;                       
+}        
+.page-header {
+    margin:20px 0 20px;
 }
-        .wholesalerGrid {           
-            height: 500px;
-        }        
-        .productGrid {
-            height:500px;                       
-        }        
-        .page-header {
-            margin:20px 0 20px;
-        }
-        .container-full
-        {
-            margin: 0 auto;
-            width: 100%;
+.container-full
+{
+    margin: 0 auto;
+    width: 100%;
             
-        }
-        .CashBookGrid{
-            height: 500px;
-        }
-        .navbar-inverse {
-            background-color: #0067B8;
-            border-color: #0067B8;
-            color:white !important;
-        }
-        .navbar-brand{
-            color:white !important;
-        }
-        .navbar-inverse .navbar-nav > li > a{
-            color:white !important;
-        }
-        .navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus{
-            color:lightgray !important;
-        }
-        .container {
-            
-        }
+}
+.CashBookGrid{
+    height: 500px;
+}
+.navbar-inverse {
+    background-color: #0067B8;
+    border-color: #0067B8;
+    color:white !important;
+}
+.navbar-brand{
+    color:white !important;
+}
+.navbar-inverse .navbar-nav > li > a{
+    color:white !important;
+}
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus{
+    color:lightgray !important;
+}
+.logoSize {
+    height: 48px;
+    width: 84px;
+    margin: 0px;
+    padding: 0px;       
+}
