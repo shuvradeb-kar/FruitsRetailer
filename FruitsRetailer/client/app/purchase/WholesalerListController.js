@@ -73,6 +73,10 @@
                 {
                     name: 'Address', displayName: 'Address', enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents wordbreak">{{COL_FIELD}}</div>'
                 },
+                ,
+                {
+                    name: 'MobileNumber', displayName: 'Mobile Number', enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents wordbreak">{{COL_FIELD}}</div>'
+                },
                 {
                     name: 'Balance', displayName: 'Balance', enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents wordbreak">{{COL_FIELD | currency}}</div>'
                 },
@@ -84,12 +88,12 @@
 
         $scope.GetWholesalerDetail = function ( entity )
         {
-            $state.go('purchase', { whoseller: { Id: entity.Id, Name: entity.Name, AccountNumber: entity.AccountNumber, Address: entity.Address } });
+            $state.go('purchase', { whoseller: { Id: entity.Id, Name: entity.Name, AccountNumber: entity.AccountNumber, Address: entity.Address, MobileNumber: entity.MobileNumber } });
         }
 
         $scope.EditWholesaler = function (entity)
         {
-            $state.go( 'editwhoseller', { whoseller: { Id: entity.Id, Name: entity.Name, AccountNumber: entity.AccountNumber, Address: entity.Address } } );
+            $state.go('editwhoseller', { whoseller: { Id: entity.Id, Name: entity.Name, AccountNumber: entity.AccountNumber, Address: entity.Address, MobileNumber: entity.MobileNumber } });
         }
         
 

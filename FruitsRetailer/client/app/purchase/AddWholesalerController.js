@@ -3,11 +3,21 @@
         .module('FruitsRetailerApp')
         .controller('AddWholesalerController', AddWholesalerController);
 
-    AddWholesalerController.$inject = ['$state', '$scope', 'FruitsRetailerService'];
+    AddWholesalerController.$inject = ['$state', '$scope', 'FruitsRetailerService', '$stateParams'];
 
-    function AddWholesalerController($state, $scope, FruitsRetailerService) {
+    function AddWholesalerController($state, $scope, FruitsRetailerService, $stateParams) {
+        vm.CustomerType = $stateParams.CustomerType;
         var vm = this;
-        vm.PageTitle = "Add New Wholesaler";
+
+        if (vm.CustomerType == "Retailer")
+        {
+            vm.PageTitle = "Add New Retailer";
+        }
+        else
+        {
+            vm.PageTitle = "Add New Wholesaler";
+        }
+        
         vm.Wholesaler = {};        
         vm.SaveNewWholesaler = function ()
         {
@@ -16,6 +26,13 @@
 
         vm.ValidateNewWholesalerAndSave = function ()
         {
+            if (vm.CustomerType == "Retailer") {
+                vm.Wholesaler.CustomerType = 1
+            }
+            else {
+                vm.Wholesaler.CustomerType = 2
+            }
+
             if ( vm.Wholesaler.Name === undefined || vm.Wholesaler.Name.length === 0 )
             {
                 vm.IsNameEmpty = true;               
@@ -52,9 +69,14 @@
 
         vm.GoBackToWholesalerList = function ()
         {
-            $state.go( 'wholesale' );
-        }
-
-      
+            if (vm.CustomerType == "Retailer")
+            {
+                $state.go('sell');
+            }
+            else
+            {
+                $state.go('wholesale');
+            }
+        }      
     }
 })();

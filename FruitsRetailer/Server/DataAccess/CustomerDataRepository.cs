@@ -128,6 +128,7 @@ namespace FruitsRetailer.Server.DataAccess
             Customer cus = this._DataContext.Customers.Find(customer.Id);
             cus.Name = customer.Name;
             cus.Address = customer.Address;
+            cus.MobileNumber = customer.MobileNumber;
             this._DataContext.SaveChanges();
         }
 
@@ -137,41 +138,6 @@ namespace FruitsRetailer.Server.DataAccess
             cus.IsActive = false;            
             this._DataContext.SaveChanges();
         }
-
-
-        //var articles = (from article in this._DataContext.Customers
-        //                where article.IsActive == true && article.CustomerType == customerType && article.AccountNumber.ToString().Contains(filter.ToString())
-        //                select article);
-
-        //int totalArticles = 0;
-
-        //var query = PagedResult(articles, pageNo, pageSize, article => article.AccountNumber, false, out totalArticles);
-
-        //Result r = new Result();
-
-        //r.Count = totalArticles;
-        //r.CustomerList = query.ToList();
-        //return r;
-
-
-        //private static IQueryable<T> PagedResult<T, TResult>(IQueryable<T> query, int pageNum, int pageSize,
-        //        Expression<Func<T, TResult>> orderByProperty, bool isAscendingOrder, out int rowsCount)
-        //{
-        //    if (pageSize <= 0) pageSize = 20;
-
-        //    //Total result count
-        //    rowsCount = query.Count();
-
-        //    //If page number should be > 0 else set to first page
-        //    if (rowsCount <= pageSize || pageNum <= 0) pageNum = 1;
-
-        //    //Calculate nunber of rows to skip on pagesize
-        //    int excludedRows = (pageNum - 1) * pageSize;
-
-        //    query = isAscendingOrder ? query.OrderBy(orderByProperty) : query.OrderByDescending(orderByProperty);
-
-        //    //Skip the required rows for the current page and take the next records of pagesize count
-        //    return query.Skip(excludedRows).Take(pageSize);
-        //} 
+        
     }
 }

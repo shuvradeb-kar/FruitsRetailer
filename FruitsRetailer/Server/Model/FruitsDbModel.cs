@@ -18,8 +18,9 @@ namespace FruitsRetailer.Server.Model
         public int AccountNumber { get; set; }
         public string Address { get; set; }
         public CustomerType CustomerType { get; set; }
-        public double Balance { get; set; }
+        public decimal Balance { get; set; }
         public bool IsActive { get; set; }
+        public string MobileNumber { get; set; }
     }
 
     [Table("CustomerTransaction")]

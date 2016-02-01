@@ -55,6 +55,7 @@ var FruitsRetailerApp = angular.module('FruitsRetailerApp', ['ui.router', 'ui.gr
         })
     .state('addwhoseller', {
         url: "/addwhoseller",
+        params:{ customerType: null },
         controller: 'AddWholesalerController',
         controllerAs: 'vm',
         templateUrl: '/client/app/purchase/AddNewWholesaler.html'
@@ -68,7 +69,7 @@ var FruitsRetailerApp = angular.module('FruitsRetailerApp', ['ui.router', 'ui.gr
         })
     .state('sell', {
         url: "/sell",
-        controller: 'SellsListController',
+        controller: 'WholesalerListController',
         controllerAs: 'vm',
         templateUrl: '/client/app/sales/SellsList.html'
     })
