@@ -10,7 +10,7 @@
     {
         var vm = this;
 
-        vm.PageSize = 25;
+        vm.PageSize = 50;
         vm.gridOptions = {};
 
         vm.gridOptions = {
@@ -58,7 +58,7 @@
             enablePaginationControls: true,
             showTreeExpandNoChildren: false,
             useExternalPagination: true,
-            paginationPageSizes: [10, 25, 50],
+            paginationPageSizes: [25, 50],
             paginationPageSize: vm.PageSize,
             enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
             enableVerticalScrollbar: uiGridConstants.scrollbars.ALWAYS,
@@ -71,7 +71,7 @@
                     name: 'Name', displayName: 'Name', enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents wordbreak">{{COL_FIELD}}</div>'
                 },
                 {
-                    name: 'Address', displayName: 'Address', enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents wordbreak">{{COL_FIELD}}</div>'
+                    name: 'Address', displayName: 'Address', enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents wordbreak" title="{{COL_FIELD}}">{{COL_FIELD}}</div>'
                 },
                 ,
                 {
@@ -81,7 +81,7 @@
                     name: 'Balance', displayName: 'Balance', enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents wordbreak">{{COL_FIELD | currency}}</div>'
                 },
                 {
-                    name: ' ', width: 120, enableFiltering: false, cellTemplate: '<div style="text-align:center;padding-top:3px;"><a ng-click="grid.appScope.EditWholesaler(row.entity)" style="margin-right:3px;" class="btn btn-warning btn-xs">Edit</a><a ng-click="grid.appScope.DeleteWholesaler(row.entity)" class="btn btn-danger btn-xs">Delete</a></div>'
+                    name: ' ', width: 120, enableFiltering: false, cellTemplate: '<div style="text-align:center;padding-top:3px;"><a ng-click="grid.appScope.EditWholesaler(row.entity)" style="margin-right:3px;" class="btn btn-warning btn-xs">Edit</a></div>'
                 }
             ],
         };

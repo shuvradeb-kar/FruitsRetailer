@@ -148,6 +148,9 @@
     <Content Include="Client\app\purchase\WholesalerList.html" />
     <Content Include="Client\app\report\Report.html" />
     <Content Include="Client\app\report\ReportController.js" />
+    <Content Include="Client\app\retailer\AddRetailer.html" />
+    <Content Include="Client\app\retailer\AddRetailerController.js" />
+    <Content Include="Client\app\retailer\EditRetailerController.js" />
     <Content Include="Client\app\services\AuthenticationService.js" />
     <Content Include="Client\app\services\AuthInterceptorFactory.js" />
     <Content Include="Client\app\services\SessionService.js" />
@@ -173,7 +176,7 @@
     <Content Include="Client\app\purchase\WholesalerTransactionDetailController.js" />
     <Content Include="Client\app\stock\StockController.js" />
     <Content Include="Client\app\cashbook\CashBookController.js" />
-    <Content Include="Client\app\sales\SellsListController.js" />
+    <Content Include="Client\app\retailer\RetailerListController.js" />
     <Content Include="Client\app\Fruits.Retailer.App.js" />
     <Content Include="image\fruit-basket_png_one.png" />
     <Content Include="image\logo.png" />
@@ -238,7 +241,7 @@
     <Content Include="Client\app\purchase\WholesalerTransactionDetail.html" />
     <Content Include="Client\app\cashbook\CashBook.html" />
     <Content Include="Client\app\stock\Stock.html" />
-    <Content Include="Client\app\sales\SellsList.html" />
+    <Content Include="Client\app\retailer\RetailerList.html" />
     <Content Include="Client\app\layout\TopBar.html" />
     <Content Include="Client\app\services\FruitsRetailerService.js" />
     <Content Include="Scripts\spin.js" />
@@ -253,6 +256,7 @@
     <Compile Include="Server\Controller\CashBookController.cs" />
     <Compile Include="Server\Controller\CommonController.cs" />
     <Compile Include="Server\Controller\LoginController.cs" />
+    <Compile Include="Server\Controller\RetailerController.cs" />
     <Compile Include="Server\Controller\StockController.cs" />
     <Compile Include="Server\Controller\WholesalerController.cs" />
     <Compile Include="Server\DataAccess\BaseRepository.cs" />

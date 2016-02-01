@@ -24,9 +24,31 @@
             saveCashBook: saveCashBook,
             getCashBookDetail: getCashBookDetail,
             deleteCashBook: deleteCashBook,
-            getCustomeLabelValues: getCustomeLabelValues
+            getCustomeLabelValues: getCustomeLabelValues,
+            getRetailerList: getRetailerList,
+            saveRetailer: saveRetailer,
+            isRetailerAccountNumberExists: isRetailerAccountNumberExists,
+            deleteRetailer: deleteRetailer
         };
         return service;
+
+        function saveRetailer(retailer) {
+            var request = $http.post('/Server/Controller/Retailer', JSON.stringify(retailer));
+            return request.then(handleSuccess, handleError);
+        }
+        function isRetailerAccountNumberExists(accountNumber) {
+            var request = $http.get('/Server/Controller/Retailer?accountNumber=' + accountNumber);
+            return request.then(handleSuccess, handleError);
+        }
+        function deleteRetailer(customerId) {
+            var request = $http.delete('/Server/Controller/Retailer?customerId=' + customerId);
+            return request.then(handleSuccess, handleError);
+        }
+
+        function getRetailerList(pageNo, pageSize, filter) {
+            var request = $http.get('/Server/Controller/Retailer?pageNo=' + pageNo + '&pageSize=' + pageSize + '&filter=' + filter);
+            return request.then(handleSuccess, handleError);
+        }
 
         function getCustomeLabelValues() {
             var request = $http.get('/Server/Controller/Common');

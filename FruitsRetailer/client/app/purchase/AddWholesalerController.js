@@ -5,7 +5,9 @@
 
     AddWholesalerController.$inject = ['$state', '$scope', 'FruitsRetailerService'];
 
-    function AddWholesalerController($state, $scope, FruitsRetailerService) {       
+    function AddWholesalerController($state, $scope, FruitsRetailerService) {
+        var vm = this;
+
         vm.PageTitle = "Add New Wholesaler";
         vm.Wholesaler = {};        
         vm.SaveNewWholesaler = function ()

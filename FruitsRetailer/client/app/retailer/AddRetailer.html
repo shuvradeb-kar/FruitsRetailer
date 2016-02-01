@@ -1,0 +1,35 @@
+﻿<div class="page-header" style="text-align:center;"><h2>{{vm.PageTitle}}</h2></div>
+<form class="form-horizontal" role="form">
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="name">Name:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="name" placeholder="Enter name" ng-model="vm.Retailer.Name">
+            <div class="alert alert-warning fade in" ng-hide="!vm.IsNameEmpty">Please enter a name</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="acn">Account Number:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="acn" placeholder="Enter account number" ng-model="vm.Retailer.AccountNumber" ng-disabled="vm.EditMode">
+            <div class="alert alert-warning fade in" ng-hide="!vm.IsAcNumberEmpty">{{vm.AccountNumInfo}}</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="addr">Address:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="addr" placeholder="Enter address" ng-model="vm.Retailer.Address">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="phone">Mobile Number:</label>
+        <div class="col-sm-10">
+            <input type="tel" class="form-control" id="phone" placeholder="Enter Mobile Number" ng-model="vm.Retailer.MobileNumber">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-sm btn-primary" data-ng-click="vm.SaveRetailer()">Submit</button>
+            <button type="button" class="btn btn-sm btn-warning" data-ng-click="vm.GoBackToRetailerList()">Cancel</button>
+        </div>
+    </div>
+</form>

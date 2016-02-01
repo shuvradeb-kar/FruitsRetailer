@@ -18,20 +18,20 @@ var FruitsRetailerApp = angular.module('FruitsRetailerApp', ['ui.router', 'ui.gr
             controllerAs: 'vm',
             templateUrl: '/client/app/login/CreateAccount.html'
         })
-     .state('home', {
-         url: "/home",
-         controller: 'DashboardController',
-         controllerAs: 'vm',
-         templateUrl: '/client/app/dashboard/Dashboard.html'
-     })
+         .state('home', {
+             url: "/home",
+             controller: 'DashboardController',
+             controllerAs: 'vm',
+             templateUrl: '/client/app/dashboard/Dashboard.html'
+         })
 
-    .state('purchase', {
-        url: "/purchase",
-        params: { whoseller: null },
-        controller: 'WholesalerTransactionDetailController',
-        controllerAs: 'vm',
-        templateUrl: '/client/app/purchase/WholesalerTransactionDetail.html'
-    })
+        .state('purchase', {
+            url: "/purchase",
+            params: { whoseller: null },
+            controller: 'WholesalerTransactionDetailController',
+            controllerAs: 'vm',
+            templateUrl: '/client/app/purchase/WholesalerTransactionDetail.html'
+        })
         .state('editpurchase', {
             url: "/editpurchase",
             params: { whoseller: null, transaction: null },
@@ -53,12 +53,12 @@ var FruitsRetailerApp = angular.module('FruitsRetailerApp', ['ui.router', 'ui.gr
             controllerAs: 'vm',
             templateUrl: '/client/app/purchase/WholesalerList.html'
         })
-    .state('addwhoseller', {
-        url: "/addwhoseller",       
-        controller: 'AddWholesalerController',
-        controllerAs: 'vm',
-        templateUrl: '/client/app/purchase/AddNewWholesaler.html'
-    })
+        .state('addwhoseller', {
+            url: "/addwhoseller",       
+            controller: 'AddWholesalerController',
+            controllerAs: 'vm',
+            templateUrl: '/client/app/purchase/AddNewWholesaler.html'
+        })
         .state('editwhoseller', {
             url: "/editwhoseller",
             params: { whoseller: null },
@@ -66,19 +66,31 @@ var FruitsRetailerApp = angular.module('FruitsRetailerApp', ['ui.router', 'ui.gr
             controllerAs: 'vm',
             templateUrl: '/client/app/purchase/AddNewWholesaler.html'
         })
-    .state('sell', {
-        url: "/sell",
-        controller: 'SellsListController',
-        controllerAs: 'vm',
-        templateUrl: '/client/app/sales/SellsList.html'
-    })
-
-    .state('stock', {
-        url: "/stock",
-        controller: 'StockController',
-        controllerAs: 'vm',
-        templateUrl: '/client/app/stock/Stock.html'
-    })
+        .state('retailerList', {
+            url: "/retailerlist",
+            controller: 'RetailerListController',
+            controllerAs: 'vm',
+            templateUrl: '/client/app/retailer/RetailerList.html'
+        })
+        .state('addretailer', {
+            url: "/addretailer",
+            controller: 'AddRetailerController',
+            controllerAs: 'vm',
+            templateUrl: '/client/app/retailer/AddRetailer.html'
+        })
+        .state('editretailer', {
+            url: "/editretailer",
+            params: { retailer: null },
+            controller: 'EditRetailerController',
+            controllerAs: 'vm',
+            templateUrl: '/client/app/retailer/AddRetailer.html'
+        })
+        .state('stock', {
+            url: "/stock",
+            controller: 'StockController',
+            controllerAs: 'vm',
+            templateUrl: '/client/app/stock/Stock.html'
+        })
         .state('addProduct', {
             url: "/addproduct",
             controller: 'AddStockController',
@@ -92,31 +104,31 @@ var FruitsRetailerApp = angular.module('FruitsRetailerApp', ['ui.router', 'ui.gr
             controllerAs: 'vm',
             templateUrl: '/client/app/stock/AddStock.html'
         })
-    .state('cashbook', {
-        url: "/cashbook",
-        controller: 'CashBookController',
-        controllerAs: 'vm',
-        templateUrl: '/client/app/cashbook/CashBook.html'
-    })
-    .state('addCashBook', {
-        url: "/addcashbook",
-        controller: 'AddCashBookController',
-        controllerAs: 'vm',
-        templateUrl: '/client/app/cashbook/AddCashBook.html'
-    })
-    .state('editCashBook', {
-        url: "/editcashbook",
-        params: { cashbook: null },
-        controller: 'EditCashBookController',
-        controllerAs: 'vm',
-        templateUrl: '/client/app/cashbook/AddCashBook.html'
-    })
-    .state('report', {
-        url: "/report",
-        controller: 'ReportController',
-        controllerAs: 'vm',
-        templateUrl: '/client/app/report/Report.html'
-    });
+        .state('cashbook', {
+            url: "/cashbook",
+            controller: 'CashBookController',
+            controllerAs: 'vm',
+            templateUrl: '/client/app/cashbook/CashBook.html'
+        })
+        .state('addCashBook', {
+            url: "/addcashbook",
+            controller: 'AddCashBookController',
+            controllerAs: 'vm',
+            templateUrl: '/client/app/cashbook/AddCashBook.html'
+        })
+        .state('editCashBook', {
+            url: "/editcashbook",
+            params: { cashbook: null },
+            controller: 'EditCashBookController',
+            controllerAs: 'vm',
+            templateUrl: '/client/app/cashbook/AddCashBook.html'
+        })
+        .state('report', {
+            url: "/report",
+            controller: 'ReportController',
+            controllerAs: 'vm',
+            templateUrl: '/client/app/report/Report.html'
+        });
 }])
 .constant('USER_ROLES', {
     all: '*',
