@@ -23,7 +23,8 @@ namespace FruitsRetailer.Server.Controller
                 _CustomerRepository.EditCustomer(customer);
             }
             else
-            {                
+            {
+                customer.CustomerType = CustomerType.Wholesaler;
                 customer.IsActive = true;
                 _CustomerRepository.AddCustomer(customer);
             }
