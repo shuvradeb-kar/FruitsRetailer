@@ -3,9 +3,9 @@
         .module('FruitsRetailerApp')
         .controller('ApplicationController', ApplicationController);
 
-    ApplicationController.$inject = ['$scope', 'USER_ROLES', 'AuthenticationService', '$state', 'SessionService', '$window'];
+    ApplicationController.$inject = ['$scope', 'USER_ROLES', 'AuthenticationService', '$state', 'SessionService', 'FruitsRetailerService'];
 
-    function ApplicationController($scope, USER_ROLES, AuthenticationService, $state, SessionService, $window) {
+    function ApplicationController($scope, USER_ROLES, AuthenticationService, $state, SessionService, FruitsRetailerService) {
         var vm = this;
         $scope.currentUser = null;
         $scope.userRoles = USER_ROLES;
@@ -20,8 +20,15 @@
             $state.go('login');
         }
 
-        var winHeight = $(window).height();
-        var headerHeight = $("header").height();
-        $('#loginContainer').height(winHeight - 50);
+        function init() {
+            FruitsRetailerService.getCustomeLabelValues().then(function (label) {
+                localStorage.setItem("CompanyName", label.CompanyName);
+                localStorage.setItem("CompanyProprietor", label.CompanyProprietor);
+                localStorage.setItem("CompanySlogan", label.CompanySlogan);
+                localStorage.setItem("CompanyAddress", label.CompanyAddress);
+                localStorage.setItem("ProprietorContactNumber", label.ProprietorContactNumber);               
+            });
+        }
+        init();
     }
 })();

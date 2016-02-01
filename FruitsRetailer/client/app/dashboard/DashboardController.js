@@ -12,13 +12,24 @@
         vm.gridWholesalerOptions = {}
         vm.gridCashBookOptions = {};
         
+        function retailerFilterdataGet(pageNo, pageSize, filter)
+        {           
+            FruitsRetailerService.getRetailerList(pageNo, pageSize, filter).then(function (data) {
+                vm.gridRetailerOptions.data = data.CustomerList;
+                vm.gridRetailerOptions.totalItems = data.Count;
+                $timeout(function () {
+                    vm.gridApi.core.handleWindowResize();
+                });
+            });
+        }
+
         vm.gridRetailerOptions = {
             onRegisterApi: function (gridApi) {
                 vm.gridApi = gridApi;
 
                 gridApi.pagination.on.paginationChanged($scope, function (newPage, pageSize) {
                     vm.PageSize = pageSize;
-                    init(newPage, pageSize, 0);
+                    retailerFilterdataGet(newPage, pageSize, 0);
                 });
 
                 gridApi.core.on.filterChanged($scope, function () {
@@ -32,10 +43,10 @@
                         grid.options.paginationCurrentPage = 1;
 
                         if (typeof grid.columns[0].filters[0].term != 'undefined' && grid.columns[0].filters[0].term && grid.columns[0].filters[0].term.length != '') {
-                            init(1, vm.PageSize, grid.columns[0].filters[0].term);
+                            retailerFilterdataGet(1, vm.PageSize, grid.columns[0].filters[0].term);
                         }
                         else {
-                            init(1, vm.PageSize, 0);
+                            retailerFilterdataGet(1, vm.PageSize, 0);
                         }
 
 
@@ -69,13 +80,24 @@
             ],
         };
 
+        function WholesalerFilterdataGet(pageNo, pageSize, filter)
+        {
+            FruitsRetailerService.getWholesalerList(pageNo, pageSize, filter).then(function (data) {
+                vm.gridWholesalerOptions.data = data.CustomerList;
+                vm.gridWholesalerOptions.totalItems = data.Count;
+                $timeout(function () {
+                    vm.gridApi.core.handleWindowResize();
+                });
+            });
+        }
+
         vm.gridWholesalerOptions = {
             onRegisterApi: function (gridApi) {
                 vm.gridApi = gridApi;
 
                 gridApi.pagination.on.paginationChanged($scope, function (newPage, pageSize) {
                     vm.PageSize = pageSize;
-                    init(newPage, pageSize, 0);
+                    WholesalerFilterdataGet(newPage, pageSize, 0);
                 });
 
                 gridApi.core.on.filterChanged($scope, function () {
@@ -89,12 +111,11 @@
                         grid.options.paginationCurrentPage = 1;
 
                         if (typeof grid.columns[0].filters[0].term != 'undefined' && grid.columns[0].filters[0].term && grid.columns[0].filters[0].term.length != '') {
-                            init(1, vm.PageSize, grid.columns[0].filters[0].term);
+                            WholesalerFilterdataGet(1, vm.PageSize, grid.columns[0].filters[0].term);
                         }
                         else {
-                            init(1, vm.PageSize, 0);
+                            WholesalerFilterdataGet(1, vm.PageSize, 0);
                         }
-
 
                     }, 500);
                 });
@@ -126,13 +147,23 @@
             ],
         };
 
+        function CashBookFilterdataGet(pageNo, pageSize) {
+            FruitsRetailerService.getCashBookDetail(pageNo, pageSize).then(function (data) {
+                vm.gridCashBookOptions.data = data.CashBookDetail;
+                vm.gridCashBookOptions.totalItems = data.Count;
+                $timeout(function () {
+                    vm.gridApi.core.handleWindowResize();
+                });
+            });
+        }
+
         vm.gridCashBookOptions = {
             onRegisterApi: function (gridApi) {
                 vm.gridApi = gridApi;
 
                 gridApi.pagination.on.paginationChanged($scope, function (newPage, pageSize) {
                     vm.PageSize = pageSize;
-                    init(newPage, pageSize);
+                    CashBookFilterdataGet(newPage, pageSize);
                 });
             },
             enableFiltering: false,
@@ -170,30 +201,16 @@
         $scope.GetWholesalerDetail = function (entity) {
             $state.go('purchase', { whoseller: { Id: entity.Id, Name: entity.Name, AccountNumber: entity.AccountNumber, Address: entity.Address } });
         }
+
         function init(pageNo, pageSize, filter) {
-            FruitsRetailerService.getWholesalerList(pageNo, pageSize, filter).then(function (data) {
-                vm.gridWholesalerOptions.data = data.CustomerList;
-                vm.gridWholesalerOptions.totalItems = data.Count;
-                $timeout(function () {
-                    vm.gridApi.core.handleWindowResize();
-                });
-            });
+            WholesalerFilterdataGet(pageNo, pageSize, filter)
 
-            FruitsRetailerService.getRetailerList(pageNo, pageSize, filter).then(function (data) {
-                vm.gridRetailerOptions.data = data.CustomerList;
-                vm.gridRetailerOptions.totalItems = data.Count;
-                $timeout(function () {
-                    vm.gridApi.core.handleWindowResize();
-                });
-            });
+            retailerFilterdataGet(pageNo, pageSize, filter);
 
-            FruitsRetailerService.getCashBookDetail(pageNo, pageSize).then(function (data) {
-                vm.gridCashBookOptions.data = data.CashBookDetail;
-                vm.gridCashBookOptions.totalItems = data.Count;
-                $timeout(function () {
-                    vm.gridApi.core.handleWindowResize();
-                });
-            });
+            CashBookFilterdataGet(pageNo, pageSize);
+
+            vm.CompanyName = localStorage.getItem("CompanyName");           
+            vm.CompanySlogan = localStorage.getItem("CompanySlogan");
         }
 
         init(1, vm.PageSize, 0);

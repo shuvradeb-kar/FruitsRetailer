@@ -29,17 +29,13 @@
         init();
 
         function init() {
+            vm.CompanyName = localStorage.getItem("CompanyName");
+            vm.CompanyProprietor = localStorage.getItem("CompanyProprietor");
+            vm.CompanySlogan = localStorage.getItem("CompanySlogan");
+            vm.CompanyAddress = localStorage.getItem("CompanyAddress");
+            vm.ProprietorContactNumber = localStorage.getItem("ProprietorContactNumber");            
 
-            FruitsRetailerService.getCustomeLabelValues().then(function (label) {                
-                vm.CompanyName = label.CompanyName;
-                vm.CompanyProprietor = label.CompanyProprietor;
-                vm.CompanySlogan = label.CompanySlogan;
-                vm.CompanyAddress = label.CompanyAddress;
-                vm.ProprietorContactNumber = label.ProprietorContactNumber;
-            });
-
-            var winHeight = $(window).height();
-           
+            var winHeight = $(window).height();           
             $('#loginContainer').height(winHeight - 75);
             console.log(winHeight);
         }
