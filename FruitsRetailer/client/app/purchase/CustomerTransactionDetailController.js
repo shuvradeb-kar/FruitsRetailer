@@ -44,7 +44,10 @@
                     name: 'ProductDescription', displayName: 'Description', cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD}}</div>'
                 },
                 {
-                    name: 'ProductCode', displayName: 'Product', width: 80, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD}}</div>'
+                    name: 'ProductCode', displayName: 'Product Code', width: 110, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD}}</div>'
+                },
+                {
+                    name: 'ProductName', displayName: 'Product Name', width: 115, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD}}</div>'
                 },
                 {
                     name: 'Quantity', displayName: 'Quantity', width:87, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD}}</div>'
@@ -108,7 +111,7 @@
 
         function init(pageNo, pageSize, customerId)
         {
-            FruitsRetailerService.getWholesalerTransactionDetail(pageNo, pageSize, customerId).then(function (data)
+            FruitsRetailerService.getCustomerTransactionDetail(pageNo, pageSize, customerId).then(function (data)
             {
                 vm.gridOptions.data = data.TransactionList;
 

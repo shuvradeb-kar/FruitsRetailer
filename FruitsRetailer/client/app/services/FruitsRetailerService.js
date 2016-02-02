@@ -13,7 +13,7 @@
             isAccountNumberExists: isAccountNumberExists,
             deleteWholesaler: deleteWholesaler,
             saveTransaction: saveTransaction,
-            getWholesalerTransactionDetail: getWholesalerTransactionDetail,
+            getCustomerTransactionDetail: getCustomerTransactionDetail,
             deleteTransaction: deleteTransaction,
             isProductCodeExist: isProductCodeExist,
             saveStock: saveStock,
@@ -112,7 +112,7 @@
             return request.then(handleSuccess, handleError);
         }
 
-        function getWholesalerTransactionDetail(pageNo, pageSize, wholesalerId) {
+        function getCustomerTransactionDetail(pageNo, pageSize, wholesalerId) {
             var obj = {
                 PageNo: pageNo,
                 PageSize: pageSize,

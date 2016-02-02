@@ -9,7 +9,7 @@
 
         var vm = this;
 
-        vm.PageSize = 25;
+        vm.PageSize = 50;
         vm.gridOptions = {};
 
         vm.gridOptions = {
@@ -31,7 +31,7 @@
             enablePaginationControls: true,
             showTreeExpandNoChildren: false,
             useExternalPagination: true,
-            paginationPageSizes: [10, 25, 50],
+            paginationPageSizes: [25, 50],
             paginationPageSize: vm.PageSize,
             enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
             enableVerticalScrollbar: uiGridConstants.scrollbars.ALWAYS,
