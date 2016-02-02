@@ -51,20 +51,20 @@ var FruitsRetailerApp = angular.module('FruitsRetailerApp', ['ui.router', 'ui.gr
             url: "/wholesale",
             controller: 'WholesalerListController',
             controllerAs: 'vm',
-            templateUrl: '/client/app/purchase/WholesalerList.html'
+            templateUrl: '/client/app/wholesaler/WholesalerList.html'
         })
         .state('addwhoseller', {
             url: "/addwhoseller",       
             controller: 'AddWholesalerController',
             controllerAs: 'vm',
-            templateUrl: '/client/app/purchase/AddNewWholesaler.html'
+            templateUrl: '/client/app/wholesaler/AddNewWholesaler.html'
         })
         .state('editwhoseller', {
             url: "/editwhoseller",
             params: { whoseller: null },
             controller: 'EditWholesalerController',
             controllerAs: 'vm',
-            templateUrl: '/client/app/purchase/AddNewWholesaler.html'
+            templateUrl: '/client/app/wholesaler/AddNewWholesaler.html'
         })
         .state('retailerList', {
             url: "/retailerlist",

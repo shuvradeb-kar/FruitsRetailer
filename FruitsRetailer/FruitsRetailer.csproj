@@ -141,11 +141,11 @@
     <Content Include="Client\app\login\LoginController.js" />
     <Content Include="Client\app\purchase\ConfirmationWindow.html" />
     <Content Include="Client\app\purchase\ConfirmationWindowController.js" />
-    <Content Include="Client\app\purchase\EditWholesalerController.js" />
+    <Content Include="Client\app\wholesaler\EditWholesalerController.js" />
     <Content Include="Client\app\purchase\AddPurchaseController.js" />
     <Content Include="Client\app\purchase\EditPurchaseController.js" />
-    <Content Include="Client\app\purchase\WholesalerListController.js" />
-    <Content Include="Client\app\purchase\WholesalerList.html" />
+    <Content Include="Client\app\wholesaler\WholesalerListController.js" />
+    <Content Include="Client\app\wholesaler\WholesalerList.html" />
     <Content Include="Client\app\report\Report.html" />
     <Content Include="Client\app\report\ReportController.js" />
     <Content Include="Client\app\retailer\AddRetailer.html" />
@@ -172,7 +172,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Client\app\dashboard\DashboardController.js" />
-    <Content Include="Client\app\purchase\AddWholesalerController.js" />
+    <Content Include="Client\app\wholesaler\AddWholesalerController.js" />
     <Content Include="Client\app\purchase\WholesalerTransactionDetailController.js" />
     <Content Include="Client\app\stock\StockController.js" />
     <Content Include="Client\app\cashbook\CashBookController.js" />
@@ -236,7 +236,7 @@
   <ItemGroup>
     <Content Include="Client\Home.html" />
     <Content Include="Client\app\purchase\AddNewPurchase.html" />
-    <Content Include="Client\app\purchase\AddNewWholesaler.html" />
+    <Content Include="Client\app\wholesaler\AddNewWholesaler.html" />
     <Content Include="Client\app\dashboard\Dashboard.html" />
     <Content Include="Client\app\purchase\WholesalerTransactionDetail.html" />
     <Content Include="Client\app\cashbook\CashBook.html" />
