@@ -199,7 +199,7 @@
         };
 
         $scope.GetWholesalerDetail = function (entity) {
-            $state.go('purchase', { whoseller: { Id: entity.Id, Name: entity.Name, AccountNumber: entity.AccountNumber, Address: entity.Address } });
+            $state.go('purchase', { customer: { Id: entity.Id, Name: entity.Name, AccountNumber: entity.AccountNumber, Address: entity.Address } });
         }
 
         function init(pageNo, pageSize, filter) {

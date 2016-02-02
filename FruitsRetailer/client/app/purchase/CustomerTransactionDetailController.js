@@ -1,15 +1,15 @@
 ﻿(function () {
     angular
         .module('FruitsRetailerApp')
-        .controller('WholesalerTransactionDetailController', WholesalerTransactionDetailController);
+        .controller('CustomerTransactionDetailController', CustomerTransactionDetailController);
 
-    WholesalerTransactionDetailController.$inject = ['$state', '$scope', '$timeout', 'FruitsRetailerService', 'uiGridConstants', '$stateParams', '$uibModal'];
+    CustomerTransactionDetailController.$inject = ['$state', '$scope', '$timeout', 'FruitsRetailerService', 'uiGridConstants', '$stateParams', '$uibModal'];
 
-    function WholesalerTransactionDetailController($state, $scope, $timeout, FruitsRetailerService, uiGridConstants, $stateParams, $uibModal)
+    function CustomerTransactionDetailController($state, $scope, $timeout, FruitsRetailerService, uiGridConstants, $stateParams, $uibModal)
     {
         var vm = this;
-        vm.Wholesaler = $stateParams.whoseller;        
-        vm.PageSize = 25;
+        vm.Customer = $stateParams.customer;
+        vm.PageSize = 50;
         vm.gridOptions = {};
 
         vm.gridOptions = {
@@ -20,7 +20,7 @@
                 gridApi.pagination.on.paginationChanged( $scope, function ( newPage, pageSize )
                 {
                     vm.PageSize = pageSize;
-                    init(newPage, pageSize, vm.Wholesaler.Id);
+                    init(newPage, pageSize, vm.Customer.Id);
                 } );
             },
             enableFiltering: false,
@@ -31,7 +31,7 @@
             enablePaginationControls: true,
             showTreeExpandNoChildren: false,
             useExternalPagination: true,            
-            paginationPageSizes: [5, 10, 25],
+            paginationPageSizes: [25, 50],
             paginationPageSize: vm.PageSize,
             enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
             enableVerticalScrollbar: uiGridConstants.scrollbars.ALWAYS,
@@ -88,7 +88,7 @@
 
             modalInstance.result.then(function (selectedItem) {
                 FruitsRetailerService.deleteTransaction(selectedItem).then(function (data) {
-                    init(1, vm.PageSize, vm.Wholesaler.Id);
+                    init(1, vm.PageSize, vm.Customer.Id);
                 });
 
             }, function () {
@@ -98,17 +98,17 @@
 
         $scope.EditTransaction = function (entity)
         {
-            $state.go('editpurchase', { whoseller: { Id: vm.Wholesaler.Id, Name: vm.Wholesaler.Name, AccountNumber: vm.Wholesaler.AccountNumber, Address: vm.Wholesaler.Address }, transaction: { Id: entity.Id, ProductDescription: entity.ProductDescription, TransactionDate: new Date(entity.TransactionDate), Quantity: entity.Quantity, Rate: entity.Rate, AmountReceived: entity.AmountReceived, OthersCost: entity.OthersCost, ProductCode: entity.ProductCode, CustomerId: entity.CustomerId } });
+            $state.go('editpurchase', { customer: { Id: vm.Customer.Id, Name: vm.Customer.Name, AccountNumber: vm.Customer.AccountNumber, Address: vm.Customer.Address }, transaction: { Id: entity.Id, ProductDescription: entity.ProductDescription, TransactionDate: new Date(entity.TransactionDate), Quantity: entity.Quantity, Rate: entity.Rate, AmountReceived: entity.AmountReceived, OthersCost: entity.OthersCost, ProductCode: entity.ProductCode, CustomerId: entity.CustomerId } });
         }
 
         vm.AddNewTransactation = function () {            
-            $state.go('addpurchase', { whoseller: { Id: vm.Wholesaler.Id, Name: vm.Wholesaler.Name, AccountNumber: vm.Wholesaler.AccountNumber, Address: vm.Wholesaler.Address } });
+            $state.go('addpurchase', { customer: { Id: vm.Customer.Id, Name: vm.Customer.Name, AccountNumber: vm.Customer.AccountNumber, Address: vm.Customer.Address } });
             
         }
 
-        function init(pageNo, pageSize, wholesalerId)
+        function init(pageNo, pageSize, customerId)
         {
-            FruitsRetailerService.getWholesalerTransactionDetail(pageNo, pageSize, wholesalerId).then(function (data)
+            FruitsRetailerService.getWholesalerTransactionDetail(pageNo, pageSize, customerId).then(function (data)
             {
                 vm.gridOptions.data = data.TransactionList;
 
@@ -120,7 +120,7 @@
             } );
         }
 
-        init(1, vm.PageSize, vm.Wholesaler.Id);
+        init(1, vm.PageSize, vm.Customer.Id);
     }
        
 })();

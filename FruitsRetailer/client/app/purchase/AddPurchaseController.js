@@ -11,9 +11,9 @@
         vm.Transaction = {};
         vm.IsPaymentEnable = false;
         vm.Transaction.TransactionDate = new Date();
-        vm.Wholesaler = $stateParams.whoseller;
-        vm.AccountNumber = vm.Wholesaler.AccountNumber;
-        vm.Transaction.CustomerId = vm.Wholesaler.Id;
+        vm.Customer = $stateParams.customer;
+        vm.AccountNumber = vm.Customer.AccountNumber;
+        vm.Transaction.CustomerId = vm.Customer.Id;
         
         init();
 
@@ -88,9 +88,8 @@
             return true;            
         }
 
-        vm.GoBackToPurchaseList = function () {
-            $state.go('purchase');
-            $state.go('purchase', { whoseller: { Id: vm.Wholesaler.Id, Name: vm.Wholesaler.Name, AccountNumber: vm.Wholesaler.AccountNumber, Address: vm.Wholesaler.Address } });
+        vm.GoBackToPurchaseList = function () {          
+            $state.go('purchase', { customer: { Id: vm.Customer.Id, Name: vm.Customer.Name, AccountNumber: vm.Customer.AccountNumber, Address: vm.Customer.Address } });
         }       
     }
 })();

@@ -11,8 +11,8 @@
         
         vm.Transaction = $stateParams.transaction;        
         vm.IsPaymentEnable = false;        
-        vm.Wholesaler = $stateParams.whoseller;        
-        vm.Transaction.CustomerId = vm.Wholesaler.Id;        
+        vm.Customer = $stateParams.customer;
+        vm.Transaction.CustomerId = vm.Customer.Id;
         init();
         function init() {
             FruitsRetailerService.getAllActiveProduct().then(function (data) {
@@ -81,7 +81,7 @@
         }
 
         vm.GoBackToPurchaseList = function () {            
-            $state.go('purchase', { whoseller: { Id: vm.Wholesaler.Id, Name: vm.Wholesaler.Name, AccountNumber: vm.Wholesaler.AccountNumber, Address: vm.Wholesaler.Address } });
+            $state.go('purchase', { whoseller: { Id: vm.Customer.Id, Name: vm.Customer.Name, AccountNumber: vm.Customer.AccountNumber, Address: vm.Customer.Address } });
         }
     }
 })();

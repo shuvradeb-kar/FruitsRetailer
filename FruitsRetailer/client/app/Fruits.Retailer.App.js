@@ -27,14 +27,14 @@ var FruitsRetailerApp = angular.module('FruitsRetailerApp', ['ui.router', 'ui.gr
 
         .state('purchase', {
             url: "/purchase",
-            params: { whoseller: null },
-            controller: 'WholesalerTransactionDetailController',
+            params: { customer: null },
+            controller: 'CustomerTransactionDetailController',
             controllerAs: 'vm',
-            templateUrl: '/client/app/purchase/WholesalerTransactionDetail.html'
+            templateUrl: '/client/app/purchase/CustomerTransactionDetail.html'
         })
         .state('editpurchase', {
             url: "/editpurchase",
-            params: { whoseller: null, transaction: null },
+            params: { customer: null, transaction: null },
             controller: 'EditPurchaseController',
             controllerAs: 'vm',
             templateUrl: '/client/app/purchase/AddNewPurchase.html',
@@ -42,7 +42,7 @@ var FruitsRetailerApp = angular.module('FruitsRetailerApp', ['ui.router', 'ui.gr
         })
         .state('addpurchase', {
             url: "/addpurchase",
-            params: { whoseller: null },
+            params: { customer: null },
             controller: 'AddPurchaseController',
             controllerAs: 'vm',
             templateUrl: '/client/app/purchase/AddNewPurchase.html'

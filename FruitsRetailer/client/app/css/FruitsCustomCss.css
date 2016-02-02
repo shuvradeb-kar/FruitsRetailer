@@ -5,7 +5,7 @@
 body{
     height:100%;
 }
-.wholesalerGrid, .retailerGrid, .CashBookGrid, .productGrid,.wholesalerGridDashBoard, .retailerGridDashBoard, .CashBookGridDashBoard {           
+.wholesalerGrid, .retailerGrid, .CashBookGrid, .productGrid,.wholesalerGridDashBoard, .retailerGridDashBoard, .CashBookGridDashBoard, .transactionGrid {           
     height: 500px;
     font-size:12px;   
 }

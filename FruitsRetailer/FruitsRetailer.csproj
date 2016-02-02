@@ -173,7 +173,7 @@
     <Content Include="Global.asax" />
     <Content Include="Client\app\dashboard\DashboardController.js" />
     <Content Include="Client\app\wholesaler\AddWholesalerController.js" />
-    <Content Include="Client\app\purchase\WholesalerTransactionDetailController.js" />
+    <Content Include="Client\app\purchase\CustomerTransactionDetailController.js" />
     <Content Include="Client\app\stock\StockController.js" />
     <Content Include="Client\app\cashbook\CashBookController.js" />
     <Content Include="Client\app\retailer\RetailerListController.js" />
@@ -238,7 +238,7 @@
     <Content Include="Client\app\purchase\AddNewPurchase.html" />
     <Content Include="Client\app\wholesaler\AddNewWholesaler.html" />
     <Content Include="Client\app\dashboard\Dashboard.html" />
-    <Content Include="Client\app\purchase\WholesalerTransactionDetail.html" />
+    <Content Include="Client\app\purchase\CustomerTransactionDetail.html" />
     <Content Include="Client\app\cashbook\CashBook.html" />
     <Content Include="Client\app\stock\Stock.html" />
     <Content Include="Client\app\retailer\RetailerList.html" />

@@ -1,0 +1,11 @@
+﻿<section class="page-header">        
+        <a class="btn btn-success" data-ng-click="vm.AddNewTransactation()">
+            <i class="fa fa-plus"></i> Purchase
+        </a>    
+    <div style="float:right; padding-top:17px">
+        <span><strong>Name:</strong> {{vm.Customer.Name}},</span>
+        <span><strong>Ac/No:</strong> {{vm.Customer.AccountNumber}}</span>
+    </div>
+</section>
+
+<section data-ui-grid="vm.gridOptions" data-ui-grid-pagination data-ui-grid-tree-view class="transactionGrid"></section>
