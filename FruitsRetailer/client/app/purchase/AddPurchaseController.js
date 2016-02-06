@@ -73,6 +73,9 @@
                     vm.IsAmountReceivedEmpty = false;
                 }
             }
+            else {
+                vm.Transaction.AmountReceived = 0;
+            }
 
             if (vm.Transaction.OthersCost !== null && vm.Transaction.OthersCost !== undefined && vm.Transaction.OthersCost.length > 0) {
                 if (isNaN(vm.Transaction.OthersCost)) {

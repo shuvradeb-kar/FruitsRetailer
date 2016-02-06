@@ -32,7 +32,7 @@
         <label class="control-label col-sm-2" for="payment">Payment:</label>
         <div class="col-sm-10">
             <label id="payment" ><input type="checkbox" name="checkbox" data-ng-model="vm.IsPaymentEnable"> Pay Now?</label>
-            <input type="number" class="form-control" data-ng-hide="!vm.IsPaymentEnable" data-ng-model="vm.Transaction.AmountReceived" />
+            <input type="number" class="form-control" data-ng-hide="!vm.IsPaymentEnable" data-ng-model="vm.Transaction.AmountReceived" placeholder="Amount"/>
             <div class="alert alert-warning fade in" ng-hide="!vm.IsAmountReceivedEmpty">{{vm.AmountReceivedInfo}}</div>
         </div>
     </div>

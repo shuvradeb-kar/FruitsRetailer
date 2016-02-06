@@ -32,12 +32,12 @@ namespace FruitsRetailer.Server.Model
     {
         public TransactionResult()
         {
-            TransactionList = new List<CustomerTransaction>();
+            TransactionList = new List<CustomerTransactionView>();
         }
 
-        public List<CustomerTransaction> TransactionList { get; set; }
+        public List<CustomerTransactionView> TransactionList { get; set; }
         public int Count { get; set; }
-        public int PreviousBalance { get; set; }
+        public decimal PreviousBalance { get; set; }
     }
 
     public class CashBookResult
@@ -78,4 +78,23 @@ namespace FruitsRetailer.Server.Model
         public bool IsAuthenticated { get; set; }
         public string UserName { get; set; }
     }
+
+    public class CustomerTransactionView
+    {
+      
+        public int Id { get; set; }
+        public string ProductDescription { get; set; }
+        public DateTime TransactionDate { get; set; }
+        public int Quantity { get; set; }
+        public decimal Rate { get; set; }
+        public decimal AmountReceived { get; set; }
+        public decimal OthersCost { get; set; }
+        public string ProductCode { get; set; }
+        public int CustomerId { get; set; }      
+        public decimal Total { get; set; }     
+        public decimal Balance { get; set; }       
+        public string ProductName { get; set; }        
+        public int ProductId { get; set; }
+    }
+
 }

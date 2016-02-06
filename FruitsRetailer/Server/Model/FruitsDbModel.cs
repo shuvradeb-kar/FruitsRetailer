@@ -32,18 +32,11 @@ namespace FruitsRetailer.Server.Model
         public string ProductDescription { get; set; }
         public DateTime TransactionDate { get; set; }
         public int Quantity { get; set; }
-        public double Rate { get; set; }
-        public double AmountReceived { get; set; }
-        public double OthersCost { get; set; }
+        public decimal Rate { get; set; }
+        public decimal AmountReceived { get; set; }
+        public decimal OthersCost { get; set; }
         public string ProductCode { get; set; }
-        public string ProductName { get; set; }
-        [NotMapped]
-        public int ProductId { get; set; }
-        public int CustomerId { get; set; }
-        [NotMapped]
-        public double Total { get; set; }
-        [NotMapped]
-        public double Balance { get; set; }
+        public int CustomerId { get; set; }      
     }
 
     [Table("Stock")]

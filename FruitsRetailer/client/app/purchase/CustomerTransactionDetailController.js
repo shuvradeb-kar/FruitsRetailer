@@ -41,7 +41,7 @@
                     cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD | date:"yyyy-MM-dd"}}</div>'
                 },
                 {
-                    name: 'ProductDescription', displayName: 'Description', cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD}}</div>'
+                    name: 'ProductDescription', displayName: 'Description', cellTemplate: '<div class="ui-grid-cell-contents" title="{{COL_FIELD}}">{{COL_FIELD}}</div>'
                 },
                 {
                     name: 'ProductCode', displayName: 'Product Code', width: 110, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD}}</div>'

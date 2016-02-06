@@ -13,11 +13,10 @@ body{
 .company-title{
     margin-top:0px;
 }        
-.page-header {
-    margin:0px;
-}
+
 .header-section {
     color:purple;
+    margin:0px;
 }
 .container-full
 {

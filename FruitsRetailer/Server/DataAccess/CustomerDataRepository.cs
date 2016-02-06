@@ -52,7 +52,7 @@ namespace FruitsRetailer.Server.DataAccess
             CustomerTransaction cus = this._DataContext.CustomerTransactions.Find(transactionId);
             this._DataContext.CustomerTransactions.Remove(cus);
             this._DataContext.SaveChanges();
-            UpdateBalanceAndQuantity(cus.CustomerId, -cus.Quantity, cus.ProductCode);            
+            UpdateBalanceAndQuantity(cus.CustomerId, cus.Quantity, cus.ProductCode);            
         }
 
         private void UpdateBalanceAndQuantity(int CustomerId, int Quantity, string ProductCode)
@@ -66,7 +66,7 @@ namespace FruitsRetailer.Server.DataAccess
             CustomerTransaction cus = this._DataContext.CustomerTransactions.Find(customerTransaction.Id);
             previousQuantity = cus.Quantity;
             cus.AmountReceived = customerTransaction.AmountReceived;
-            cus.ProductCode = customerTransaction.ProductCode;
+            cus.ProductCode = customerTransaction.ProductCode;            
             cus.Quantity = customerTransaction.Quantity;
             cus.Rate = customerTransaction.Rate;
             cus.OthersCost = customerTransaction.OthersCost;
@@ -96,10 +96,10 @@ namespace FruitsRetailer.Server.DataAccess
             param6.Direction = ParameterDirection.Output;
             param6.SqlDbType = SqlDbType.Decimal;
 
-            var res = _DataContext.Database.SqlQuery<CustomerTransaction>("GetCustomerTransactionDetail @pageNo, @pageSize, @customerId, @Count OUT, @PreviousBalance OUT", param2, param3, param4, param5, param6).ToList<CustomerTransaction>();
+            var res = _DataContext.Database.SqlQuery<CustomerTransactionView>("GetCustomerTransactionDetail @pageNo, @pageSize, @customerId, @Count OUT, @PreviousBalance OUT", param2, param3, param4, param5, param6).ToList<CustomerTransactionView>();
 
             TransactionResult r = new TransactionResult();
-            r.PreviousBalance = (DBNull.Value == param6.Value)? 0 : Convert.ToInt32(param6.Value);
+            r.PreviousBalance = (DBNull.Value == param6.Value)? 0 : Convert.ToDecimal(param6.Value);
             r.Count = Convert.ToInt32(param5.Value);
             r.TransactionList = res;
             return r;

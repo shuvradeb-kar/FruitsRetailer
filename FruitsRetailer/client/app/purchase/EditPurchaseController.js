@@ -10,7 +10,7 @@
         vm.PageTitle = "Edit Purchase";
         
         vm.Transaction = $stateParams.transaction;        
-        vm.IsPaymentEnable = false;        
+        vm.IsPaymentEnable = (vm.Transaction.AmountReceived > 0) ? true : false;
         vm.Customer = $stateParams.customer;
         vm.Transaction.CustomerId = vm.Customer.Id;
         init();
@@ -66,6 +66,9 @@
                     vm.IsAmountReceivedEmpty = false;
                 }
             }
+            else {
+                vm.Transaction.AmountReceived = 0;
+            }
 
             if (vm.Transaction.OthersCost !== null && vm.Transaction.OthersCost !== undefined && vm.Transaction.OthersCost.length > 0) {
                 if (isNaN(vm.Transaction.OthersCost)) {
@@ -81,7 +84,7 @@
         }
 
         vm.GoBackToPurchaseList = function () {            
-            $state.go('purchase', { whoseller: { Id: vm.Customer.Id, Name: vm.Customer.Name, AccountNumber: vm.Customer.AccountNumber, Address: vm.Customer.Address } });
+            $state.go('purchase', { customer: { Id: vm.Customer.Id, Name: vm.Customer.Name, AccountNumber: vm.Customer.AccountNumber, Address: vm.Customer.Address } });
         }
     }
 })();
