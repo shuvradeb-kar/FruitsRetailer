@@ -50,19 +50,19 @@
                     name: 'ProductName', displayName: 'Product Name', width: 115, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD}}</div>'
                 },
                 {
-                    name: 'Quantity', displayName: 'Quantity', width:87, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD}}</div>'
+                    name: 'Quantity', displayName: 'Quantity', width: 87, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD == 0 ? "-" : COL_FIELD}}</div>'
                 },
                 {
-                    name: 'Rate', displayName: 'Rate', width: 100, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD | currency}}</div>'
+                    name: 'Rate', displayName: 'Rate', width: 100, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD == 0 ? "-" : COL_FIELD | currency}}</div>'
                 },
                 {
-                    name: 'Total', displayName: 'Total', width: 120, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD | currency}}</div>'
+                    name: 'Total', displayName: 'Total', width: 120, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD == 0 ? "-" : COL_FIELD | currency}}</div>'
                 },
                 {
-                    name: 'AmountReceived', displayName: 'Payment', width: 120, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD |currency}}</div>'
+                    name: 'AmountReceived', displayName: 'Payment', width: 120, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD == 0 ? "-" : COL_FIELD |currency}}</div>'
                 },
                 {
-                    name: 'OthersCost', displayName: 'Discount', width: 100, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD |currency}}</div>'
+                    name: 'OthersCost', displayName: 'Discount', width: 100, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD == 0 ? "-" : COL_FIELD |currency}}</div>'
                 },
                 {
                     name: 'Balance', displayName: 'Balance', width:120, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD |currency}}</div>'
@@ -72,6 +72,7 @@
                 }
             ],
         };
+        //var statusTemplate = '<div>{{COL_FIELD == 0 ? "Active" : (COL_FIELD == 1 ? "Non Active" : "Deleted")}}</div>';
 
         $scope.DeleteTransaction = function (entity) {
             var setting = {

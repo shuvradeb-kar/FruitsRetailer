@@ -181,16 +181,13 @@
             columnDefs: [
                 {
                     name: 'TransactionDate', displayName: 'Date', width: 100, enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD | date:"yyyy-MM-dd"}}</div>'
-                },
-                
-                {
-                    name: 'TType', width: 80, displayName: 'T. Type', enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD}}</div>'
                 },                
+                                
                 {
-                    name: 'Debit', displayName: 'Debit', enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD | currency}}</div>'
+                    name: 'Debit', displayName: 'Debit', enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD == 0 ? "-" : COL_FIELD | currency}}</div>'
                 },
                 {
-                    name: 'Credit',  displayName: 'Credit', enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD | currency}}</div>'
+                    name: 'Credit', displayName: 'Credit', enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD == 0 ? "-" : COL_FIELD | currency}}</div>'
                 },
                 {
                     name: 'Balance', displayName: 'Balance', enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents" title="{{COL_FIELD}}">{{COL_FIELD | currency}}</div>'

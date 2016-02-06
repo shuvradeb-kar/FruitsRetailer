@@ -52,10 +52,10 @@
                     name: 'Comment', displayName: 'Comment', enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents" title="{{COL_FIELD}}">{{COL_FIELD}}</div>'
                 },
                 {
-                    name: 'Debit', width: 135, displayName: 'Debit', enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD | currency}}</div>'
+                    name: 'Debit', width: 135, displayName: 'Debit', enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD == 0 ? "-" : COL_FIELD | currency}}</div>'
                 },
                 {
-                    name: 'Credit', width: 135, displayName: 'Credit', enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD | currency}}</div>'
+                    name: 'Credit', width: 135, displayName: 'Credit', enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD == 0 ? "-" : COL_FIELD | currency}}</div>'
                 },
                 {
                     name: 'Balance', width: 140, displayName: 'Balance', enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents" title="{{COL_FIELD}}">{{COL_FIELD | currency}}</div>'
