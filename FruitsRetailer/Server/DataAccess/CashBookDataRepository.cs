@@ -21,13 +21,21 @@ namespace FruitsRetailer.Server.DataAccess
         {            
             this._DataContext.CashBooks.Add(cashBook);
             this._DataContext.SaveChanges();
+            if (cashBook.AccountNumber > 0)
+            {
+                UpdateBalance(0, TransactionMode.Add);
+            }
         }
 
         public void DeleteCashBook(int cashBookId)
         {
             CashBook cashBook = this._DataContext.CashBooks.Find(cashBookId);
             this._DataContext.CashBooks.Remove(cashBook);
-            this._DataContext.SaveChanges();            
+            this._DataContext.SaveChanges();
+            if (cashBook.AccountNumber > 0)
+            {
+                UpdateBalance(cashBookId, TransactionMode.Delete);
+            }
         }
 
         public CashBookResult GetCashBookDetail(int pageNo, int pageSize)
@@ -66,12 +74,21 @@ namespace FruitsRetailer.Server.DataAccess
             cash.TransactionDate = cashBook.TransactionDate;
             cash.TransactionType = cashBook.TransactionType;
             cash.IsPayment = cashBook.IsPayment;
-            _DataContext.SaveChanges();            
+            _DataContext.SaveChanges();
+            if (cashBook.AccountNumber > 0)
+            {
+                UpdateBalance(cashBook.Id, TransactionMode.Edit);
+            }
         }
 
         public List<Customer> GetAccountList()
         {
             return this._DataContext.Customers.Where(c => c.IsActive == true).ToList();
         }
+        private void UpdateBalance(int cashBookId, TransactionMode mode)
+        {
+            _DataContext.Database.ExecuteSqlCommand("UpdateCashBoookBalance @CashBookId = {0}, @Mode = {1}", cashBookId, mode);
+        }
+
     }
 }

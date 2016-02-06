@@ -8,7 +8,7 @@
     function EditPurchaseController($state, $scope, FruitsRetailerService, $stateParams) {
         var vm = this;
         vm.PageTitle = "Edit Purchase";
-        
+        vm.EditMode = true;
         vm.Transaction = $stateParams.transaction;        
         vm.IsPaymentEnable = (vm.Transaction.AmountReceived > 0) ? true : false;
         vm.Customer = $stateParams.customer;

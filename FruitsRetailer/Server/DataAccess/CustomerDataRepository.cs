@@ -52,12 +52,12 @@ namespace FruitsRetailer.Server.DataAccess
             CustomerTransaction cus = this._DataContext.CustomerTransactions.Find(transactionId);
             this._DataContext.CustomerTransactions.Remove(cus);
             this._DataContext.SaveChanges();
-            UpdateBalanceAndQuantity(cus.CustomerId, cus.Quantity, cus.ProductCode);            
+            UpdateBalanceAndQuantity(cus.CustomerId, -cus.Quantity, cus.ProductCode, transactionId, TransactionMode.Delete);            
         }
 
-        private void UpdateBalanceAndQuantity(int CustomerId, int Quantity, string ProductCode)
+        private void UpdateBalanceAndQuantity(int CustomerId, int Quantity, string ProductCode, int transactionId, TransactionMode mode)
         {
-            _DataContext.Database.ExecuteSqlCommand("UpdateBalanceAndQuantity @CustomerId = {0}, @Quantity= {1}, @ProductCode = {2}", CustomerId, Quantity, ProductCode);
+            _DataContext.Database.ExecuteSqlCommand("UpdateBalanceAndQuantity @CustomerId = {0}, @Quantity= {1}, @ProductCode = {2}, @TransactionId = {3}, @Mode = {4}", CustomerId, Quantity, ProductCode, transactionId, mode);
         }
 
         public void EditWholesalerTransaction(CustomerTransaction customerTransaction)
@@ -76,7 +76,7 @@ namespace FruitsRetailer.Server.DataAccess
 
             int res = customerTransaction.Quantity - previousQuantity;
 
-            UpdateBalanceAndQuantity(customerTransaction.CustomerId, res, customerTransaction.ProductCode);
+            UpdateBalanceAndQuantity(customerTransaction.CustomerId, res, customerTransaction.ProductCode, customerTransaction.Id, TransactionMode.Edit);
         }
 
         public TransactionResult GetCustomersTransactionDetail(WholesalerFilter filter)
@@ -109,7 +109,7 @@ namespace FruitsRetailer.Server.DataAccess
         {
             this._DataContext.CustomerTransactions.Add(customerTransaction);
             this._DataContext.SaveChanges();
-            UpdateBalanceAndQuantity(customerTransaction.CustomerId, customerTransaction.Quantity, customerTransaction.ProductCode);
+            UpdateBalanceAndQuantity(customerTransaction.CustomerId, customerTransaction.Quantity, customerTransaction.ProductCode, 0, TransactionMode.Add);
         }
 
         public void AddCustomer(Customer customer)

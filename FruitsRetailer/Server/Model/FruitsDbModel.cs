@@ -61,8 +61,8 @@ namespace FruitsRetailer.Server.Model
         public bool IsPayment { get; set; }
         public TransactionType TransactionType { get; set; }
         public DateTime TransactionDate { get; set; }
-        public double Debit { get; set; }
-        public double Credit { get; set; }
+        public decimal Debit { get; set; }
+        public decimal Credit { get; set; }
         public string Comment { get; set; }        
     }
 

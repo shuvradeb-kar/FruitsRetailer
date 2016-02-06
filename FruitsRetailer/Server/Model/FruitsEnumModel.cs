@@ -26,4 +26,10 @@ namespace FruitsRetailer.Server.Model
         Admin = 1,
         Guest = 2
     }
+    public enum TransactionMode
+    {
+        Add = 1,
+        Edit = 2,
+        Delete = 3
+    }
 }
