@@ -1,5 +1,5 @@
 ﻿
-var FruitsRetailerApp = angular.module('FruitsRetailerApp', ['ui.router', 'ui.grid', 'ui.bootstrap', 'ui.grid.pagination', 'ngLoadingSpinner'])
+var FruitsRetailerApp = angular.module('FruitsRetailerApp', ['ui.router', 'ui.grid', 'ui.bootstrap', 'ui.grid.pagination', 'ngLoadingSpinner', 'ngCookies'])
 .config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES', '$httpProvider', function ($stateProvider, $urlRouterProvider, USER_ROLES, $httpProvider) {
     $urlRouterProvider.otherwise("/login");
     $httpProvider.interceptors.push(['$injector', function ($injector) {
@@ -163,6 +163,8 @@ var FruitsRetailerApp = angular.module('FruitsRetailerApp', ['ui.router', 'ui.gr
                     }
 
                 }
-            }
+            }            
     });
+    
+    
 });

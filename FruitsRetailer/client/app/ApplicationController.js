@@ -3,9 +3,9 @@
         .module('FruitsRetailerApp')
         .controller('ApplicationController', ApplicationController);
 
-    ApplicationController.$inject = ['$scope', 'USER_ROLES', 'AuthenticationService', '$state', 'SessionService', 'FruitsRetailerService'];
+    ApplicationController.$inject = ['$scope', 'USER_ROLES', 'AuthenticationService', '$state', 'SessionService', 'FruitsRetailerService', '$cookies'];
 
-    function ApplicationController($scope, USER_ROLES, AuthenticationService, $state, SessionService, FruitsRetailerService) {
+    function ApplicationController($scope, USER_ROLES, AuthenticationService, $state, SessionService, FruitsRetailerService, $cookies) {
         var vm = this;
         $scope.currentUser = null;
         $scope.userRoles = USER_ROLES;
@@ -28,6 +28,10 @@
                 localStorage.setItem("CompanyAddress", label.CompanyAddress);
                 localStorage.setItem("ProprietorContactNumber", label.ProprietorContactNumber);               
             });
+            if ($cookies.get("UserInfo") != undefined) {
+                var user = $cookies.get("UserInfo")
+                $scope.setCurrentUser(JSON.parse(user));
+            }
         }
         init();
     }
