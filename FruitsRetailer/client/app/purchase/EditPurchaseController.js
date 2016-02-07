@@ -57,7 +57,7 @@
         }
 
         vm.ValidateTransactione = function () {
-            if (vm.Transaction.Quantity === undefined || vm.Transaction.Quantity === 0 || isNaN(vm.Transaction.Quantity)) {
+            if (vm.Transaction.Quantity === undefined || vm.Transaction.Quantity === 0 || isNaN(vm.Transaction.Quantity) || vm.Transaction.Quantity <=0) {
                 vm.QuantityInfo = "Please enter valid quantity.";
                 vm.IsQuantityEmpty = true;
                 return false;
@@ -65,7 +65,7 @@
             else {
                 vm.IsQuantityEmpty = false;
             }
-            if (vm.Transaction.Rate === undefined || vm.Transaction.Rate === 0 || isNaN(vm.Transaction.Rate)) {
+            if (vm.Transaction.Rate === undefined || vm.Transaction.Rate === 0 || isNaN(vm.Transaction.Rate) || vm.Transaction.Rate <= 0) {
                 vm.RateInfo = "Please enter valid rate.";
                 vm.IsRateEmpty = true;
                 return false;
@@ -75,7 +75,7 @@
             }
 
             if (vm.IsPaymentEnable) {
-                if (vm.Transaction.AmountReceived === undefined || vm.Transaction.AmountReceived === 0 || isNaN(vm.Transaction.AmountReceived)) {
+                if (vm.Transaction.AmountReceived === undefined || vm.Transaction.AmountReceived === 0 || isNaN(vm.Transaction.AmountReceived) || vm.Transaction.AmountReceived <= 0) {
                     vm.AmountReceivedInfo = "Please enter valid amount.";
                     vm.IsAmountReceivedEmpty = true;
                     return false;
@@ -88,9 +88,9 @@
                 vm.Transaction.AmountReceived = 0;
             }
 
-            if (vm.Transaction.OthersCost !== null && vm.Transaction.OthersCost !== undefined && vm.Transaction.OthersCost.length > 0) {
-                if (isNaN(vm.Transaction.OthersCost)) {
-                    vm.OthersCostInfo = "Please enter valid rate.";
+            if (vm.Transaction.OthersCost !== null && vm.Transaction.OthersCost !== undefined) {
+                if (isNaN(vm.Transaction.OthersCost) || vm.Transaction.OthersCost < 0) {
+                    vm.OthersCostInfo = "Please enter valid discount.";
                     vm.IsOthersCostEmpty = true;
                     return false;
                 }

@@ -61,7 +61,7 @@
         }
 
         vm.ValidateStockAndSave = function () {            
-            if (vm.Amount === null || vm.Amount === undefined || isNaN(vm.Amount)) {
+            if (vm.Amount === null || vm.Amount === undefined || isNaN(vm.Amount) || vm.Amount <= 0) {
                 vm.AmountInfo = "Please enter amount";
                 vm.IsAmountEmpty = true;
                 return false;

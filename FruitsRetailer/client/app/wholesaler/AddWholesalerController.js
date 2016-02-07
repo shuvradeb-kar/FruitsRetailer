@@ -23,7 +23,7 @@
             else {
                 vm.IsNameEmpty = false;
             }
-            if (vm.Wholesaler.AccountNumber === undefined || vm.Wholesaler.AccountNumber === 0 || isNaN(vm.Wholesaler.AccountNumber)) {
+            if (vm.Wholesaler.AccountNumber === undefined || vm.Wholesaler.AccountNumber === 0 || isNaN(vm.Wholesaler.AccountNumber) || vm.Wholesaler.AccountNumber <= 0) {
                 vm.AccountNumInfo = "Please enter a valid integer number.";
                 vm.IsAcNumberEmpty = true;
             }

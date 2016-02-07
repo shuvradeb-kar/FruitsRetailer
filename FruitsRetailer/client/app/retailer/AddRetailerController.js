@@ -21,7 +21,7 @@
             else {
                 vm.IsNameEmpty = false;
             }
-            if (vm.Retailer.AccountNumber === undefined || vm.Retailer.AccountNumber === 0 || isNaN(vm.Retailer.AccountNumber)) {
+            if (vm.Retailer.AccountNumber === undefined || vm.Retailer.AccountNumber === 0 || isNaN(vm.Retailer.AccountNumber) || vm.Retailer.AccountNumber <= 0) {
                 vm.AccountNumInfo = "Please enter a valid integer number.";
                 vm.IsAcNumberEmpty = true;
             }
