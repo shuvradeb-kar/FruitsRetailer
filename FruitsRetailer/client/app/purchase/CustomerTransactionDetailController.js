@@ -133,6 +133,12 @@
         }
 
         init(1, vm.PageSize, vm.Customer.Id);
+
+        loadInitialValue();
+        function loadInitialValue() {
+            vm.CompanyName = localStorage.getItem("CompanyName");
+            vm.CompanySlogan = localStorage.getItem("CompanySlogan");
+        }
     }
        
 })();

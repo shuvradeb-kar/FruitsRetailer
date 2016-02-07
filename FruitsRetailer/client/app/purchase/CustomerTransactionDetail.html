@@ -1,16 +1,29 @@
-﻿<section class="page-header">        
-        <a class="btn btn-success" data-ng-click="vm.AddNewTransactation()">
-            <i class="fa fa-plus"></i> Purchase
-        </a>    
+﻿   
     <!--<div class="alert alert-info" style="float:right; display:none;">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
         <strong>Info!</strong> This transaction is not editable.
     </div>-->
 
-    <div style="float:right; padding-top:17px">
-        <span><strong>Name:</strong> {{vm.Customer.Name}},</span>
-        <span><strong>Ac/No:</strong> {{vm.Customer.AccountNumber}}</span>
+<section class="page-header header-section">
+    <div class="row">
+        <div class="col-md-4">
+            <div style="margin-top:33px; font-size:20px">
+                <span><strong>Name:</strong> {{vm.Customer.Name}},</span>
+                <span><strong>Ac/No:</strong> {{vm.Customer.AccountNumber}}</span>
+            </div>        
+        </div>
+        <div class="col-md-4">
+            <div class="text-center">
+                <h3 class="company-title"><strong>{{vm.CompanyName}}</strong></h3>
+                <h6><strong>{{vm.CompanySlogan}}</strong></h6>
+            </div>
+        </div>
+        <div class="col-md-4" style="text-align:end;">
+            <a class="btn btn-success" data-ng-click="vm.AddNewTransactation()" style="margin-top:23px;">
+                <i class="fa fa-plus"></i> Purchase
+            </a>
+        </div>
     </div>
 </section>
 
-<section data-ui-grid="vm.gridOptions" data-ui-grid-pagination data-ui-grid-tree-view class="transactionGrid"></section>
+<section style="margin-top:10px" data-ui-grid="vm.gridOptions" data-ui-grid-pagination data-ui-grid-tree-view class="transactionGrid"></section>

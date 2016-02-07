@@ -1,7 +1,19 @@
-﻿<section class="page-header">   
-    <a class="btn btn-success add-whoseller" ui-sref="addwhoseller">
-        <i class="fa fa-plus"></i> Wholesaler
-    </a>
+﻿<section class="page-header header-section">   
+    <div class="row">
+        <div class="col-md-4">
+            <a class="btn btn-success add-whoseller" ui-sref="addwhoseller" style="margin-top:23px;">
+                <i class="fa fa-plus"></i> Wholesaler
+            </a>
+        </div>
+        <div class="col-md-4">
+            <div class="text-center">
+                <h3 class="company-title"><strong>{{vm.CompanyName}}</strong></h3>
+                <h6><strong>{{vm.CompanySlogan}}</strong></h6>
+            </div>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+    
 </section>
 
-<section data-ui-grid="vm.gridOptions" data-ui-grid-pagination data-ui-grid-tree-view class="wholesalerGrid"></section>
+<section style="margin-top:10px;" data-ui-grid="vm.gridOptions" data-ui-grid-pagination data-ui-grid-tree-view class="wholesalerGrid"></section>

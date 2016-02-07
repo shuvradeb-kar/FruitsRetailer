@@ -1,19 +1,19 @@
 ﻿
-<div class="page-header">
-    <a class="btn btn-success" ui-sref="addretailer">
-        <i class="fa fa-plus"></i> Retailer
-    </a>
-    <!--<div class="row">
-        <div class="col-md-2 pull-left">
-            <a class="btn btn-success" ui-sref="addretailer">
+<section class="page-header header-section">
+    <div class="row">
+        <div class="col-md-4">
+            <a class="btn btn-success" ui-sref="addretailer" style="margin-top:23px;">
                 <i class="fa fa-plus"></i> Retailer
-            </a>
+            </a>   
         </div>
-        <div class="col-md-10 text-center">
-            <h3 class="company-title"><strong>{{vm.CompanyName}}</strong></h3>
-            <h6><strong>{{vm.CompanySlogan}}</strong></h6>
+        <div class="col-md-4">
+            <div class="text-center">
+                <h3 class="company-title"><strong>{{vm.CompanyName}}</strong></h3>
+                <h6><strong>{{vm.CompanySlogan}}</strong></h6>
+            </div>
         </div>
-    </div>-->
-</div>
+        <div class="col-md-4"></div>
+    </div>
+</section>
 
-<section data-ui-grid="vm.gridOptions" data-ui-grid-pagination data-ui-grid-tree-view class="retailerGrid"></section>
+<section style="margin-top:10px" data-ui-grid="vm.gridOptions" data-ui-grid-pagination data-ui-grid-tree-view class="retailerGrid"></section>
