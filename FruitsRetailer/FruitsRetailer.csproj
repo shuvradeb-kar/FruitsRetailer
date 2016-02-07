@@ -237,7 +237,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Client\Home.html" />
+    <Content Include="Home.html" />
     <Content Include="Client\app\purchase\AddNewPurchase.html" />
     <Content Include="Client\app\wholesaler\AddNewWholesaler.html" />
     <Content Include="Client\app\dashboard\Dashboard.html" />
