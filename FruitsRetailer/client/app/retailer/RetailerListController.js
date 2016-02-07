@@ -87,7 +87,7 @@
 
         $scope.GetRetailerDetail = function ( entity )
         {
-            $state.go('purchase', { customer: { Id: entity.Id, Name: entity.Name, AccountNumber: entity.AccountNumber, Address: entity.Address, MobileNumber: entity.MobileNumber } });
+            $state.go('purchase', { customer: { Id: entity.Id, Name: entity.Name, AccountNumber: entity.AccountNumber, Address: entity.Address, MobileNumber: entity.MobileNumber, CustomerType: 1 } });
         }
 
         $scope.EditRetailer = function (entity)

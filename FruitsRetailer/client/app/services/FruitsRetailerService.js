@@ -28,9 +28,15 @@
             getRetailerList: getRetailerList,
             saveRetailer: saveRetailer,
             isRetailerAccountNumberExists: isRetailerAccountNumberExists,
-            deleteRetailer: deleteRetailer
+            deleteRetailer: deleteRetailer,
+            StockInfoForPurchase: StockInfoForPurchase
         };
         return service;
+
+        function StockInfoForPurchase(productCode) {
+            var request = $http.get('/Server/Controller/Purchase?productCode=' + productCode);
+            return request.then(handleSuccess, handleError);
+        }
 
         function saveRetailer(retailer) {
             var request = $http.post('/Server/Controller/Retailer', JSON.stringify(retailer));

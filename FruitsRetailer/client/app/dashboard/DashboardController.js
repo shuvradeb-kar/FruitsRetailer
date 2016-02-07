@@ -68,7 +68,7 @@
             columnDefs: [
                 {
                     name: 'AccountNumber', enableFiltering: true, displayName: 'Account Number',
-                    cellTemplate: '<div class="ui-grid-cell-contents"><a  style="cursor:pointer" ng-click="grid.appScope.GetWholesalerDetail(row.entity)">{{COL_FIELD}}</a></div>'
+                    cellTemplate: '<div class="ui-grid-cell-contents"><a  style="cursor:pointer" ng-click="grid.appScope.GetRetailerDetail(row.entity)">{{COL_FIELD}}</a></div>'
                 },
                 {
                     name: 'Name', displayName: 'Name', enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents wordbreak">{{COL_FIELD}}</div>'
@@ -196,8 +196,13 @@
         };
 
         $scope.GetWholesalerDetail = function (entity) {
-            $state.go('purchase', { customer: { Id: entity.Id, Name: entity.Name, AccountNumber: entity.AccountNumber, Address: entity.Address } });
+            $state.go('purchase', { customer: { Id: entity.Id, Name: entity.Name, AccountNumber: entity.AccountNumber, Address: entity.Address, CustomerType: 2 } });
         }
+
+        $scope.GetRetailerDetail = function (entity) {
+            $state.go('purchase', { customer: { Id: entity.Id, Name: entity.Name, AccountNumber: entity.AccountNumber, Address: entity.Address, CustomerType: 1 } });
+        }
+        
 
         function init(pageNo, pageSize, filter) {
             WholesalerFilterdataGet(pageNo, pageSize, filter)

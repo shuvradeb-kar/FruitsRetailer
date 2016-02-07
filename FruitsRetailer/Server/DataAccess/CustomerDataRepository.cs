@@ -42,6 +42,11 @@ namespace FruitsRetailer.Server.DataAccess
             return r;
         }
 
+        public Stock StockInfoForPurchase(string productCode)
+        {
+            return this._DataContext.Stocks.Where(c => c.Code == productCode).SingleOrDefault();
+        }
+
         public List<Stock> GetAllActiveProduct()
         {
             return this._DataContext.Stocks.Where(c => c.IsActive == true).OrderBy(c=>c.Name).ToList();

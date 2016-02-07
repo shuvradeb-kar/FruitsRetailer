@@ -23,6 +23,14 @@ namespace FruitsRetailer.WebApiController
             return _CustomerRepository.GetAllActiveProduct();
         }
 
+        [HttpGet]
+        public Stock StockInfoForPurchase(string productCode)
+        {
+            return _CustomerRepository.StockInfoForPurchase(productCode);
+        }
+
+
+
         [HttpDelete]
         public void DeleteTransaction(int transactionId)
         {

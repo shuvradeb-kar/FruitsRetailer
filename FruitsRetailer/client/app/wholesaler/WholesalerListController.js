@@ -88,7 +88,7 @@
 
         $scope.GetWholesalerDetail = function ( entity )
         {
-            $state.go('purchase', { customer: { Id: entity.Id, Name: entity.Name, AccountNumber: entity.AccountNumber, Address: entity.Address, MobileNumber: entity.MobileNumber } });
+            $state.go('purchase', { customer: { Id: entity.Id, Name: entity.Name, AccountNumber: entity.AccountNumber, Address: entity.Address, MobileNumber: entity.MobileNumber, CustomerType: 2 } });
         }
 
         $scope.EditWholesaler = function (entity)

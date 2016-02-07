@@ -109,13 +109,12 @@
             }
             else
             {
-                $state.go('editpurchase', { customer: { Id: vm.Customer.Id, Name: vm.Customer.Name, AccountNumber: vm.Customer.AccountNumber, Address: vm.Customer.Address }, transaction: { Id: entity.Id, ProductDescription: entity.ProductDescription, TransactionDate: new Date(entity.TransactionDate), Quantity: entity.Quantity, Rate: entity.Rate, AmountReceived: entity.AmountReceived, OthersCost: entity.OthersCost, ProductCode: entity.ProductCode, CustomerId: entity.CustomerId } });
+                $state.go('editpurchase', { customer: { Id: vm.Customer.Id, Name: vm.Customer.Name, AccountNumber: vm.Customer.AccountNumber, Address: vm.Customer.Address, CustomerType: vm.Customer.CustomerType }, transaction: { Id: entity.Id, ProductDescription: entity.ProductDescription, TransactionDate: new Date(entity.TransactionDate), Quantity: entity.Quantity, Rate: entity.Rate, AmountReceived: entity.AmountReceived, OthersCost: entity.OthersCost, ProductCode: entity.ProductCode, CustomerId: entity.CustomerId } });
             }
         }
 
         vm.AddNewTransactation = function () {            
-            $state.go('addpurchase', { customer: { Id: vm.Customer.Id, Name: vm.Customer.Name, AccountNumber: vm.Customer.AccountNumber, Address: vm.Customer.Address } });
-            
+            $state.go('addpurchase', { customer: { Id: vm.Customer.Id, Name: vm.Customer.Name, AccountNumber: vm.Customer.AccountNumber, Address: vm.Customer.Address, CustomerType: vm.Customer.CustomerType } });            
         }
 
         function init(pageNo, pageSize, customerId)

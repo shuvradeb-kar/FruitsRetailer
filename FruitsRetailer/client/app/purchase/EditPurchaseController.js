@@ -32,10 +32,28 @@
             if (vm.ValidateTransactione()) {
                 vm.Transaction.ProductCode = vm.SelectedItem.Code;
                 vm.Transaction.ProductId = vm.SelectedItem.Id;
-                FruitsRetailerService.saveTransaction(vm.Transaction).then(function (data) {
-                    vm.GoBackToPurchaseList();
-                });
+                if (vm.Customer.CustomerType == 1) {
+                    FruitsRetailerService.StockInfoForPurchase(vm.Transaction.ProductCode).then(function (data) {
+                        if (data.Quantity >= vm.Transaction.Quantity) {
+                            vm.HasStockInfo = false;
+                            vm.SaveTransactionDetail();
+                        }
+                        else {
+                            vm.StockInfo = "Your available " + data.Name + " stock is " + data.Quantity + ". Please update your stock."
+                            vm.HasStockInfo = true;
+                        }
+                    });
+                }
+                else {
+                    vm.SaveTransactionDetail();
+                }   
             }
+        }
+
+        vm.SaveTransactionDetail = function () {
+            FruitsRetailerService.saveTransaction(vm.Transaction).then(function (data) {
+                vm.GoBackToPurchaseList();
+            });
         }
 
         vm.ValidateTransactione = function () {
