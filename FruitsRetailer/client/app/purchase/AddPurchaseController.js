@@ -7,14 +7,22 @@
 
     function AddPurchaseController($state, $scope, FruitsRetailerService, $stateParams) {
         var vm = this;
-        vm.PageTitle = "Add New Purchase";
+        
         vm.Transaction = {};
         vm.IsPaymentEnable = false;
         vm.Transaction.TransactionDate = new Date();
         vm.Customer = $stateParams.customer;
         vm.AccountNumber = vm.Customer.AccountNumber;
         vm.Transaction.CustomerId = vm.Customer.Id;
-        
+        if (vm.Customer.CustomerType == 1) {
+            vm.PaymentTitle = "Receive";
+            vm.PageTitle = "Add New Sell";
+        }
+        else {
+            vm.PaymentTitle = "Payment";
+            vm.PageTitle = "Add New Purchase";
+        }
+
         init();
 
         function init() {

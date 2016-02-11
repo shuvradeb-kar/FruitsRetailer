@@ -7,12 +7,20 @@
 
     function EditPurchaseController($state, $scope, FruitsRetailerService, $stateParams) {
         var vm = this;
-        vm.PageTitle = "Edit Purchase";
+        
         vm.EditMode = true;
         vm.Transaction = $stateParams.transaction;        
         vm.IsPaymentEnable = (vm.Transaction.AmountReceived > 0) ? true : false;
         vm.Customer = $stateParams.customer;
         vm.Transaction.CustomerId = vm.Customer.Id;
+        if (vm.Customer.CustomerType == 1) {
+            vm.PaymentTitle = "Receive";
+            vm.PageTitle = "Edit Sell";
+        }
+        else {
+            vm.PageTitle = "Edit Purchase";
+            vm.PaymentTitle = "Payment";
+        }
         init();
         function init() {
             FruitsRetailerService.getAllActiveProduct().then(function (data) {

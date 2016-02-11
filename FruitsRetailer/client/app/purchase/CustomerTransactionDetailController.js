@@ -11,6 +11,12 @@
         vm.Customer = $stateParams.customer;
         vm.PageSize = 50;
         vm.gridOptions = {};
+        if (vm.Customer.CustomerType == 1)
+            vm.TransactionName = "Sell";
+        else {
+            vm.TransactionName = "Purchase";
+        }
+
 
         vm.gridOptions = {
             onRegisterApi: function ( gridApi )
