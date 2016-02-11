@@ -16,6 +16,7 @@
         if (vm.Customer.CustomerType == 1) {
             vm.PaymentTitle = "Receive";
             vm.PageTitle = "Edit Sell";
+            vm.RetailerEdit = true;
         }
         else {
             vm.PageTitle = "Edit Purchase";

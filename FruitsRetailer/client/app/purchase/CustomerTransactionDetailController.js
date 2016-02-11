@@ -74,7 +74,7 @@
                     name: 'Balance', displayName: 'Balance', width:120, cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD |currency}}</div>'
                 },
                 {
-                    name: ' ', width: 120, cellTemplate: '<div style="text-align:center;padding-top:3px;"><a ng-click="grid.appScope.EditTransaction(row.entity)" style="margin-right:3px;" class="btn btn-warning btn-xs">Edit</a><a ng-click="grid.appScope.DeleteTransaction(row.entity)" class="btn btn-danger btn-xs">Delete</a></div>'
+                    name: ' ', width: 120, cellTemplate: '<div style="text-align:center;padding-top:3px;"><a ng-click="grid.appScope.EditTransaction(row.entity)" style="margin-right:3px;" class="btn btn-warning btn-xs">Edit</a></div>'
                 }
             ],
         };

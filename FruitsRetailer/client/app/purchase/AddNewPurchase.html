@@ -17,7 +17,7 @@
     <div class="form-group">
         <label class="control-label col-sm-2" for="quan">Quantity:</label>
         <div class="col-sm-10">
-            <input type="number" class="form-control" required id="quan" placeholder="Enter quantity" data-ng-model="vm.Transaction.Quantity">
+            <input type="number" class="form-control" required id="quan" placeholder="Enter quantity" data-ng-model="vm.Transaction.Quantity" ng-disabled="vm.EditMode && vm.RetailerEdit">
             <div class="alert alert-warning fade in" ng-hide="!vm.IsQuantityEmpty">{{vm.QuantityInfo}}</div>
             <div class="alert alert-warning fade in" ng-hide="!vm.HasStockInfo">{{vm.StockInfo}}</div>
         </div>
